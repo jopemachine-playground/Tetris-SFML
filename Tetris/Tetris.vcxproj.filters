@@ -13,18 +13,93 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Menu">
+      <UniqueIdentifier>{d6f8b383-cb06-4308-ac03-ced1904ff843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Menu">
+      <UniqueIdentifier>{a905ca0f-34eb-470c-8e1a-3fb870b5c590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Drawable">
+      <UniqueIdentifier>{2e9c7dc4-da17-4761-a796-f95d3bf2c8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Drawable">
+      <UniqueIdentifier>{31e04e0e-8d2a-49a0-97f3-302a94af38d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GUI">
+      <UniqueIdentifier>{013fc7dc-e0d5-4757-9cb0-2184167456e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GUI">
+      <UniqueIdentifier>{e3a6d7ef-17c5-42fb-9ea5-1b3c264af4cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StartMenu.h">
+      <Filter>헤더 파일\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>헤더 파일\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>헤더 파일\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>헤더 파일\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranking.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Picture.h">
+      <Filter>헤더 파일\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Tetris.cpp">
+    <ClCompile Include="StartMenu.cpp">
+      <Filter>소스 파일\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>소스 파일\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>소스 파일\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>소스 파일\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>소스 파일\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Picture.cpp">
+      <Filter>소스 파일\GUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
