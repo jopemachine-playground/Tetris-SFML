@@ -12,7 +12,7 @@ private:
 
 public:
 
-	static Text* getInstance() {
+	static Text* GetInstance() {
 		if (mInstance == 0) {
 			mInstance = new Text();
 		}

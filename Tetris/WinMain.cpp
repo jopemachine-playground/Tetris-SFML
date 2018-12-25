@@ -11,13 +11,18 @@
 
 // A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 #include "BackGround.h"
-#include "Game.h"
+#include "BlockStack.h"
+#include "GamePool.h"
+#include "Menu.h"
+#include "MovingBlock.h"
 #include "Picture.h"
 #include "Sound.h"
 #include "StartMenu.h"
 #include "Text.h"
+#include "UnitBlock.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+int main(){
 
 StartMenuPoint:
 
@@ -77,33 +82,35 @@ StartMenuPoint:
 
 GameStartingPoint:
 
-
 	sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), GAME_TITLE);
 	sf::Event event;
 
 	BackGround* background = new BackGround();
 	Picture* picture = new Picture();
-	Sound* soundManage = Sound::getInstance();
+	Sound* soundManage = Sound::GetInstance();
 	soundManage->PlayBackGroundMusic();
 
-	Text *textManage = Text::getInstance();
+	Text *textManage = Text::GetInstance();
+
+	GamePool* gamePool = GamePool::GetInstance();
+	BlockStack* blockStacked = BlockStack::GetInstance();
+	MovingBlock* movingBlock = new MovingBlock();
 
 	srand(time(0));
-
-	int dx = 0;
-	bool rotate = 0;
-	int colorNum = 1;
-	float timer = 0, delay = 0.3;
-
+	float periodicTimer = 0;
 	sf::Clock clock;
-
-GameProcessing:
 
 	while (window.isOpen())
 	{
-		float time = clock.getElapsedTime().asSeconds();
+		float elapsedTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
-		timer += time;
+		periodicTimer += elapsedTime;
+
+		// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
+		if (movingBlock->CheckBlockBelow())
+		{
+			movingBlock = new MovingBlock();
+		}
 
 		while (window.pollEvent(event))
 		{
@@ -117,27 +124,55 @@ GameProcessing:
 				break;
 			}
 
-			
+
 			case sf::Event::KeyPressed: {
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-
-
-
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				{
+					// 게임 일시 정지
 				}
-			} 
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				{
+					// 블록 회전
+					movingBlock->RotateBlock();
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					// x축으로 -1칸 이동
+					movingBlock->BlockMoveLeft();
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					// x축으로 +1칸 이동
+					movingBlock->BlockMoveRight();
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					// 빨리 내림
+					movingBlock->SetMovingTime(FAST_BLOCK_MOVINGTIME);
+				}
 
-
+				break;
+			}
 			}
 
-		} // end of while (window.pollEvent(event))
+			// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
+			if (movingBlock->GetMovingTime() < periodicTimer)
+			{
+				movingBlock->BlockMoveDownByTime();
+				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
+				periodicTimer = 0;
+			}
 
-		window.clear();
+		} ///////////// end of while (window.pollEvent(event)) /////////////
+
+		window.clear(sf::Color::White);
 		window.draw(picture->GetSprite());
 		window.draw(background->GetSprite());
+		movingBlock->DrawMovingBlock(window);
 		window.display();
 
-	} // end of while (window.isOpen())
+	} ///////////// end of while (window.isOpen()) /////////////
 }
 
 

@@ -13,10 +13,9 @@ Picture::Picture() {
 	std::mt19937 gen(rd());  // to seed mersenne twister.  
 	std::uniform_int_distribution<> dist(1, PICTURE_NUMBER);
 	
-	unsigned int mSelectedPictureNumber = dist(gen);
+	mSelectedNumber = dist(gen);
 
-
-	mSelectedPictureTexture.loadFromFile("images/Picture" + std::to_string(mSelectedPictureNumber) + ".png");
+	mSelectedPictureTexture.loadFromFile("images/Picture" + std::to_string(mSelectedNumber) + ".png");
 	mSelectedPictureSprite.setTexture(mSelectedPictureTexture);
 
 }

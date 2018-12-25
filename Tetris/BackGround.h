@@ -5,20 +5,11 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Game.h"
+#include "GamePool.h"
 
 class BackGround {
 
 private:
-	
-	const size_t ONE_BLOCK_PIXEL = 39;
-	const size_t ROW_PIXEL_NUMBER = 12;
-	const size_t COLUMN_PIXEL_NUMBER = 22;
-	const size_t ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER; // 468
-	const size_t COLUMN_PIXEL = ONE_BLOCK_PIXEL * COLUMN_PIXEL_NUMBER; // 858
-
-	const unsigned int BACKGROUND_POSITIONX = 50;
-	const unsigned int BACKGROUND_POSITIONY = 30;
 
 	sf::Texture mTexture;
 	sf::Sprite mSprite;

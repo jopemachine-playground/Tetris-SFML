@@ -45,13 +45,7 @@
     <ClInclude Include="Sound.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>헤더 파일\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="Block.h">
       <Filter>헤더 파일\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
@@ -65,6 +59,18 @@
     </ClInclude>
     <ClInclude Include="Picture.h">
       <Filter>헤더 파일\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockStack.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitBlock.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingBlock.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePool.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +89,6 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>소스 파일\Drawable</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>소스 파일\Drawable</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\GUI</Filter>
     </ClCompile>
@@ -100,6 +103,18 @@
     </ClCompile>
     <ClCompile Include="Picture.cpp">
       <Filter>소스 파일\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockStack.cpp">
+      <Filter>소스 파일\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitBlock.cpp">
+      <Filter>소스 파일\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingBlock.cpp">
+      <Filter>소스 파일\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePool.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

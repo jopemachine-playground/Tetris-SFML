@@ -2,7 +2,7 @@
 
 #include "Sound.h"
 
-Sound* Sound::instance = nullptr;
+Sound* Sound::mInstance = nullptr;
 
 Sound::Sound() {
 

@@ -4,7 +4,7 @@
 #define STARTMENU_HPP
 
 #include "SFML/Graphics.hpp"
-#include "Game.h"
+#include "GamePool.h"
 
 class StartMenu{
 
@@ -14,14 +14,12 @@ private:
 	const static size_t MENU_ITEM_SIZE = 70;
 	const sf::Color DEFAULT_STARTMENU_ITEM_COLOR = sf::Color::White;
 	const sf::Color SELECTED_STARTMENU_ITEM_COLOR = sf::Color::Cyan;
-	const sf::Color GAME_TITLE_COLOR = sf::Color::White;
 
 	sf::Texture mStartMenuTexture;
 	sf::Sprite mStartMenuSprite;
 
 	sf::Font mMenufont;
-	sf::Font mGameTitleFont;
-	sf::Text mGameTitle;
+
 	sf::Text mStartMenuText[MAX_NUMBER_OF_STARTMENU_ITEMS];
 
 	int mSelectedItemIndex = 0;

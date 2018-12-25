@@ -5,14 +5,14 @@
 
 #include "SFML/Audio.hpp"
 
-#include "Game.h"
+#include "GamePool.h"
 
 class Sound {
 
 private:
 
 	Sound();
-	static Sound*instance;
+	static Sound* mInstance;
 
 	sf::SoundBuffer mMenuItemUpDownSoundBuffer;
 	sf::Sound mMenuItemUpDownSound;
@@ -27,11 +27,11 @@ private:
 
 public:
 
-	static Sound* getInstance() {
-		if (instance == 0) {
-			instance = new Sound();
+	static Sound* GetInstance() {
+		if (mInstance == 0) {
+			mInstance = new Sound();
 		}
-		return instance;
+		return mInstance;
 	}
 
 	void PlayRotateKeyClicked() { mRotateKeySound.play(); }

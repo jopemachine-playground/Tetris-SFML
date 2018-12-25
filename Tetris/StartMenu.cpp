@@ -14,7 +14,6 @@ StartMenu::StartMenu(float width, float height) {
 	mStartMenuSprite.setPosition(0, 0);
 
 	mMenufont.loadFromFile(FILE_STARTMENU_FONT);
-	mGameTitleFont.loadFromFile(FILE_STARTMENU_TITLE_FONT);
 
 	mStartMenuText[0].setFont(mMenufont);
 	mStartMenuText[0].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
@@ -34,17 +33,12 @@ StartMenu::StartMenu(float width, float height) {
 	mStartMenuText[2].setCharacterSize(MENU_ITEM_SIZE);
 	mStartMenuText[2].setPosition(sf::Vector2f(100, 560));
 
-	mGameTitle.setFont(mGameTitleFont);
-	mGameTitle.setString("Tetris!");
-	mGameTitle.setFillColor(GAME_TITLE_COLOR);
-	mGameTitle.setCharacterSize(110);
-	mGameTitle.setPosition(sf::Vector2f(150, 100));
-
+	mStartMenuText[mSelectedItemIndex].setFillColor(SELECTED_STARTMENU_ITEM_COLOR);
 }
 
 void StartMenu::MoveUp() {
 
-	Sound* sc = Sound::getInstance();
+	Sound* sc = Sound::GetInstance();
 
 	mStartMenuText[mSelectedItemIndex].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
 
@@ -58,7 +52,7 @@ void StartMenu::MoveUp() {
 
 void StartMenu::MoveDown() {
 
-	Sound* sc = Sound::getInstance();
+	Sound* sc = Sound::GetInstance();
 
 	mStartMenuText[mSelectedItemIndex].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
 
@@ -74,8 +68,6 @@ void StartMenu::MoveDown() {
 const void StartMenu::Draw(sf::RenderWindow& window) {
 
 	window.draw(mStartMenuSprite);
-
-	window.draw(mGameTitle);
 
 	for (int i = 0; i < MAX_NUMBER_OF_STARTMENU_ITEMS; i++)
 	{
