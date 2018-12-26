@@ -1,7 +1,240 @@
-﻿  Picture.cpp
+﻿  MovingBlock.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\unitblock.h(32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\바탕화면\tetris\tetris\unitblock.h(34): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\바탕화면\tetris\tetris\movingblock.cpp(38): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(40): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(40): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(42): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(42): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(44): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(44): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(52): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(52): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(54): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(56): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(56): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(58): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(58): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(66): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(66): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(68): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(70): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(70): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(72): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(72): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(80): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(82): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(84): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(84): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(86): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(86): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(95): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(95): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(97): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(99): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(99): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(101): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(101): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(110): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(112): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(112): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(114): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(114): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(116): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(125): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(127): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(127): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(129): warning C4244: '인수': 'const T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(129): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+d:\바탕화면\tetris\tetris\movingblock.cpp(131): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
   코드를 생성하고 있습니다.
-  0 of 133 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  1 of 174 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   Tetris.vcxproj -> D:\바탕화면\Tetris\Release\Tetris.exe

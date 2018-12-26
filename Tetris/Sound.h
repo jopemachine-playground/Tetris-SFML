@@ -21,9 +21,9 @@ private:
 
 	sf::Music backGroundMusic;
 
-	const float VOLUME_BACKGROUNDMUSIC = 40.f;
 	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
 	const float VOLUME_ROTATEKEY = 40.f;
+	const float VOLUME_BACKGROUNDMUSIC = 40.f;
 
 public:
 
@@ -36,6 +36,7 @@ public:
 
 	void PlayRotateKeyClicked() { mRotateKeySound.play(); }
 	void PlayMenuItemUpDown() { mMenuItemUpDownSound.play(); }
+
 	void PlayBackGroundMusic() { backGroundMusic.play(); }
 	void PauseBackGroundMusic() { backGroundMusic.pause(); }
 };

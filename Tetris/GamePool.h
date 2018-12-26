@@ -6,8 +6,10 @@
 #include "SFML/Graphics.hpp"
 
 // ¡Ø Sound File
-#define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
+//#define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
+#define FILE_BACKGROUND_MUSIC "sounds/test.ogg"
 #define FILE_MENUITEM_UPDOWN "sounds/MoveUp,Down.ogg"
+#define FILE_ROTATE_SOUND "sounds/RotateSound.ogg"
 
 // ¡Ø Size of Window
 #define WINDOW_SIZE_X (1400)
@@ -39,8 +41,8 @@ const size_t BLOCK_COLOR_NUMBER = 7;
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)), BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * 1 };
 
-const unsigned int DEFAULT_BLOCK_MOVINGTIME = 0.5;
-const unsigned int FAST_BLOCK_MOVINGTIME = 0.05;
+const float DEFAULT_BLOCK_MOVINGTIME = 0.5;
+const float FAST_BLOCK_MOVINGTIME = 0.05;
 
 // Àü¿ª Enum
 enum eBlockColor {

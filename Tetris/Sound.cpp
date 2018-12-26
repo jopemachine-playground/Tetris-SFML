@@ -10,7 +10,7 @@ Sound::Sound() {
 	mMenuItemUpDownSound.setBuffer(mMenuItemUpDownSoundBuffer);
 	mMenuItemUpDownSound.setVolume(VOLUME_MENU_ITEMUPDOWN);
 
-	mRotateKeySoundBuffer.loadFromFile(FILE_MENUITEM_UPDOWN);
+	mRotateKeySoundBuffer.loadFromFile(FILE_ROTATE_SOUND);
 	mRotateKeySound.setBuffer(mRotateKeySoundBuffer);
 	mRotateKeySound.setVolume(VOLUME_ROTATEKEY);
 

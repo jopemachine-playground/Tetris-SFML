@@ -8,7 +8,7 @@ class MovingBlock {
 
 private:
 
-	size_t mMovingTime = 0.5;
+	float mMovingTime;
 
 	const static size_t MAX_UNITBLOCK_NUMBER = 4;
 
@@ -37,16 +37,16 @@ private:
 	내려올 블록의 모양, 색깔을 랜덤으로 결정할 함수.
 	색깔도 7개고 모양도 7개길래 같은 함수를 사용함
 	*/
-	const unsigned short GetRandomNumber();
+	const int GetRandomNumber();
 
 public:
 
 	MovingBlock();
 
 	// 아래 키 입력시 MovingTime 변경, 다음 반복문에서 되돌림
-	void SetMovingTime(const size_t time) { mMovingTime = time; }
+	void SetMovingTime(const float time) { mMovingTime = time; }
 
-	const size_t GetMovingTime() const { return mMovingTime; }
+	const float GetMovingTime() const { return mMovingTime; }
 
 	/*
 	CheckBlockBelow() 이 True 반환하면 블록을 아래로 한 열 이동
@@ -68,6 +68,7 @@ public:
 	// 블록을 키 입력으로 이동시킴
 	void BlockMoveLeft();
 	void BlockMoveRight();
+	
 
 	void DrawMovingBlock(sf::RenderWindow& window);
 

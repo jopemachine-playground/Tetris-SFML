@@ -8,7 +8,7 @@ class Picture {
 
 private:
 
-	const unsigned int PICTURE_NUMBER = 10;
+	const unsigned int PICTURE_NUMBER = 9;
 
 	sf::Texture mSelectedPictureTexture;
 	sf::Sprite mSelectedPictureSprite;

@@ -29,6 +29,10 @@ public:
 
 	void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
 
+	void SetPosition(int x, int y) { mSprite.setPosition(x, y); }
+
+	void BlockMove(int x, int y) { mSprite.move(x,y); }
+
 	bool IsMarked() { return mMarked; }
 
 	void BlockMark() { mMarked = true; }

@@ -156,10 +156,12 @@ GameStartingPoint:
 			}
 			}
 
+
 			// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
 			if (movingBlock->GetMovingTime() < periodicTimer)
 			{
 				movingBlock->BlockMoveDownByTime();
+				std::cout << movingBlock->GetMovingTime() << std::endl;
 				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
 				periodicTimer = 0;
 			}
