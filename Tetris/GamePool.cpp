@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "GamePool.h"
+#include <iostream>
 
 GamePool* GamePool::mInstance = nullptr;
 
@@ -8,20 +9,33 @@ GamePool::GamePool() {
 
 	// 각 색깔 블록들의 이미지 파일을 로드
 
-	mBlockColorTexture[Red].loadFromFile("images/red.png");
-	mBlockColorTexture[Skyblue].loadFromFile("images/skyblue.png");
-	mBlockColorTexture[Yellow].loadFromFile("images/yellow.png");
-	mBlockColorTexture[Purple].loadFromFile("images/purple.png");
-	mBlockColorTexture[Orange].loadFromFile("images/orange.png");
-	mBlockColorTexture[Green].loadFromFile("images/green.png");
-	mBlockColorTexture[Blue].loadFromFile("images/blue.png");
+	if (!mBlockColorTexture[Red].loadFromFile("images/red.png"))
+		std::cerr << "ERROR - File Not found : " << "images/red.png" << std::endl;
 
-	mBlockColorSprite[1].setTexture(mBlockColorTexture[Red]);
-	mBlockColorSprite[2].setTexture(mBlockColorTexture[Skyblue]);
-	mBlockColorSprite[3].setTexture(mBlockColorTexture[Yellow]);
-	mBlockColorSprite[4].setTexture(mBlockColorTexture[Purple]);
-	mBlockColorSprite[5].setTexture(mBlockColorTexture[Orange]);
-	mBlockColorSprite[6].setTexture(mBlockColorTexture[Green]);
-	mBlockColorSprite[7].setTexture(mBlockColorTexture[Blue]);
+	if (!mBlockColorTexture[Skyblue].loadFromFile("images/skyblue.png"))
+		std::cerr << "ERROR - File Not found : " << "images/skyblue.png" << std::endl;
+
+	if (!mBlockColorTexture[Yellow].loadFromFile("images/yellow.png")) 
+		std::cerr << "ERROR - File Not found : " << "images/yellow.png" << std::endl;
+
+	if (!mBlockColorTexture[Purple].loadFromFile("images/purple.png"))
+		std::cerr << "ERROR - File Not found : " << "images/purple.png" << std::endl;
+
+	if (!mBlockColorTexture[Orange].loadFromFile("images/orange.png"))
+		std::cerr << "ERROR - File Not found : " << "images/orange.png" << std::endl;
+
+	if (!mBlockColorTexture[Green].loadFromFile("images/green.png")) 
+		std::cerr << "ERROR - File Not found : " << "images/green.png" << std::endl;
+
+	if (!mBlockColorTexture[Blue].loadFromFile("images/blue.png"))
+		std::cerr << "ERROR - File Not found : " << "images/blue.png" << std::endl;
+
+	mBlockColorSprite[Red].setTexture(mBlockColorTexture[Red]);
+	mBlockColorSprite[Skyblue].setTexture(mBlockColorTexture[Skyblue]);
+	mBlockColorSprite[Yellow].setTexture(mBlockColorTexture[Yellow]);
+	mBlockColorSprite[Purple].setTexture(mBlockColorTexture[Purple]);
+	mBlockColorSprite[Orange].setTexture(mBlockColorTexture[Orange]);
+	mBlockColorSprite[Green].setTexture(mBlockColorTexture[Green]);
+	mBlockColorSprite[Blue].setTexture(mBlockColorTexture[Blue]);
 
 }

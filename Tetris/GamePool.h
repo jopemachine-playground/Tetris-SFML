@@ -37,12 +37,13 @@ const unsigned int BACKGROUND_POSITIONX = 50;
 const unsigned int BACKGROUND_POSITIONY = 30;
 
 const size_t BLOCK_COLOR_NUMBER = 7;
+const size_t BLOCK_SHAPE_NUMBER = 7;
 
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)), BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * 1 };
 
-const float DEFAULT_BLOCK_MOVINGTIME = 0.5;
-const float FAST_BLOCK_MOVINGTIME = 0.05;
+const int DEFAULT_BLOCK_MOVINGTIME = 0.5 * 1000;
+const int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
 
 // Àü¿ª Enum
 enum eBlockColor {
@@ -62,8 +63,8 @@ private:
 	GamePool();
 	static GamePool* mInstance;
 
-	sf::Sprite mBlockColorSprite[BLOCK_COLOR_NUMBER];
-	sf::Texture mBlockColorTexture[BLOCK_COLOR_NUMBER];
+	sf::Sprite mBlockColorSprite[BLOCK_COLOR_NUMBER + 1];
+	sf::Texture mBlockColorTexture[BLOCK_COLOR_NUMBER + 1];
 
 public:
 

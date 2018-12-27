@@ -1,20 +1,24 @@
 #include "pch.h"
 
+#include <iostream>
 #include "Sound.h"
 
 Sound* Sound::mInstance = nullptr;
 
 Sound::Sound() {
 
-	mMenuItemUpDownSoundBuffer.loadFromFile(FILE_MENUITEM_UPDOWN);
+	if (!mMenuItemUpDownSoundBuffer.loadFromFile(FILE_MENUITEM_UPDOWN)) 
+		std::cerr << "ERROR - File Not found : " << FILE_MENUITEM_UPDOWN << std::endl;
 	mMenuItemUpDownSound.setBuffer(mMenuItemUpDownSoundBuffer);
 	mMenuItemUpDownSound.setVolume(VOLUME_MENU_ITEMUPDOWN);
 
-	mRotateKeySoundBuffer.loadFromFile(FILE_ROTATE_SOUND);
+	if (!mRotateKeySoundBuffer.loadFromFile(FILE_ROTATE_SOUND)) 
+		std::cerr << "ERROR - File Not found : " << FILE_ROTATE_SOUND << std::endl;
 	mRotateKeySound.setBuffer(mRotateKeySoundBuffer);
 	mRotateKeySound.setVolume(VOLUME_ROTATEKEY);
 
-	backGroundMusic.openFromFile(FILE_BACKGROUND_MUSIC);
+	if (!backGroundMusic.openFromFile(FILE_BACKGROUND_MUSIC))  
+		std::cerr << "ERROR - File Not found : " << FILE_BACKGROUND_MUSIC << std::endl;
 	backGroundMusic.setVolume(VOLUME_BACKGROUNDMUSIC);
 	backGroundMusic.setLoop(true);
 

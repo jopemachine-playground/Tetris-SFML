@@ -21,8 +21,15 @@
 #include "Text.h"
 #include "UnitBlock.h"
 
-//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+#define DEBUG_CONSOLE
+
+#ifndef DEBUG_CONSOLE
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+#endif
+
+#ifdef DEBUG_CONSOLE
 int main(){
+#endif
 
 StartMenuPoint:
 
@@ -97,12 +104,14 @@ GameStartingPoint:
 	MovingBlock* movingBlock = new MovingBlock();
 
 	srand(time(0));
-	float periodicTimer = 0;
+	int periodicTimer = 0;
 	sf::Clock clock;
+
+	int count = 0;
 
 	while (window.isOpen())
 	{
-		float elapsedTime = clock.getElapsedTime().asSeconds();
+		int elapsedTime = clock.getElapsedTime().asMilliseconds();
 		clock.restart();
 		periodicTimer += elapsedTime;
 
@@ -157,16 +166,21 @@ GameStartingPoint:
 			}
 
 
-			// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
-			if (movingBlock->GetMovingTime() < periodicTimer)
-			{
-				movingBlock->BlockMoveDownByTime();
-				std::cout << movingBlock->GetMovingTime() << std::endl;
-				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
-				periodicTimer = 0;
-			}
-
 		} ///////////// end of while (window.pollEvent(event)) /////////////
+
+		// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
+
+		if (movingBlock->GetMovingTime() < periodicTimer)
+		{
+			movingBlock->BlockMoveDownByTime();
+			std::cout << movingBlock->GetMovingTime() << std::endl;
+			movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
+			
+			// Debug
+			count++;
+			std::cout << count << "초" << std::endl; 
+			periodicTimer = 0;
+		}
 
 		window.clear(sf::Color::White);
 		window.draw(picture->GetSprite());
@@ -176,6 +190,3 @@ GameStartingPoint:
 
 	} ///////////// end of while (window.isOpen()) /////////////
 }
-
-
-

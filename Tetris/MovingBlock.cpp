@@ -6,14 +6,13 @@
 #include "BlockStack.h"
 #include "MovingBlock.h"
 
-
 #include <iostream>
 
 MovingBlock::MovingBlock() {
 
 	GamePool* gp = GamePool::GetInstance();
 
-	switch (GetRandomNumber()) {
+	switch (GetRandomColor()) {
 
 	case Red: { mMovingBlockColor = Red; break; }
 	case Skyblue: { mMovingBlockColor = Skyblue; break; }
@@ -21,7 +20,7 @@ MovingBlock::MovingBlock() {
 	case Purple: { mMovingBlockColor = Purple; break; }
 	case Orange: { mMovingBlockColor = Orange; break; }
 	case Green: { mMovingBlockColor = Green; break; }
-	case Blue: {mMovingBlockColor = Blue; break; }
+	case Blue: { mMovingBlockColor = Blue; break; }
 
 	}
 
@@ -30,7 +29,7 @@ MovingBlock::MovingBlock() {
 	}
 
 
-	switch (GetRandomNumber()) {
+	switch (GetRandomShape()) {
 
 	case eBlockShape::I: {
 
@@ -128,7 +127,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[2].SetPosition
 		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 
 		std::cout << "7 OK p" << std::endl;
 		break;
@@ -140,14 +139,23 @@ MovingBlock::MovingBlock() {
 	// std::cout << BlockGeneratePoint.y; => OK
 }
 
-const int MovingBlock::GetRandomNumber() {
+const int MovingBlock::GetRandomShape() {
+
+	std::random_device rd;   // non-deterministic generator  
+	std::mt19937 gen(rd());  // to seed mersenne twister.  
+	std::uniform_int_distribution<> dist(1, BLOCK_SHAPE_NUMBER);
+
+	return dist(gen);
+
+}
+
+const int MovingBlock::GetRandomColor() {
 
 	std::random_device rd;   // non-deterministic generator  
 	std::mt19937 gen(rd());  // to seed mersenne twister.  
 	std::uniform_int_distribution<> dist(1, BLOCK_COLOR_NUMBER);
 
-	//return dist(gen);
-	return 5;
+	return dist(gen);
 
 }
 
