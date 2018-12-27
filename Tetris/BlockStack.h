@@ -41,6 +41,8 @@ public:
 
 	UnitBlock GetOneBlock(int row, int column) { return mBlock[column][row]; }
 
+	bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
+
 };
 
 #endif

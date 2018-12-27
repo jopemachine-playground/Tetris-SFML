@@ -42,7 +42,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
 
-		std::cout << "1 OK" << std::endl;
 		break;
 	}
 	case eBlockShape::Z: {
@@ -56,7 +55,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
-		std::cout << "2 OK" << std::endl;
 		break;
 	}
 	case eBlockShape::S: {
@@ -70,7 +68,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
-		std::cout << "3 OK" << std::endl;
 		break;
 	}
 	case eBlockShape::T: {
@@ -84,7 +81,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
-		std::cout << "4 OK" << std::endl;
 		break;
 	}
 
@@ -99,7 +95,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
-		std::cout << "5 OK" << std::endl;
 		break;
 	}
 
@@ -114,7 +109,6 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
-		std::cout << "6 OK" << std::endl;
 		break;
 	}
 
@@ -129,14 +123,10 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 
-		std::cout << "7 OK p" << std::endl;
 		break;
 	}
 	}
 
-
-	// std::cout << BlockGeneratePoint.x; => OK
-	// std::cout << BlockGeneratePoint.y; => OK
 }
 
 const int MovingBlock::GetRandomShape() {
@@ -177,6 +167,30 @@ bool MovingBlock::CheckBlockBelow() {
 
 }
 
+bool MovingBlock::CheckBlockLeft() {
+
+	BlockStack *bs = BlockStack::GetInstance();
+
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+
+	}
+
+	return false;
+
+}
+
+bool MovingBlock::CheckBlockRight() {
+
+	BlockStack *bs = BlockStack::GetInstance();
+
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+		
+	}
+
+	return false;
+
+}
+
 void MovingBlock::RotateBlock() {
 
 
@@ -187,16 +201,30 @@ void MovingBlock::RotateBlock() {
 
 void MovingBlock::BlockMoveLeft() {
 
+	BlockStack *bs = BlockStack::GetInstance();
+
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
-		mMovingUnitBlock[i].BlockMove((-1) * (int)ONE_BLOCK_PIXEL, 0);
+
+		if (bs->BlockIsMarked((mMovingUnitBlock[i].GetIndexX()) -1, mMovingUnitBlock[i].GetIndexY()))
+			return;
+
+		mMovingUnitBlock[i].BlockMove((-1) * static_cast<int>(ONE_BLOCK_PIXEL), 0);
+		mMovingUnitBlock[i].AddIndexX(-1);
 	}
 
 }
 
 void MovingBlock::BlockMoveRight() {
 
+	BlockStack *bs = BlockStack::GetInstance();
+
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+
+		if (bs->BlockIsMarked(mMovingUnitBlock[i].GetIndexX() +1, mMovingUnitBlock[i].GetIndexY()))
+			return;
+
 		mMovingUnitBlock[i].BlockMove(ONE_BLOCK_PIXEL, 0);
+		mMovingUnitBlock[i].AddIndexX(1);
 	}
 
 }

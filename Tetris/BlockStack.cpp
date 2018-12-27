@@ -12,18 +12,18 @@ BlockStack::BlockStack() {
 		for (int row = 0; row < ROW_PIXEL_NUMBER; row++) {
 
 			// 각 블럭 Sprite들에 좌표 부여
-			mBlock[column][row].GetSprite().
-				setPosition
+			mBlock[column][row].SetPosition
 				(BACKGROUND_POSITIONX + ONE_BLOCK_PIXEL * row,
 					BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * column);
 
-			// 각 블럭들에 좌표 부여
-			/*
-			mBlock[column][row].
-				SetPosition
-				(BACKGROUND_POSITIONX + ONE_BLOCK_PIXEL * row,
-					BACKGROUND_POSITIONX + ONE_BLOCK_PIXEL * column);
-			*/
+			// 각 테두리 블럭들에 Mark함. 
+			if (row == 0 ||
+				column == 0 ||
+				row == ROW_PIXEL_NUMBER - 1 ||
+				column == COLUMN_PIXEL_NUMBER - 1)
+
+				mBlock[column][row].BlockMark();
+
 		}
 
 }

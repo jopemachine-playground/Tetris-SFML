@@ -175,11 +175,14 @@ GameStartingPoint:
 			movingBlock->BlockMoveDownByTime();
 			std::cout << movingBlock->GetMovingTime() << std::endl;
 			movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
-			
+			periodicTimer = 0;
+
+			/*
 			// Debug
 			count++;
 			std::cout << count << "초" << std::endl; 
 			periodicTimer = 0;
+			*/
 		}
 
 		window.clear(sf::Color::White);
