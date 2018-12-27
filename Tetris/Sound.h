@@ -14,11 +14,19 @@ private:
 	Sound();
 	static Sound* mInstance;
 
+	// 메뉴 이동
 	sf::SoundBuffer mMenuItemUpDownSoundBuffer;
 	sf::Sound mMenuItemUpDownSound;
+
+	// 블록 회전, 이동, 삭제
 	sf::SoundBuffer mRotateKeySoundBuffer;
 	sf::Sound mRotateKeySound;
+	sf::SoundBuffer mBlockMoveSoundBuffer;
+	sf::Sound mBlockMoveSound;
+	sf::SoundBuffer mBlockMoveDeleteSoundBuffer;
+	sf::Sound mBlockMoveDeleteSound;
 
+	// 배경음
 	sf::Music backGroundMusic;
 
 	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
@@ -36,6 +44,9 @@ public:
 
 	void PlayRotateKeyClicked() { mRotateKeySound.play(); }
 	void PlayMenuItemUpDown() { mMenuItemUpDownSound.play(); }
+
+	void PlayBlockMove() { mBlockMoveSound.play(); }
+	void PlayBlockDelete() { mBlockMoveDeleteSound.play(); }
 
 	void PlayBackGroundMusic() { backGroundMusic.play(); }
 	void PauseBackGroundMusic() { backGroundMusic.pause(); }

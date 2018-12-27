@@ -31,7 +31,7 @@ public:
 	두 행이 가득차면 'Nice',
 	세 행 이상 가득차면 'Excellent' 출력할 것.
 	*/
-	bool CheckOneRowFulled(sf::RenderWindow& window);
+	bool CheckRowFulled(sf::RenderWindow& window);
 
 
 	/*

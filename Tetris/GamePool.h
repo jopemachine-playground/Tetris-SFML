@@ -6,10 +6,11 @@
 #include "SFML/Graphics.hpp"
 
 // ¡Ø Sound File
-//#define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
-#define FILE_BACKGROUND_MUSIC "sounds/test.ogg"
-#define FILE_MENUITEM_UPDOWN "sounds/MoveUp,Down.ogg"
-#define FILE_ROTATE_SOUND "sounds/RotateSound.ogg"
+#define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
+#define FILE_MENUITEM_UPDOWN "sounds/MENU_Up,Down.ogg"
+#define FILE_BLOCK_ROTATE_SOUND "sounds/BlockRotateSound.ogg"
+#define FILE_BLOCK_DELETE_SOUND "sounds/BlockDeleteSound.ogg"
+#define FILE_BLOCK_MOVE_SOUND "sounds/BlockDownSound.ogg"
 
 // ¡Ø Size of Window
 #define WINDOW_SIZE_X (1400)

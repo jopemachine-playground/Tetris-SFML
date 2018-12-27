@@ -5,6 +5,7 @@
 
 #include "BlockStack.h"
 #include "MovingBlock.h"
+#include "Sound.h"
 
 #include <iostream>
 
@@ -202,6 +203,7 @@ bool MovingBlock::BlockReachBottom() {
 
 void MovingBlock::RotateBlock() {
 
+	Sound *sc = Sound::GetInstance();
 
 
 }
@@ -209,6 +211,8 @@ void MovingBlock::RotateBlock() {
 
 
 void MovingBlock::BlockMoveLeft() {
+
+	Sound *sc = Sound::GetInstance();
 
 	BlockStack *bs = BlockStack::GetInstance();
 
@@ -220,6 +224,7 @@ void MovingBlock::BlockMoveLeft() {
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 
+		sc->PlayBlockMove();
 		mMovingUnitBlock[i].BlockMove((-1) * static_cast<int>(ONE_BLOCK_PIXEL), 0);
 		mMovingUnitBlock[i].AddIndexX(-1);
 	
@@ -228,6 +233,8 @@ void MovingBlock::BlockMoveLeft() {
 }
 
 void MovingBlock::BlockMoveRight() {
+
+	Sound *sc = Sound::GetInstance();
 
 	BlockStack *bs = BlockStack::GetInstance();
 
@@ -238,6 +245,8 @@ void MovingBlock::BlockMoveRight() {
 	}
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+
+		sc->PlayBlockMove();
 		mMovingUnitBlock[i].BlockMove(ONE_BLOCK_PIXEL, 0);
 		mMovingUnitBlock[i].AddIndexX(1);
 	}

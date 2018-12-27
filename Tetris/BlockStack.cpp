@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "BlockStack.h"
+#include "Sound.h"
 
 BlockStack* BlockStack::mInstance = nullptr;
 
@@ -35,8 +36,26 @@ BlockStack::BlockStack() {
 
 이 규칙 자체는 나중에 변경할 수 있도록 할 것
 */
-bool BlockStack::CheckOneRowFulled(sf::RenderWindow& window) {
+bool BlockStack::CheckRowFulled(sf::RenderWindow& window) {
 
+	unsigned int count = 0;
+	Sound* sc = Sound::GetInstance();
+
+	for (int column = 0; column < COLUMN_PIXEL_NUMBER; column++) {
+
+		count = 0;
+
+		for (int row = 0; row < ROW_PIXEL_NUMBER; row++) {
+
+			if (!mBlock[column][row].IsMarked()) count++;
+
+			if (count == ROW_PIXEL_NUMBER) {
+
+
+			}
+
+		}
+	}
 }
 
 

@@ -18,6 +18,7 @@
 #include "Picture.h"
 #include "Sound.h"
 #include "StartMenu.h"
+#include "Ranking.h"
 #include "Text.h"
 #include "UnitBlock.h"
 
@@ -103,22 +104,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		BlockStack* blockStacked = BlockStack::GetInstance();
 		MovingBlock* movingBlock = new MovingBlock();
 
+		Menu menu(picture->GetSelectedNumber());
+
 		srand(time(0));
 		int periodicTimer = 0;
 		sf::Clock clock;
 
-		int count = 0;
+	GameProcessing:
 
-		for (int i = 0; i < 12; i++)
-			for (int j = 0; j < 22; j++) {
-				// For Debugging
-
-				std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().x << std::endl;
-				std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().y << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexX() << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexY() << std::endl;
-				std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).IsMarked() << std::endl;
-			}
 		while (window.isOpen())
 		{
 			int elapsedTime = clock.getElapsedTime().asMilliseconds();
@@ -127,13 +120,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
 
-			/*if (movingBlock->CheckBlockBelow())
-			{
+			if (movingBlock->BlockReachBottom()) {
+				delete movingBlock;
 				movingBlock = new MovingBlock();
-			}*/
-
-			if (movingBlock->BlockReachBottom())
-				movingBlock = new MovingBlock();
+			}
 
 			while (window.pollEvent(event))
 			{
@@ -150,9 +140,45 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				case sf::Event::KeyPressed: {
 
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-					{
-						// 게임 일시 정지
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+
+						// 메뉴 호출
+
+						soundManage->PauseBackGroundMusic();
+
+						while (window.isOpen()) {
+
+							if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) menu.MoveUp();
+
+							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) menu.MoveDown();
+
+							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+
+								switch (menu.GetSelectedItemIndex()) {
+
+								case Menu::BUTTON_PLAY:
+									soundManage->PlayBackGroundMusic();
+									goto GameProcessing;
+									break;
+
+								case Menu::BUTTON_GOTOTITLE:
+
+									goto StartMenuPoint;
+									Sleep(140);
+									break;
+
+								case Menu::BUTTON_QUIT:
+									window.close();
+									break;
+								}
+
+							}
+
+							window.clear();
+							menu.Draw(window);
+							window.display();
+
+						}
 					}
 					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 					{
@@ -187,16 +213,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (movingBlock->GetMovingTime() < periodicTimer)
 			{
 				movingBlock->BlockMoveDownByTime();
-				std::cout << movingBlock->GetMovingTime() << std::endl;
 				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
 				periodicTimer = 0;
 
-				/*
-				// Debug
-				count++;
-				std::cout << count << "초" << std::endl;
-				periodicTimer = 0;
-				*/
 			}
 
 			window.clear(sf::Color::White);

@@ -26,19 +26,19 @@ Menu::Menu(const unsigned int pictureSelectedNumber) {
 	mMenuText[0].setFillColor(DEFAULT_MENU_ITEM_COLOR);
 	mMenuText[0].setString("Continue");
 	mMenuText[0].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[0].setPosition(sf::Vector2f(550, WINDOW_SIZE_Y / MAX_NUMBER_OF_MENU_ITEMS));
+	mMenuText[0].setPosition(sf::Vector2f(550, 300));
 
 	mMenuText[1].setFont(mMenufont);
 	mMenuText[1].setFillColor(DEFAULT_MENU_ITEM_COLOR);
 	mMenuText[1].setString("Options");
 	mMenuText[1].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[1].setPosition(sf::Vector2f(550, WINDOW_SIZE_Y / MAX_NUMBER_OF_MENU_ITEMS + 1));
+	mMenuText[1].setPosition(sf::Vector2f(550, 450));
 
 	mMenuText[2].setFont(mMenufont);
 	mMenuText[2].setFillColor(DEFAULT_MENU_ITEM_COLOR);
 	mMenuText[2].setString("Exit");
 	mMenuText[2].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[2].setPosition(sf::Vector2f(550, WINDOW_SIZE_Y / MAX_NUMBER_OF_MENU_ITEMS + 2));
+	mMenuText[2].setPosition(sf::Vector2f(550, 600));
 
 	mMenuText[mSelectedItemIndex].setFillColor(SELECTED_MENU_ITEM_COLOR);
 }
