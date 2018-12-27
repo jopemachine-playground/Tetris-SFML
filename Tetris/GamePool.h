@@ -47,13 +47,13 @@ const int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
 
 // Àü¿ª Enum
 enum eBlockColor {
-	Red = 1,
-	Skyblue = 2,
-	Yellow = 3,
-	Purple = 4,
-	Orange = 5,
-	Green = 6,
-	Blue = 7
+	Red = 0,
+	Skyblue = 1,
+	Yellow = 2,
+	Purple = 3,
+	Orange = 4,
+	Green = 5,
+	Blue = 6
 };
 
 class GamePool {
@@ -63,8 +63,8 @@ private:
 	GamePool();
 	static GamePool* mInstance;
 
-	sf::Sprite mBlockColorSprite[BLOCK_COLOR_NUMBER + 1];
-	sf::Texture mBlockColorTexture[BLOCK_COLOR_NUMBER + 1];
+	sf::Sprite mBlockColorSprite[BLOCK_COLOR_NUMBER];
+	sf::Texture mBlockColorTexture[BLOCK_COLOR_NUMBER];
 
 public:
 

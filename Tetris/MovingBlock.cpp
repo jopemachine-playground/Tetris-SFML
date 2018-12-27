@@ -133,7 +133,7 @@ const int MovingBlock::GetRandomShape() {
 
 	std::random_device rd;   // non-deterministic generator  
 	std::mt19937 gen(rd());  // to seed mersenne twister.  
-	std::uniform_int_distribution<> dist(1, BLOCK_SHAPE_NUMBER);
+	std::uniform_int_distribution<> dist(0, BLOCK_SHAPE_NUMBER-1);
 
 	return dist(gen);
 
@@ -143,7 +143,7 @@ const int MovingBlock::GetRandomColor() {
 
 	std::random_device rd;   // non-deterministic generator  
 	std::mt19937 gen(rd());  // to seed mersenne twister.  
-	std::uniform_int_distribution<> dist(1, BLOCK_COLOR_NUMBER);
+	std::uniform_int_distribution<> dist(0, BLOCK_COLOR_NUMBER-1);
 
 	return dist(gen);
 
@@ -151,45 +151,54 @@ const int MovingBlock::GetRandomColor() {
 
 void MovingBlock::BlockMoveDownByTime() {
 
-	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+	BlockStack *bs = BlockStack::GetInstance();
+
+	for (int i = MAX_UNITBLOCK_NUMBER-1; i >= 0; i--) {
+
+		if (bs->BlockIsMarked((mMovingUnitBlock[i].GetIndexX()), mMovingUnitBlock[i].GetIndexY() + 1))
+			return;
+	}
+
+	for (int i = MAX_UNITBLOCK_NUMBER - 1; i >= 0; i--) {
 		mMovingUnitBlock[i].BlockMove(0, ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[i].AddIndexY(1);
 	}
 
 }
 
-bool MovingBlock::CheckBlockBelow() {
+
+bool MovingBlock::BlockReachBottom() {
 
 	BlockStack *bs = BlockStack::GetInstance();
 
-	//bs->mBlock[][]
+	int x, y;
 
-	return false;
+	for (int i = MAX_UNITBLOCK_NUMBER - 1; i >= 0; i--) {
 
-}
+		x = mMovingUnitBlock[i].GetIndexX();
+		y = mMovingUnitBlock[i].GetIndexY();
 
-bool MovingBlock::CheckBlockLeft() {
+		if (bs->BlockIsMarked(x, y + 1)) {
 
-	BlockStack *bs = BlockStack::GetInstance();
+			for (int i = MAX_UNITBLOCK_NUMBER - 1; i >= 0; i--) {
 
-	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+				x = mMovingUnitBlock[i].GetIndexX();
+				y = mMovingUnitBlock[i].GetIndexY();
 
+				bs->OneBlockMark(x, y);
+				bs->OneBlockSetSprite(x, y, mMovingUnitBlock[i].GetSprite());
+				
+			}
+
+		return true;
+			
+		}
 	}
 
-	return false;
-
-}
-
-bool MovingBlock::CheckBlockRight() {
-
-	BlockStack *bs = BlockStack::GetInstance();
-
-	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
-		
-	}
 
 	return false;
-
 }
+
 
 void MovingBlock::RotateBlock() {
 
@@ -205,11 +214,15 @@ void MovingBlock::BlockMoveLeft() {
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 
-		if (bs->BlockIsMarked((mMovingUnitBlock[i].GetIndexX()) -1, mMovingUnitBlock[i].GetIndexY()))
+		if (bs->BlockIsMarked((mMovingUnitBlock[i].GetIndexX()) - 1, mMovingUnitBlock[i].GetIndexY()))
 			return;
+	}
+
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 
 		mMovingUnitBlock[i].BlockMove((-1) * static_cast<int>(ONE_BLOCK_PIXEL), 0);
 		mMovingUnitBlock[i].AddIndexX(-1);
+	
 	}
 
 }
@@ -220,9 +233,11 @@ void MovingBlock::BlockMoveRight() {
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 
-		if (bs->BlockIsMarked(mMovingUnitBlock[i].GetIndexX() +1, mMovingUnitBlock[i].GetIndexY()))
+		if (bs->BlockIsMarked(mMovingUnitBlock[i].GetIndexX() + 1, mMovingUnitBlock[i].GetIndexY()))
 			return;
+	}
 
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		mMovingUnitBlock[i].BlockMove(ONE_BLOCK_PIXEL, 0);
 		mMovingUnitBlock[i].AddIndexX(1);
 	}

@@ -18,7 +18,6 @@ BlockStack::BlockStack() {
 
 			// 각 테두리 블럭들에 Mark함. 
 			if (row == 0 ||
-				column == 0 ||
 				row == ROW_PIXEL_NUMBER - 1 ||
 				column == COLUMN_PIXEL_NUMBER - 1)
 

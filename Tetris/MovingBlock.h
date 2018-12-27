@@ -23,13 +23,13 @@ private:
 	*/
 	enum eBlockShape {
 
-		I = 1,
-		Z = 2,
-		S = 3,
-		T = 4,
-		L = 5,
-		J = 6,
-		O = 7
+		I = 0,
+		Z = 1,
+		S = 2,
+		T = 3,
+		L = 4,
+		J = 5,
+		O = 6
 
 	};
 
@@ -59,9 +59,9 @@ public:
 	True이면 블록을 멈추고 다음 블록을 생성.
 	False면 블록을 아래로 한 열 내림.
 	*/
-	bool CheckBlockBelow();
-	bool CheckBlockLeft();
-	bool CheckBlockRight();
+	
+	bool BlockReachBottom();
+
 
 	/*
 	main에서 키 입력 시 블록의 모양을 변경

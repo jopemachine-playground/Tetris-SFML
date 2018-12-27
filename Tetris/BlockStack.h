@@ -41,6 +41,10 @@ public:
 
 	UnitBlock GetOneBlock(int row, int column) { return mBlock[column][row]; }
 
+	void OneBlockMark(int row, int column) { mBlock[column][row].BlockMark();  }
+
+	void OneBlockSetSprite(int row, int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
+
 	bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
 
 };
