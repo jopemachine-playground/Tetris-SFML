@@ -30,6 +30,9 @@ GamePool::GamePool() {
 	if (!mBlockColorTexture[Blue].loadFromFile("images/blue.png"))
 		std::cerr << "ERROR - File Not found : " << "images/blue.png" << std::endl;
 
+	if (!mBlockColorTexture[Default].loadFromFile("images/default.png"))
+		std::cerr << "ERROR - File Not found : " << "images/default.png" << std::endl;
+
 	mBlockColorSprite[Red].setTexture(mBlockColorTexture[Red]);
 	mBlockColorSprite[Skyblue].setTexture(mBlockColorTexture[Skyblue]);
 	mBlockColorSprite[Yellow].setTexture(mBlockColorTexture[Yellow]);
@@ -37,5 +40,6 @@ GamePool::GamePool() {
 	mBlockColorSprite[Orange].setTexture(mBlockColorTexture[Orange]);
 	mBlockColorSprite[Green].setTexture(mBlockColorTexture[Green]);
 	mBlockColorSprite[Blue].setTexture(mBlockColorTexture[Blue]);
+	mBlockColorSprite[Default].setTexture(mBlockColorTexture[Default]);
 
 }

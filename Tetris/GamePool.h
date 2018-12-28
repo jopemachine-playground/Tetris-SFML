@@ -37,7 +37,7 @@ const static int BLOCK_NUMBER = (ROW_PIXEL_NUMBER * COLUMN_PIXEL_NUMBER);
 const unsigned int BACKGROUND_POSITIONX = 50;
 const unsigned int BACKGROUND_POSITIONY = 30;
 
-const size_t BLOCK_COLOR_NUMBER = 7;
+const size_t BLOCK_COLOR_NUMBER = 8;
 const size_t BLOCK_SHAPE_NUMBER = 7;
 
 const sf::Vector2f BlockGeneratePoint =
@@ -54,7 +54,8 @@ enum eBlockColor {
 	Purple = 3,
 	Orange = 4,
 	Green = 5,
-	Blue = 6
+	Blue = 6,
+	Default = 7
 };
 
 class GamePool {

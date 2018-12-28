@@ -10,7 +10,7 @@
 #undef max
 
 // A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-#include "BackGround.h"
+// #include "BackGround.h"
 #include "BlockStack.h"
 #include "GamePool.h"
 #include "Menu.h"
@@ -93,13 +93,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), GAME_TITLE);
 		sf::Event event;
 
-		BackGround* background = new BackGround();
+		//BackGround* background = new BackGround();
 		Picture* picture = new Picture();
 		Sound* soundManage = Sound::GetInstance();
 		soundManage->PlayBackGroundMusic();
 
 		Text *textManage = Text::GetInstance();
 
+		//호출순서 주의 (GamePool이 먼저 초기화 되고, BlockStack이 초기화 되어야 함)
 		GamePool* gamePool = GamePool::GetInstance();
 		BlockStack* blockStacked = BlockStack::GetInstance();
 		MovingBlock* movingBlock = new MovingBlock();
@@ -109,6 +110,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		srand(time(0));
 		int periodicTimer = 0;
 		sf::Clock clock;
+
+
+		for (int i = 0; i < 12; i++)
+			for (int j = 0; j < 22; j++) {
+
+				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().x << std::endl;
+				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().y << std::endl;
+				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexX() << std::endl;
+				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexY() << std::endl;
+				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).IsMarked() << std::endl;
+			}
+
+	
+
 
 	GameProcessing:
 
@@ -121,6 +136,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
 
 			if (movingBlock->BlockReachBottom()) {
+		
 				delete movingBlock;
 				movingBlock = new MovingBlock();
 			}
@@ -214,13 +230,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				movingBlock->BlockMoveDownByTime();
 				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
+				blockStacked->CheckRowFulled();
 				periodicTimer = 0;
 
 			}
 
 			window.clear(sf::Color::White);
 			window.draw(picture->GetSprite());
-			window.draw(background->GetSprite());
+			//window.draw(background->GetSprite());
 			blockStacked->DrawBlockStacked(window);
 			movingBlock->DrawMovingBlock(window);
 			window.display();
