@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 class Text {
 
@@ -22,8 +22,12 @@ private:
 
 public:
 
+	~Text() {
+		mInstance = nullptr;
+	}
+
 	static Text* GetInstance() {
-		if (mInstance == 0) {
+		if (mInstance == nullptr) {
 			mInstance = new Text();
 		}
 		return mInstance;

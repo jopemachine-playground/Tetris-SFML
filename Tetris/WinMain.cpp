@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 
-#include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include <iostream>
 #include <time.h>
@@ -14,7 +14,7 @@
 #include "GamePool.h"
 #include "Menu.h"
 #include "MovingBlock.h"
-#include "Picture.h"
+#include "Image.h"
 #include "Sound.h"
 #include "StartMenu.h"
 #include "Ranking.h"
@@ -22,11 +22,13 @@
 #include "UnitBlock.h"
 
 #ifndef DEBUG_CONSOLE
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+	int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) 
+	{
 #endif
 
 #ifdef DEBUG_CONSOLE
-	int main() {
+	int main() 
+	{
 #endif
 
 	StartMenuPoint:
@@ -43,19 +45,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				switch (MenuEvent.type)
 				{
 
-				case sf::Event::Closed: {
+				case sf::Event::Closed: 
+				{
 
 					exit(0);
 					break;
 
 				}
-				case sf::Event::KeyPressed: {
+				case sf::Event::KeyPressed: 
+				{
 
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) startMenu.MoveUp();
 
 					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) startMenu.MoveDown();
 
-					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+					{
 
 						switch (startMenu.GetSelectedItemIndex()) {
 
@@ -90,22 +95,32 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), GAME_TITLE);
 		sf::Event event;
 
-		Picture* picture = new Picture();
+		/* 
+		호출순서 주의 
+		GamePool이 먼저 초기화 되고, BlockStack이 초기화 되어야 하고
+		Sound가 먼저 초기화 되고 Text가 초기화 되어야함 (클래스 내부에서 사용)
+		*/
+		Image* image = Image::GetInstance();
 		Sound* soundManage = Sound::GetInstance();
 		soundManage->PlayBackGroundMusic();
-
 		Text *textManage = Text::GetInstance();
 
-		//호출순서 주의 (GamePool이 먼저 초기화 되고, BlockStack이 초기화 되어야 함)
+	
 		GamePool* gamePool = GamePool::GetInstance();
 		BlockStack* blockStacked = BlockStack::GetInstance();
 		MovingBlock* movingBlock = new MovingBlock();
-
-		Menu menu(picture->GetSelectedNumber());
+		
+		Menu menu(image->GetSelectedNumber());
 
 		srand(time(0));
 		int periodicTimer = 0;
+
 		sf::Clock clock;
+
+		int displayGoodjobTimer = 0;
+		int RowFullCounter = 0;
+		int elapsedTimeForDisplayingGoodjob;
+
 
 	GameProcessing:
 
@@ -117,8 +132,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
 
-			if (movingBlock->BlockReachBottom()) {
-		
+			if (movingBlock->BlockReachBottom()) 
+			{
+
 				delete movingBlock;
 				movingBlock = new MovingBlock();
 			}
@@ -129,7 +145,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				{
 
 
-				case sf::Event::Closed: {
+				case sf::Event::Closed: 
+				{
 
 					window.close();
 					break;
@@ -138,21 +155,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				case sf::Event::KeyPressed: {
 
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+					{
 
 						// 메뉴 호출
-
 						soundManage->PauseBackGroundMusic();
 
-						while (window.isOpen()) {
+						while (window.isOpen()) 
+						{
 
 							if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) menu.MoveUp();
 
 							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) menu.MoveDown();
 
-							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) 
+							{
 
-								switch (menu.GetSelectedItemIndex()) {
+								switch (menu.GetSelectedItemIndex()) 
+								{
 
 								case Menu::BUTTON_PLAY:
 									soundManage->PlayBackGroundMusic();
@@ -161,11 +181,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 								case Menu::BUTTON_GAME_RESTART:
 
-									//////// 수정필요 ! 게임 재시작 시 싱글톤인 blockStacked를 초기화해야 한다. ////////
-
-									// delete(blockStacked);
+									delete textManage;
+									delete soundManage;
+									delete movingBlock;
+									delete blockStacked;
+									
 									goto GameStartingPoint;
-									Sleep(140);
 									break;
 
 								case Menu::BUTTON_QUIT:
@@ -181,7 +202,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 						}
 					}
-					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 					{
 						// 블록 회전
 						movingBlock->RotateBlock();
@@ -202,6 +223,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						movingBlock->SetMovingTime(FAST_BLOCK_MOVINGTIME);
 					}
 
+					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+					{
+						// 블록 바로 내리기
+	
+					}
+
 					break;
 				}
 				}
@@ -213,19 +240,44 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			if (movingBlock->GetMovingTime() < periodicTimer)
 			{
+
 				movingBlock->BlockMoveDownByTime();
 				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
-				blockStacked->CheckRowFulled();
 				periodicTimer = 0;
 
 			}
 
+
 			window.clear(sf::Color::White);
-			window.draw(picture->GetSprite());
+
+			// 2행 삭제 시 Great, 3행 이상 삭제 시 Excellent
+
+			while (blockStacked->CheckRowFulled()) 
+			{
+				RowFullCounter++;
+			}
+
+			if (RowFullCounter >= 2)
+			{
+				elapsedTimeForDisplayingGoodjob = clock.getElapsedTime().asMilliseconds();
+
+				{
+					if (RowFullCounter >= 3)
+
+						if (displayGoodjobTimer >= 3000) 
+						{
+						
+						
+						}
+				}
+			}
+
+			window.draw(image->GetSprite());
 			blockStacked->DrawBlockStacked(window);
 			textManage->DrawText(window);
 			movingBlock->DrawMovingBlock(window);
 			window.display();
 
 		} ///////////// end of while (window.isOpen()) /////////////
+
 	}

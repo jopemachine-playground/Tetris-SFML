@@ -3,7 +3,7 @@
 #ifndef STARTMENU_HPP
 #define STARTMENU_HPP
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
 class StartMenu{

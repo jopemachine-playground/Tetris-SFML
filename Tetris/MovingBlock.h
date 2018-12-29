@@ -1,10 +1,11 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 #include "UnitBlock.h"
 
-class MovingBlock {
+class MovingBlock 
+{
 
 private:
 
@@ -35,7 +36,6 @@ private:
 
 	/*
 	내려올 블록의 모양, 색깔을 랜덤으로 결정할 함수.
-	색깔도 7개고 모양도 7개길래 같은 함수를 사용함
 	*/
 	const int GetRandomShape();
 	const int GetRandomColor();

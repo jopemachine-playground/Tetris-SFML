@@ -1,10 +1,10 @@
 #include "pch.h"
 
-#include "Windows.h"
+#include <Windows.h>
 #undef min
 #undef max
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "BlockStack.h"
 #include "Sound.h"
 #include "Menu.h"

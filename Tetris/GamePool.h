@@ -3,7 +3,7 @@
 #ifndef GAMEPOOL_H
 #define GAMEPOOL_H
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 // ※ Sound File
 #define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
@@ -28,27 +28,28 @@
 #define DEBUG_CONSOLE
 
 // 전역변수
-const size_t ROW_PIXEL_NUMBER = 12;
-const size_t COLUMN_PIXEL_NUMBER = 22;
+constexpr size_t ROW_PIXEL_NUMBER = 12;
+constexpr size_t COLUMN_PIXEL_NUMBER = 22;
 
-const size_t ONE_BLOCK_PIXEL = 39;
-const size_t ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER; // 468
-const size_t COLUMN_PIXEL = ONE_BLOCK_PIXEL * COLUMN_PIXEL_NUMBER; // 858
+constexpr size_t ONE_BLOCK_PIXEL = 39;
+constexpr size_t ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER; // 468
+constexpr size_t COLUMN_PIXEL = ONE_BLOCK_PIXEL * COLUMN_PIXEL_NUMBER; // 858
 
-const static int BLOCK_NUMBER = (ROW_PIXEL_NUMBER * COLUMN_PIXEL_NUMBER);
+constexpr static int BLOCK_NUMBER = (ROW_PIXEL_NUMBER * COLUMN_PIXEL_NUMBER);
 
-const unsigned int BACKGROUND_POSITIONX = 50;
-const unsigned int BACKGROUND_POSITIONY = 30;
+constexpr unsigned int BACKGROUND_POSITIONX = 50;
+constexpr unsigned int BACKGROUND_POSITIONY = 30;
 
-const size_t BLOCK_COLOR_NUMBER = 8;
-const size_t BLOCK_SHAPE_NUMBER = 7;
+constexpr size_t BLOCK_COLOR_NUMBER = 8;
+constexpr size_t BLOCK_SHAPE_NUMBER = 7;
+
+constexpr int DEFAULT_BLOCK_MOVINGTIME = 0.5 * 1000;
+constexpr int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
 
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
-BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * 1 };
+static_cast<int> (BACKGROUND_POSITIONY) };
 
-const int DEFAULT_BLOCK_MOVINGTIME = 0.5 * 1000;
-const int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
 
 // 전역 Enum
 enum eBlockColor {

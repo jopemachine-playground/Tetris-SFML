@@ -3,7 +3,7 @@
 #ifndef UNITBLOCK_H
 #define UNITBLOCK_H
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
 #include <iostream>
@@ -21,7 +21,7 @@ private:
 	sf::Sprite mSprite;
 	eBlockColor mColor;
 
-	bool mMarked = false;
+	bool mbMarked = false;
 
 public:
 
@@ -51,15 +51,15 @@ public:
 
 	void SetPosition(int blockPixel_x, int blockPixel_y);
 
-	bool IsMarked() { return mMarked; }
+	bool IsMarked() { return mbMarked; }
 
-	void SetMark(bool marked) { mMarked = marked; }
+	void SetMark(bool marked) { mbMarked = marked; }
 
 	void BlockMove(int blockPixel_x, int blockPixel_y) { mSprite.move(blockPixel_x, blockPixel_y); }
 
-	void BlockMark() { mMarked = true; }
+	void BlockMark() { mbMarked = true; }
 
-	void BlockErase() { mMarked = false; }
+	void BlockErase() { mbMarked = false; }
 
 };
 

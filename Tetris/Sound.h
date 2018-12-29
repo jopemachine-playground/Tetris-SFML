@@ -3,7 +3,7 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-#include "SFML/Audio.hpp"
+#include <SFML/Audio.hpp>
 
 #include "GamePool.h"
 
@@ -12,7 +12,10 @@ class Sound {
 private:
 
 	Sound();
+
 	static Sound* mInstance;
+
+	const static int BACKGROUND_MUSIC_NUMBER = 5;
 
 	// 메뉴 이동
 	sf::SoundBuffer mMenuItemUpDownSoundBuffer;
@@ -32,18 +35,35 @@ private:
 	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
 	const float VOLUME_ROTATEKEY = 40.f;
 
+
 #ifdef DEBUG_CONSOLE
-	const float VOLUME_BACKGROUNDMUSIC = 0;
+	const float VOLUME_BACKGROUNDMUSIC = 40;
 #endif
 
 #ifndef DEBUG_CONSOLE
 	const float VOLUME_BACKGROUNDMUSIC = 40.f;
 #endif
 
+	enum eBackGroundMusicFile {
+		DJ_Okawari_Flower_Dance = 0,
+		DJ_OKAWARI_Luv_Letter = 1,
+		DJ_Okawari_Perfect_Blue = 2,
+		Dj_Okawari_Voice_of_Nature = 3,
+		Sereno = 4
+	};
+
+	eBackGroundMusicFile mSelectedMusicNumber;
+	std::string mSelectedMusicName;
+
 public:
 
+	~Sound()
+	{
+		mInstance = nullptr;
+	}
+
 	static Sound* GetInstance() {
-		if (mInstance == 0) {
+		if (mInstance == nullptr) {
 			mInstance = new Sound();
 		}
 		return mInstance;
@@ -57,6 +77,10 @@ public:
 
 	void PlayBackGroundMusic() { backGroundMusic.play(); }
 	void PauseBackGroundMusic() { backGroundMusic.pause(); }
+
+	std::string MusicFileGetString(eBackGroundMusicFile bgm);
+	const std::string GetSelectedMusicName() const { return mSelectedMusicName; }
+
 };
 
 #endif

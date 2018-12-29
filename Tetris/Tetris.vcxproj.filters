@@ -51,9 +51,6 @@
     <ClInclude Include="Button.h">
       <Filter>헤더 파일\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Picture.h">
-      <Filter>헤더 파일\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="UnitBlock.h">
       <Filter>헤더 파일\Drawable</Filter>
     </ClInclude>
@@ -75,6 +72,9 @@
     <ClInclude Include="Ranking.h">
       <Filter>헤더 파일\GanePool</Filter>
     </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>헤더 파일\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -91,9 +91,6 @@
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>소스 파일\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Picture.cpp">
-      <Filter>소스 파일\GUI</Filter>
     </ClCompile>
     <ClCompile Include="UnitBlock.cpp">
       <Filter>소스 파일\Drawable</Filter>
@@ -115,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="Ranking.cpp">
       <Filter>소스 파일\GamePool %28Singleton%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>소스 파일\GUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

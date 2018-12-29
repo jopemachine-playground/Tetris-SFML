@@ -19,8 +19,13 @@ private:
 
 public:
 
+	// 싱글톤이지만 '게임 다시 시작'을 누르면 삭제
+	~BlockStack() {
+		mInstance = nullptr;
+	}
+
 	static BlockStack* GetInstance() {
-		if (mInstance == 0) {
+		if (mInstance == nullptr) {
 			mInstance = new BlockStack();
 		}
 		return mInstance;
@@ -31,7 +36,7 @@ public:
 	두 행이 가득차면 'Nice',
 	세 행 이상 가득차면 'Excellent' 출력할 것.
 	*/
-	void CheckRowFulled();
+	bool CheckRowFulled();
 
 
 	/*

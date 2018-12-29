@@ -3,13 +3,15 @@
 #include "UnitBlock.h"
 #include "GamePool.h"
 
-UnitBlock::UnitBlock() {
+UnitBlock::UnitBlock() 
+{
 
 
 
 }
 
-void UnitBlock::SetPosition(int blockPixel_x, int blockPixel_y) {
+void UnitBlock::SetPosition(int blockPixel_x, int blockPixel_y) 
+{
 	
 	mSprite.setPosition(blockPixel_x, blockPixel_y);
 

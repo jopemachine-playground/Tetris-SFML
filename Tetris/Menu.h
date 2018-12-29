@@ -2,7 +2,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
 class Menu {
