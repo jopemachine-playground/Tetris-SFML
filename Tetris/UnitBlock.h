@@ -6,6 +6,8 @@
 #include "SFML/Graphics.hpp"
 #include "GamePool.h"
 
+#include <iostream>
+
 class UnitBlock {
 
 private:
@@ -37,11 +39,21 @@ public:
 
 	void AddIndexY(int indexY) { mPoint.IndexY += indexY; }
 
-	void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
+	void SetSprite(sf::Sprite sprite) { 
+
+		//sf::Vector2f position = mSprite.getPosition();
+		//std::cout << "이전 위치: " << position.x << " " << position.y << std::endl;
+		mSprite = sprite;
+		//std::cout << "들어온 위치: " << sprite.getPosition().x << " " << sprite.getPosition().y << std::endl;
+		//sprite.setPosition(position);
+		//std::cout << "수정된 위치: " << mSprite.getPosition().x << " " << mSprite.getPosition().y << std::endl;
+	}
 
 	void SetPosition(int blockPixel_x, int blockPixel_y);
 
 	bool IsMarked() { return mMarked; }
+
+	void SetMark(bool marked) { mMarked = marked; }
 
 	void BlockMove(int blockPixel_x, int blockPixel_y) { mSprite.move(blockPixel_x, blockPixel_y); }
 

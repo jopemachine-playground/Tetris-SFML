@@ -47,6 +47,8 @@ public:
 
 	bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
 
+	void DEBUG_CheckAllBlock();
+
 };
 
 #endif

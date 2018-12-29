@@ -24,6 +24,9 @@
 // ※ Score Record File
 #define FILE_RANKING_DATA "Ranking.csv" 
 
+// 디버깅 모드
+#define DEBUG_CONSOLE
+
 // 전역변수
 const size_t ROW_PIXEL_NUMBER = 12;
 const size_t COLUMN_PIXEL_NUMBER = 22;
@@ -41,7 +44,8 @@ const size_t BLOCK_COLOR_NUMBER = 8;
 const size_t BLOCK_SHAPE_NUMBER = 7;
 
 const sf::Vector2f BlockGeneratePoint =
-{ BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)), BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * 1 };
+{ BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
+BACKGROUND_POSITIONY + ONE_BLOCK_PIXEL * 1 };
 
 const int DEFAULT_BLOCK_MOVINGTIME = 0.5 * 1000;
 const int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;

@@ -31,6 +31,12 @@
     <Filter Include="헤더 파일\GUI">
       <UniqueIdentifier>{e3a6d7ef-17c5-42fb-9ea5-1b3c264af4cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\GanePool">
+      <UniqueIdentifier>{49cbae5d-0c4d-43db-b3f0-8fa4b61846a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GamePool %28Singleton%29">
+      <UniqueIdentifier>{2b1a4ff5-ffc9-42d1-abf6-f2e9623adaec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -42,26 +48,11 @@
     <ClInclude Include="Menu.h">
       <Filter>헤더 파일\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGround.h">
-      <Filter>헤더 파일\Drawable</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>헤더 파일\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>헤더 파일\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Ranking.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Picture.h">
       <Filter>헤더 파일\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="BlockStack.h">
-      <Filter>헤더 파일\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="UnitBlock.h">
       <Filter>헤더 파일\Drawable</Filter>
@@ -70,7 +61,19 @@
       <Filter>헤더 파일\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="GamePool.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\GanePool</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockStack.h">
+      <Filter>헤더 파일\GanePool</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>헤더 파일\GanePool</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>헤더 파일\GanePool</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranking.h">
+      <Filter>헤더 파일\GanePool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,29 +86,14 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGround.cpp">
-      <Filter>소스 파일\Drawable</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\GUI</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>소스 파일\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>소스 파일\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Ranking.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Picture.cpp">
       <Filter>소스 파일\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="BlockStack.cpp">
-      <Filter>소스 파일\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="UnitBlock.cpp">
       <Filter>소스 파일\Drawable</Filter>
@@ -114,7 +102,19 @@
       <Filter>소스 파일\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="GamePool.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\GamePool %28Singleton%29</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockStack.cpp">
+      <Filter>소스 파일\GamePool %28Singleton%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>소스 파일\GamePool %28Singleton%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>소스 파일\GamePool %28Singleton%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>소스 파일\GamePool %28Singleton%29</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,9 @@
 
 #include "BlockStack.h"
 #include "Sound.h"
+#include "Ranking.h"
+
+#include <iostream>
 
 BlockStack* BlockStack::mInstance = nullptr;
 
@@ -17,9 +20,9 @@ BlockStack::BlockStack() {
 			if (row != 0 &&
 				column != 0 &&
 				row != ROW_PIXEL_NUMBER - 1 &&
-				column != COLUMN_PIXEL_NUMBER - 1) 
+				column != COLUMN_PIXEL_NUMBER - 1)
 
-			mBlock[column][row].SetSprite(gp->GetBlockColorSprite(eBlockColor::Default));
+				mBlock[column][row].SetSprite(gp->GetBlockColorSprite(eBlockColor::Default));
 
 			// 각 블럭 Sprite들에 좌표 부여
 			mBlock[column][row].SetPosition
@@ -32,7 +35,7 @@ BlockStack::BlockStack() {
 				column == COLUMN_PIXEL_NUMBER - 1) {
 
 				mBlock[column][row].BlockMark();
-			
+
 			}
 
 		}
@@ -40,7 +43,6 @@ BlockStack::BlockStack() {
 	}
 
 }
-
 
 /*
 블록 한 행이 모두 찬 경우 True 반환하고 점수 100점 올림.
@@ -53,9 +55,9 @@ void BlockStack::CheckRowFulled() {
 
 	unsigned int count = 0;
 	Sound* sc = Sound::GetInstance();
-	GamePool* gp = GamePool::GetInstance();
+	Ranking* rk = Ranking::GetInstance();
 
-	for (int column = 1; column < COLUMN_PIXEL_NUMBER - 1; column++) {
+	for (int column = COLUMN_PIXEL_NUMBER - 2; column > 0; column--) {
 
 		count = 0;
 
@@ -63,30 +65,50 @@ void BlockStack::CheckRowFulled() {
 
 			if (mBlock[column][row].IsMarked()) count++;
 
+			// 한 Row가 완전히 비어 있다면 return
+			// if (count == 0) return;
+
 			// 한 Row가 다 차면 삭제
 			if (count == ROW_PIXEL_NUMBER - 2) {
 
 				sc->PlayBlockDelete();
 
-				// 해당 row를 언마크하고, default로 Sprite Change.
-				for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++) {
+				// 언마크된 row 위의 블록들을 아래로 내림.
+				for (int deleteColumn = column; deleteColumn > 1; deleteColumn--) {
 
-					sf::Vector2f position = mBlock[column][row].GetPosition();
-					mBlock[column][row].SetSprite(gp->GetBlockColorSprite(Default));
-					mBlock[column][row].SetPosition(position.x, position.y);
-					mBlock[column][row].BlockErase();
+					for (int row2 = 1; row2 < ROW_PIXEL_NUMBER - 1; row2++) {
+
+						mBlock[deleteColumn][row2].SetSprite(mBlock[deleteColumn - 1][row2].GetSprite());
+						mBlock[deleteColumn][row2].BlockMove(0, ONE_BLOCK_PIXEL);
+						mBlock[deleteColumn][row2].SetMark(mBlock[deleteColumn - 1][row2].IsMarked());
+
+					}
 				}
-
-				// 언마크된 row 위 row들을 아래로 내림.
-				for (int deleteColumn = column; deleteColumn < COLUMN_PIXEL_NUMBER; deleteColumn++) {
-					mBlock[deleteColumn][row].SetSprite(mBlock[deleteColumn - 1][row].GetSprite());
-				}
-
-
+#ifdef DEBUG_CONSOLE
+				DEBUG_CheckAllBlock();
+#endif
 			}
 
 		}
 	}
+}
+
+void BlockStack::DEBUG_CheckAllBlock() {
+
+	std::cout << "##### Block Checker #####" << std::endl;
+
+	for (int column = 1; column < COLUMN_PIXEL_NUMBER - 1; column++) {
+
+		for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++) {
+
+			std::cout << mBlock[column][row].IsMarked() << " ";
+
+		}
+		std::cout << std::endl;
+	}
+	std::cout << "############################ " << std::endl;
+
+	std::cout << std::endl;
 }
 
 
@@ -98,6 +120,6 @@ void BlockStack::DrawBlockStacked(sf::RenderWindow& window) {
 	for (int column = 1; column < COLUMN_PIXEL_NUMBER - 1; column++)
 		for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++) {
 
-				window.draw(mBlock[column][row].GetSprite());
+			window.draw(mBlock[column][row].GetSprite());
 		}
 }

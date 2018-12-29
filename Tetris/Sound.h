@@ -31,7 +31,14 @@ private:
 
 	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
 	const float VOLUME_ROTATEKEY = 40.f;
+
+#ifdef DEBUG_CONSOLE
+	const float VOLUME_BACKGROUNDMUSIC = 0;
+#endif
+
+#ifndef DEBUG_CONSOLE
 	const float VOLUME_BACKGROUNDMUSIC = 40.f;
+#endif
 
 public:
 

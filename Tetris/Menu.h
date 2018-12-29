@@ -11,7 +11,7 @@ private:
 
 	const static int MAX_NUMBER_OF_MENU_ITEMS = 3;
 	const static size_t MENU_ITEM_SIZE = 100;
-	const sf::Color DEFAULT_MENU_ITEM_COLOR = sf::Color::White;
+	const sf::Color DEFAULT_MENU_ITEM_COLOR = sf::Color::Black;
 	const sf::Color SELECTED_MENU_ITEM_COLOR = sf::Color::Cyan;
 
 	sf::Texture mMenuTexture;
@@ -27,7 +27,7 @@ public:
 
 	enum {
 		BUTTON_PLAY = 0,
-		BUTTON_GOTOTITLE = 1,
+		BUTTON_GAME_RESTART = 1,
 		BUTTON_QUIT = 2
 	};
 

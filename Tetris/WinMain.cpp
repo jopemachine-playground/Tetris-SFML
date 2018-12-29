@@ -10,7 +10,6 @@
 #undef max
 
 // A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-// #include "BackGround.h"
 #include "BlockStack.h"
 #include "GamePool.h"
 #include "Menu.h"
@@ -21,8 +20,6 @@
 #include "Ranking.h"
 #include "Text.h"
 #include "UnitBlock.h"
-
-#define DEBUG_CONSOLE
 
 #ifndef DEBUG_CONSOLE
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -93,7 +90,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), GAME_TITLE);
 		sf::Event event;
 
-		//BackGround* background = new BackGround();
 		Picture* picture = new Picture();
 		Sound* soundManage = Sound::GetInstance();
 		soundManage->PlayBackGroundMusic();
@@ -110,20 +106,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		srand(time(0));
 		int periodicTimer = 0;
 		sf::Clock clock;
-
-
-		for (int i = 0; i < 12; i++)
-			for (int j = 0; j < 22; j++) {
-
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().x << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetPosition().y << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexX() << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).GetIndexY() << std::endl;
-				//std::cout << i << " " << j << " :" << blockStacked->GetOneBlock(i, j).IsMarked() << std::endl;
-			}
-
-	
-
 
 	GameProcessing:
 
@@ -177,9 +159,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 									goto GameProcessing;
 									break;
 
-								case Menu::BUTTON_GOTOTITLE:
+								case Menu::BUTTON_GAME_RESTART:
 
-									goto StartMenuPoint;
+									//////// 수정필요 ! 게임 재시작 시 싱글톤인 blockStacked를 초기화해야 한다. ////////
+
+									// delete(blockStacked);
+									goto GameStartingPoint;
 									Sleep(140);
 									break;
 
@@ -237,8 +222,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			window.clear(sf::Color::White);
 			window.draw(picture->GetSprite());
-			//window.draw(background->GetSprite());
 			blockStacked->DrawBlockStacked(window);
+			textManage->DrawText(window);
 			movingBlock->DrawMovingBlock(window);
 			window.display();
 

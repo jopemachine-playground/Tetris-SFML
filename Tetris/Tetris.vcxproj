@@ -163,7 +163,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BackGround.h" />
     <ClInclude Include="GamePool.h" />
     <ClInclude Include="MovingBlock.h" />
     <ClInclude Include="UnitBlock.h" />
@@ -178,7 +177,6 @@
     <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="GamePool.cpp" />
     <ClCompile Include="MovingBlock.cpp" />
     <ClCompile Include="UnitBlock.cpp" />

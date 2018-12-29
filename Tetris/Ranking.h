@@ -8,7 +8,9 @@ private:
 
 	Ranking();
 
-	int PlayerScore = 0;
+	int mPlayerScore = 0;
+
+	int mRecordedScore[10];
 
 	static Ranking* mInstance;
 
@@ -28,7 +30,9 @@ public:
 	void WriteRanking();
 
 	// 블록을 한 줄 지울 때 점수 100점 증가
-	void AddPlayerScore() { PlayerScore += 100; }
+	void AddPlayerScore() { mPlayerScore += 100; }
+
+	int GetPlayerScore() const { return mPlayerScore; }
 
 
 };

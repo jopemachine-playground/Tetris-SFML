@@ -136,7 +136,7 @@ const int MovingBlock::GetRandomShape() {
 	std::mt19937 gen(rd());  // to seed mersenne twister.  
 	std::uniform_int_distribution<> dist(0, BLOCK_SHAPE_NUMBER-1);
 
-	return O;
+	return dist(gen);
 
 }
 
@@ -191,6 +191,9 @@ bool MovingBlock::BlockReachBottom() {
 				
 			}
 
+#ifdef DEBUG_CONSOLE
+		bs->DEBUG_CheckAllBlock();
+#endif
 		return true;
 			
 		}

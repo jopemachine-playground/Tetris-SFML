@@ -5,6 +5,10 @@
 
 Ranking* Ranking::mInstance = nullptr;
 
+Ranking::Ranking() {
+	
+}
+
 // 게임 종료 후, 자동으로 호출해 기록된 점수를 읽어옴.
 void Ranking::LoadRankingData() {
 

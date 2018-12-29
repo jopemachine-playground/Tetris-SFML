@@ -5,6 +5,7 @@
 #undef max
 
 #include "SFML/Graphics.hpp"
+#include "BlockStack.h"
 #include "Sound.h"
 #include "Menu.h"
 
@@ -24,21 +25,21 @@ Menu::Menu(const unsigned int pictureSelectedNumber) {
 
 	mMenuText[0].setFont(mMenufont);
 	mMenuText[0].setFillColor(DEFAULT_MENU_ITEM_COLOR);
-	mMenuText[0].setString("Continue");
+	mMenuText[0].setString(L"계속");
 	mMenuText[0].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[0].setPosition(sf::Vector2f(550, 300));
+	mMenuText[0].setPosition(sf::Vector2f(600, 250));
 
 	mMenuText[1].setFont(mMenufont);
 	mMenuText[1].setFillColor(DEFAULT_MENU_ITEM_COLOR);
-	mMenuText[1].setString("Options");
+	mMenuText[1].setString(L"다시 하기");
 	mMenuText[1].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[1].setPosition(sf::Vector2f(550, 450));
+	mMenuText[1].setPosition(sf::Vector2f(600, 400));
 
 	mMenuText[2].setFont(mMenufont);
 	mMenuText[2].setFillColor(DEFAULT_MENU_ITEM_COLOR);
-	mMenuText[2].setString("Exit");
+	mMenuText[2].setString(L"게임 종료");
 	mMenuText[2].setCharacterSize(MENU_ITEM_SIZE);
-	mMenuText[2].setPosition(sf::Vector2f(550, 600));
+	mMenuText[2].setPosition(sf::Vector2f(600, 550));
 
 	mMenuText[mSelectedItemIndex].setFillColor(SELECTED_MENU_ITEM_COLOR);
 }
@@ -74,11 +75,15 @@ void Menu::MoveDown() {
 
 const void Menu::Draw(sf::RenderWindow& window) {
 
+	BlockStack* bs = BlockStack::GetInstance();
+
 	window.draw(mMenuSprite);
+	bs->DrawBlockStacked(window);
 
 	for (int i = 0; i < MAX_NUMBER_OF_MENU_ITEMS; i++)
 	{
 		window.draw(mMenuText[i]);
 	}
+
 
 }
