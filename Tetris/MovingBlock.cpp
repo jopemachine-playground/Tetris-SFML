@@ -9,31 +9,173 @@
 
 #include <iostream>
 
-/*
-블록이 바닥에 닿을 때 마다 새로 호출되어 새 움직이는 블록을 만듬.
-*/
+// 처음 블록을 만들 때 호출
+
 MovingBlock::MovingBlock() 
 {
+	std::random_device rd_shape;
+	std::mt19937 gen_shape(rd_shape());
+	std::uniform_int_distribution<> dist_shape(0, BLOCK_SHAPE_NUMBER - 1);
+
+	std::random_device rd_color;
+	std::mt19937 gen_color(rd_color());
+	std::uniform_int_distribution<> dist_color(0, BLOCK_COLOR_NUMBER - 2);
+
+
+	// 보다 기본 생성자를 간단히 할 수 있는 방법이 없을까..?
+	// 아래 코드들은 다 실패한 방법들.
+
+	//MovingBlock(static_cast<eBlockShape>(dist_shape(gen_shape)), static_cast<eBlockColor>(dist_color(gen_color)));
+
+	//MovingBlock(static_cast<eBlockShape*>(dist_shape(gen_shape)), static_cast<eBlockColor*>(dist_color(gen_color)));
+
+
+	/*eBlockShape& shape = static_cast<eBlockShape>(dist_shape(gen_shape));
+	eBlockColor& color = static_cast<eBlockColor>(dist_color(gen_color));
+			
+	MovingBlock(shape, color);*/
 
 	GamePool* gp = GamePool::GetInstance();
 
-	switch (GetRandomColor()) 
-	{
-
-	case Red: { mMovingBlockColor = Red; break; }
-	case Skyblue: { mMovingBlockColor = Skyblue; break; }
-	case Yellow: { mMovingBlockColor = Yellow; break; }
-	case Purple: { mMovingBlockColor = Purple; break; }
-	case Orange: { mMovingBlockColor = Orange; break; }
-	case Green: { mMovingBlockColor = Green; break; }
-	case Blue: { mMovingBlockColor = Blue; break; }
-
-	}
+	mMovingBlockColor = static_cast<eBlockColor>(dist_color(gen_color));
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		mMovingUnitBlock[i].SetSprite(gp->GetBlockColorSprite(mMovingBlockColor));
 	}
 
+	switch (static_cast<eBlockShape>(dist_shape(gen_shape)))
+	{
+
+	case eBlockShape::I:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = I;
+		break;
+	}
+
+	case eBlockShape::Z:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = Z;
+		break;
+	}
+
+	case eBlockShape::S:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = S;
+		break;
+	}
+
+	case eBlockShape::T:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = T;
+		break;
+	}
+
+	case eBlockShape::L:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = L;
+		break;
+	}
+
+	case eBlockShape::J:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+
+		mBlockShape = J;
+		break;
+	}
+
+	case eBlockShape::O:
+	{
+
+		mMovingUnitBlock[0].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		mMovingUnitBlock[1].SetPosition
+		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		mMovingUnitBlock[2].SetPosition
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		mMovingUnitBlock[3].SetPosition
+		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+
+		mBlockShape = O;
+		break;
+	}
+
+	}
+
+	
+}
+
+/*
+블록이 바닥에 닿을 때 마다 호출되어 새 움직이는 블록을 만듬.
+*/
+MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
+{
+
+	GamePool* gp = GamePool::GetInstance();
+
+	mMovingBlockColor = color;
+
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
+		mMovingUnitBlock[i].SetSprite(gp->GetBlockColorSprite(mMovingBlockColor));
+	}
 
 	/*
 	7개 모양의 블록을 만듬. 블록들은 모두 4개의 UnitBlock으로 이뤄져 있고,
@@ -41,7 +183,7 @@ MovingBlock::MovingBlock()
 	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
-	switch (GetRandomShape()) 
+	switch (shape)
 	{
 
 	case eBlockShape::I:
@@ -160,26 +302,6 @@ MovingBlock::MovingBlock()
 
 }
 
-const int MovingBlock::GetRandomShape()
-{
-
-	std::random_device rd;  
-	std::mt19937 gen(rd());   
-	std::uniform_int_distribution<> dist(0, BLOCK_SHAPE_NUMBER - 1);
-
-	return dist(gen);
-}
-
-const int MovingBlock::GetRandomColor() 
-{
-
-	std::random_device rd;  
-	std::mt19937 gen(rd());   
-	std::uniform_int_distribution<> dist(0, BLOCK_COLOR_NUMBER - 1);
-
-	return dist(gen);
-
-}
 
 void MovingBlock::BlockMoveDownByTime() 
 {

@@ -25,6 +25,10 @@ Image::Image() {
 	mSelectedPictureTexture.loadFromFile("images/Picture" + std::to_string(mSelectedNumber) + ".png");
 	mSelectedPictureSprite.setTexture(mSelectedPictureTexture);
 
+	mNextBlockPanelTexture.loadFromFile("images/NextBlockPanel.png");
+	mNextBlockPanelSprite.setTexture(mNextBlockPanelTexture);
+	mNextBlockPanelSprite.setPosition(550,80);
+
 	mExcellentTexture.loadFromFile("images/Excellent.png");
 	mExcellentSprite.setPosition(0,0);
 	mExcellentSprite.setTexture(mExcellentTexture);

@@ -15,6 +15,7 @@
 #include "GamePool.h"
 #include "Menu.h"
 #include "MovingBlock.h"
+#include "NextBlock.h"
 #include "Image.h"
 #include "Sound.h"
 #include "StartMenu.h"
@@ -114,6 +115,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		GamePool* gamePool = GamePool::GetInstance();
 		BlockStack* blockStacked = BlockStack::GetInstance();
+		
+		NextBlock* nextBlock = new NextBlock();
 		MovingBlock* movingBlock = new MovingBlock();
 
 		Menu menu(image->GetSelectedNumber());
@@ -247,7 +250,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						}
 
 						delete movingBlock;
-						movingBlock = new MovingBlock();
+						movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
+						delete nextBlock;
+						nextBlock = new NextBlock();
+
 					}
 
 					break;
@@ -270,7 +276,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				if (movingBlock->BlockReachBottom())
 				{
 					delete movingBlock;
-					movingBlock = new MovingBlock();
+					movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
+					delete nextBlock;
+					nextBlock = new NextBlock();
 				}
 
 				blockReachDownTimer = 0;
@@ -321,7 +329,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 					}
 
 					window.clear(sf::Color::White);
-					window.draw(image->GetSprite());
+					image->DrawBackGround(window);
 					blockStacked->DrawBlockStacked(window);
 					textManage->DrawTextAfterGame(window);
 					window.display();
@@ -330,10 +338,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 
 			window.clear(sf::Color::White);
-			window.draw(image->GetSprite());
+			image->DrawBackGround(window);
+			image->DrawNextBlockPanel(window);
 			blockStacked->DrawBlockStacked(window);
 			textManage->DrawTextWhileGame(window);
 			movingBlock->DrawMovingBlock(window);
+			nextBlock->DrawNextBlock(window);
 			window.display();
 
 		} ///////////// end of while (window.isOpen()) /////////////

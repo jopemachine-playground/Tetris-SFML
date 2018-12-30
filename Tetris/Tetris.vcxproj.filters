@@ -75,6 +75,9 @@
     <ClInclude Include="Image.h">
       <Filter>헤더 파일\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="NextBlock.h">
+      <Filter>헤더 파일\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -115,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>소스 파일\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBlock.cpp">
+      <Filter>소스 파일\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

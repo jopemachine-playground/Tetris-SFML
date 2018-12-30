@@ -52,6 +52,10 @@ const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
 static_cast<int> (BACKGROUND_POSITIONY) + ONE_BLOCK_PIXEL };
 
+const sf::Vector2f NextBlockPoint = { 650, 130 };
+
+const size_t MAX_UNITBLOCK_NUMBER = 4;
+
 
 // Àü¿ª Enum
 enum eBlockColor 
@@ -64,6 +68,19 @@ enum eBlockColor
 	Green = 5,
 	Blue = 6,
 	Default = 7
+};
+
+enum eBlockShape
+{
+
+	I = 0,
+	Z = 1,
+	S = 2,
+	T = 3,
+	L = 4,
+	J = 5,
+	O = 6
+
 };
 
 class GamePool 
