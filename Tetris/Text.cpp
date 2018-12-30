@@ -8,9 +8,10 @@
 
 Text* Text::mInstance = nullptr;
 
+// 주의 : Sound 초기화 후 Text를 초기화 해야 함.
+
 Text::Text() 
 {
-	// Sound 초기화 후 Text를 초기화 해야 함.
 	Sound* sc = Sound::GetInstance();
 	Ranking *rk = Ranking::GetInstance();
 

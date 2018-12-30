@@ -25,31 +25,25 @@ private:
 
 public:
 
-	UnitBlock();
+	UnitBlock() {};
 
 	sf::Sprite GetSprite() { return mSprite; };
 
 	sf::Vector2f GetPosition() { return mSprite.getPosition(); }
 	
-	const unsigned int GetIndexX() { return mPoint.IndexX; }
+	const unsigned int GetIndexX() const { return mPoint.IndexX; }
 
-	const unsigned int GetIndexY() { return mPoint.IndexY; }
+	const unsigned int GetIndexY() const { return mPoint.IndexY; }
 
 	void AddIndexX(int indexX) { mPoint.IndexX += indexX; }
 
 	void AddIndexY(int indexY) { mPoint.IndexY += indexY; }
 
-	void SetSprite(sf::Sprite sprite) { 
-
-		//sf::Vector2f position = mSprite.getPosition();
-		//std::cout << "이전 위치: " << position.x << " " << position.y << std::endl;
-		mSprite = sprite;
-		//std::cout << "들어온 위치: " << sprite.getPosition().x << " " << sprite.getPosition().y << std::endl;
-		//sprite.setPosition(position);
-		//std::cout << "수정된 위치: " << mSprite.getPosition().x << " " << mSprite.getPosition().y << std::endl;
-	}
+	void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
 
 	void SetPosition(int blockPixel_x, int blockPixel_y);
+
+	void SetPositionByIndex(int index_x, int index_y);
 
 	bool IsMarked() { return mbMarked; }
 

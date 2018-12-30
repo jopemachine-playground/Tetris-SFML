@@ -96,10 +96,12 @@
 		sf::Event event;
 
 		/* 
-		호출순서 주의 
+		///////////// 호출순서 주의 ///////////// 
+
 		GamePool이 먼저 초기화 되고, BlockStack이 초기화 되어야 하고
 		Sound가 먼저 초기화 되고 Text가 초기화 되어야함 (클래스 내부에서 사용)
 		*/
+
 		Image* image = Image::GetInstance();
 		Sound* soundManage = Sound::GetInstance();
 		soundManage->PlayBackGroundMusic();

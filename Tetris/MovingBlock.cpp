@@ -34,7 +34,9 @@ MovingBlock::MovingBlock() {
 
 
 	/*
-	7개 모양의 블록을 만듬. 블록들은 모두 4개의 UnitBlock으로 이뤄져 있음
+	7개 모양의 블록을 만듬. 블록들은 모두 4개의 UnitBlock으로 이뤄져 있고,
+	번호는 위에서 아래로, 왼쪽에서 오른쪽으로 1씩 상승.
+	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
 	switch (GetRandomShape()) {
@@ -50,6 +52,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = I;
 		break;
 	}
 	case eBlockShape::Z: {
@@ -63,6 +66,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = Z;
 		break;
 	}
 	case eBlockShape::S: {
@@ -76,6 +80,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = S;
 		break;
 	}
 	case eBlockShape::T: {
@@ -89,6 +94,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = T;
 		break;
 	}
 
@@ -103,6 +109,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = L;
 		break;
 	}
 
@@ -117,6 +124,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
+		mBlockShape = J;
 		break;
 	}
 
@@ -131,6 +139,7 @@ MovingBlock::MovingBlock() {
 		mMovingUnitBlock[3].SetPosition
 		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 
+		mBlockShape = O;
 		break;
 	}
 	}
@@ -221,29 +230,58 @@ bool MovingBlock::BlockReachBottom() {
 
 void MovingBlock::RotateBlock() {
 
-	UnitBlock temp[MAX_UNITBLOCK_NUMBER];
-
 	Sound *sc = Sound::GetInstance();
 	BlockStack* bs = BlockStack::GetInstance();
 
+	int prev_X[MAX_UNITBLOCK_NUMBER], prev_Y[MAX_UNITBLOCK_NUMBER];
+	int after_X[MAX_UNITBLOCK_NUMBER], after_Y[MAX_UNITBLOCK_NUMBER];
+
+	int rotateCenter_X = mMovingUnitBlock[1].GetIndexX();
+	int rotateCenter_Y = mMovingUnitBlock[1].GetIndexY();
+
+	// 회전을 위해 원점으로 돌린 후 회전. (지역변수인 인덱스만 갖고 진행)
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++)
 	{
-		// mMovingUnitBlock[i].SetPosition();
+		prev_X[i] = mMovingUnitBlock[i].GetIndexX() - rotateCenter_X;
+		prev_Y[i] = mMovingUnitBlock[i].GetIndexY() - rotateCenter_Y;
 
+		after_X[i] = (-1) * prev_Y[i] + rotateCenter_X;
+		after_Y[i] = prev_X[i] + rotateCenter_Y;
 
+		//std::cout << "회전 전 x좌표 : " << prev_X[i] << std::endl;
+		//std::cout << "회전 전 y좌표 : " << prev_Y[i] << std::endl;
 
-		if (bs->BlockIsMarked
-			(mMovingUnitBlock[i].GetIndexX(),
-				mMovingUnitBlock[i].GetIndexY()))
+		//std::cout << "회전 후 x좌표 : " << after_X[i] << std::endl;
+		//std::cout << "회전 후 y좌표 : " << after_Y[i] << std::endl;
+
+		//std::cout << "center x좌표 : " << rotateCenter_X << std::endl;
+		//std::cout << "center y좌표 : " << rotateCenter_Y << std::endl;
+
+		//std::cout << "mMovingBlock.x : " << mMovingUnitBlock[i].GetIndexX() << std::endl;
+		//std::cout << "mMovingBlock.y : " << mMovingUnitBlock[i].GetIndexY() << std::endl;
+
+		// 회전이 가능한지 검증
+
+		if (bs->BlockIsMarked(after_X[i], after_Y[i]) || mBlockShape == O)
 		{
 			// 복귀
 			return;
 		}
 
-		sc->PlayRotateKeyClicked();
-
 	}
+
+	sc->PlayRotateKeyClicked();
+
+	// Sprite들을 회전
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++)
+	{
+		mMovingUnitBlock[i].SetPositionByIndex(after_X[i], after_Y[i]);
+	}
+
 }
+
+	
+
 
 
 

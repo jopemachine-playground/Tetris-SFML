@@ -19,7 +19,6 @@ private:
 
 public:
 
-	// 싱글톤이지만 '게임 다시 시작'을 누르면 삭제
 	~BlockStack() {
 		mInstance = nullptr;
 	}
