@@ -6,7 +6,8 @@
 #include "UnitBlock.h"
 #include "GamePool.h"
 
-class BlockStack {
+class BlockStack
+{
 
 private:
 
@@ -19,11 +20,13 @@ private:
 
 public:
 
-	~BlockStack() {
+	~BlockStack() 
+	{
 		mInstance = nullptr;
 	}
 
-	static BlockStack* GetInstance() {
+	static BlockStack* GetInstance() 
+	{
 		if (mInstance == nullptr) {
 			mInstance = new BlockStack();
 		}
@@ -50,6 +53,8 @@ public:
 	void OneBlockSetSprite(int row, int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
 
 	bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
+
+	bool IsGameEnd();
 
 	void DEBUG_CheckAllBlock();
 

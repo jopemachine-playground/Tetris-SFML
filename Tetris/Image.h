@@ -4,12 +4,13 @@
 
 #include "GamePool.h"
 
-class Image {
+class Image
+{
 
 private:
 
 	Image();
-	const unsigned int BACKGROUND_PICTURE_NUMBER = 9;
+	const unsigned int BACKGROUND_PICTURE_NUMBER = 10;
 
 	sf::Texture mSelectedPictureTexture;
 	sf::Sprite mSelectedPictureSprite;
@@ -24,8 +25,10 @@ private:
 
 public:
 
-	static Image* GetInstance() {
-		if (mInstance == 0) {
+	static Image* GetInstance()
+	{
+		if (mInstance == 0)
+		{
 			mInstance = new Image();
 		}
 		return mInstance;
@@ -35,5 +38,7 @@ public:
 
 	const unsigned int GetSelectedNumber() { return mSelectedNumber; }
 
+	const sf::Sprite GetExcellentSprite() { return mExcellentSprite; }
 
+	const sf::Sprite GetGoodjobSprite() { return mGoodjobSprite; }
 };

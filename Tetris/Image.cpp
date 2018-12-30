@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <Windows.h>
+#undef min
+#undef max
+
 #include <time.h>
 #include "Image.h"
 
@@ -22,7 +26,7 @@ Image::Image() {
 	mSelectedPictureSprite.setTexture(mSelectedPictureTexture);
 
 	mExcellentTexture.loadFromFile("images/Excellent.png");
-	mExcellentSprite.setPosition(500,500);
+	mExcellentSprite.setPosition(0,0);
 	mExcellentSprite.setTexture(mExcellentTexture);
 
 	mGoodjobTexture.loadFromFile("images/Good.png");

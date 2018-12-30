@@ -28,14 +28,29 @@ Sound::Sound()
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_MOVE_SOUND << std::endl;
 	}
 	mBlockMoveSound.setBuffer(mBlockMoveSoundBuffer);
+	mBlockMoveSound.setVolume(VOLUME_BLOCK_MOVE);
 
 	if (!mBlockMoveDeleteSoundBuffer.loadFromFile(FILE_BLOCK_DELETE_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DELETE_SOUND << std::endl;
 	}
 	mBlockMoveDeleteSound.setBuffer(mBlockMoveDeleteSoundBuffer);
+	mBlockMoveDeleteSound.setVolume(VOLUME_BLOCK_DELETE);
+
+	if (!mBlockDownFasterSoundBuffer.loadFromFile(FILE_BLOCK_DOWNFASTER_SOUND))
+	{
+		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DOWNFASTER_SOUND << std::endl;
+	}
+	mBlockDownFasterSound.setBuffer(mBlockDownFasterSoundBuffer);
+
+	if (!mBlockDownSoundBuffer.loadFromFile(FILE_BLOCK_DOWN_SOUND))
+	{
+		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DOWN_SOUND << std::endl;
+	}
+	mBlockDownSound.setBuffer(mBlockDownSoundBuffer);
 
 
+	// ·£´ýÀ¸·Î ¹è°æÀ½¾Ç °áÁ¤
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dist(0, BACKGROUND_MUSIC_NUMBER - 1);
@@ -49,9 +64,11 @@ Sound::Sound()
 
 }
 
-std::string Sound::MusicFileGetString(eBackGroundMusicFile bgm) {
+std::string Sound::MusicFileGetString(eBackGroundMusicFile bgm) 
+{
 
-	switch (bgm) {
+	switch (bgm) 
+	{
 	case DJ_Okawari_Flower_Dance: { return "DJ_Okawari_Flower_Dance"; break; }
 	case DJ_OKAWARI_Luv_Letter: { return "DJ_OKAWARI_Luv_Letter"; break; }
 	case DJ_Okawari_Perfect_Blue: { return "DJ_Okawari_Perfect_Blue"; break; }

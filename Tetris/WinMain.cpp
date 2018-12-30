@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <functional>
 #include <Windows.h>
 #undef min
 #undef max
@@ -21,19 +22,20 @@
 #include "Text.h"
 #include "UnitBlock.h"
 
+
 #ifndef DEBUG_CONSOLE
-	int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) 
-	{
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
 #endif
 
 #ifdef DEBUG_CONSOLE
-	int main() 
+	int main()
 	{
 #endif
 
 	StartMenuPoint:
 
-		sf::RenderWindow startWindow(sf::VideoMode(1000, 667), GAME_TITLE);
+		sf::RenderWindow startWindow(sf::VideoMode(1000, 651), GAME_TITLE);
 		sf::Vector2i MousePosition;
 		sf::Event MenuEvent;
 		StartMenu startMenu(WINDOW_SIZE_X, WINDOW_SIZE_Y);
@@ -45,14 +47,15 @@
 				switch (MenuEvent.type)
 				{
 
-				case sf::Event::Closed: 
+				case sf::Event::Closed:
 				{
 
+					startWindow.close();
 					exit(0);
 					break;
 
 				}
-				case sf::Event::KeyPressed: 
+				case sf::Event::KeyPressed:
 				{
 
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) startMenu.MoveUp();
@@ -95,8 +98,8 @@
 		sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), GAME_TITLE);
 		sf::Event event;
 
-		/* 
-		///////////// 호출순서 주의 ///////////// 
+		/*
+		///////////// 호출순서 주의 /////////////
 
 		GamePool이 먼저 초기화 되고, BlockStack이 초기화 되어야 하고
 		Sound가 먼저 초기화 되고 Text가 초기화 되어야함 (클래스 내부에서 사용)
@@ -105,41 +108,41 @@
 		Image* image = Image::GetInstance();
 		Sound* soundManage = Sound::GetInstance();
 		soundManage->PlayBackGroundMusic();
-		Text *textManage = Text::GetInstance();
 
-	
+		Text *textManage = Text::GetInstance();
+		Ranking *rankManage = Ranking::GetInstance();
+
 		GamePool* gamePool = GamePool::GetInstance();
 		BlockStack* blockStacked = BlockStack::GetInstance();
 		MovingBlock* movingBlock = new MovingBlock();
-		
+
 		Menu menu(image->GetSelectedNumber());
 
 		srand(time(0));
-		int periodicTimer = 0;
+
+		// 1초 마다 점수를 증가시키기 위한 타이머
+		float periodicTimer = 0;
+
+		// 블록이 아래로 내려오는 시간을 재는 타이머
+		float blockMovingTimer = 0;
+
+		// 블록이 땅에 닿았나 판정하는 타이머
+		float blockReachDownTimer = 0;
+
+		// 플레이 시간을 나타냄
+		int elapsedTimeWhilePlaying = 0;
 
 		sf::Clock clock;
-
-		int displayGoodjobTimer = 0;
-		int RowFullCounter = 0;
-		int elapsedTimeForDisplayingGoodjob;
-
 
 	GameProcessing:
 
 		while (window.isOpen())
 		{
-			int elapsedTime = clock.getElapsedTime().asMilliseconds();
+			float elapsedTime = clock.getElapsedTime().asMilliseconds();
 			clock.restart();
 			periodicTimer += elapsedTime;
-
-			// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
-
-			if (movingBlock->BlockReachBottom()) 
-			{
-
-				delete movingBlock;
-				movingBlock = new MovingBlock();
-			}
+			blockMovingTimer += elapsedTime;
+			blockReachDownTimer += elapsedTime;
 
 			while (window.pollEvent(event))
 			{
@@ -147,7 +150,7 @@
 				{
 
 
-				case sf::Event::Closed: 
+				case sf::Event::Closed:
 				{
 
 					window.close();
@@ -163,43 +166,50 @@
 						// 메뉴 호출
 						soundManage->PauseBackGroundMusic();
 
-						while (window.isOpen()) 
+						while (window.isOpen())
 						{
+							sf::Event menuEvent;
 
-							if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) menu.MoveUp();
-
-							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) menu.MoveDown();
-
-							else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) 
+							while (window.pollEvent(menuEvent))
 							{
 
-								switch (menu.GetSelectedItemIndex()) 
+								if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) menu.MoveUp();
+
+								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) menu.MoveDown();
+
+								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 								{
 
-								case Menu::BUTTON_PLAY:
-									soundManage->PlayBackGroundMusic();
-									goto GameProcessing;
-									break;
+									switch (menu.GetSelectedItemIndex())
+									{
 
-								case Menu::BUTTON_GAME_RESTART:
+									case Menu::BUTTON_PLAY:
+										soundManage->PlayBackGroundMusic();
+										goto GameProcessing;
+										break;
 
-									delete textManage;
-									delete soundManage;
-									delete movingBlock;
-									delete blockStacked;
-									
-									goto GameStartingPoint;
-									break;
+									case Menu::BUTTON_GAME_RESTART:
 
-								case Menu::BUTTON_QUIT:
-									window.close();
-									break;
+										delete textManage;
+										delete soundManage;
+										delete movingBlock;
+										delete blockStacked;
+
+										goto GameStartingPoint;
+										break;
+
+									case Menu::BUTTON_QUIT:
+										window.close();
+										break;
+									}
+
 								}
 
 							}
 
 							window.clear();
 							menu.Draw(window);
+							textManage->DrawTextWhileGame(window);
 							window.display();
 
 						}
@@ -222,13 +232,22 @@
 					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 					{
 						// 빨리 내림
+						soundManage->PlayBlockDownFaster();
 						movingBlock->SetMovingTime(FAST_BLOCK_MOVINGTIME);
 					}
 
 					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 					{
 						// 블록 바로 내리기
-	
+						soundManage->PlayBlockDown();
+
+						while (!movingBlock->BlockReachBottom())
+						{
+							movingBlock->BlockMoveDownByTime();
+						}
+
+						delete movingBlock;
+						movingBlock = new MovingBlock();
 					}
 
 					break;
@@ -238,48 +257,116 @@
 
 			} ///////////// end of while (window.pollEvent(event)) /////////////
 
-			// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
+			// 한 줄이 찼다면 지움.
+			// 미구현 : 2행 삭제 시 Great, 3행 이상 삭제 시 Excellent => 이미지 렌더링할 새 쓰레드가 필요
+			while (blockStacked->CheckRowFulled()) {
+				break;
+			}
 
-			if (movingBlock->GetMovingTime() < periodicTimer)
+
+			if (blockReachDownTimer > 300)
 			{
+				// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
+				if (movingBlock->BlockReachBottom())
+				{
+					delete movingBlock;
+					movingBlock = new MovingBlock();
+				}
 
+				blockReachDownTimer = 0;
+			}
+
+			// periodicTimer가 지정된 시간 경과 시 0으로 초기화되면서, 블록을 한 칸 내린다.
+			if (blockMovingTimer > movingBlock->GetMovingTime())
+			{
 				movingBlock->BlockMoveDownByTime();
 				movingBlock->SetMovingTime(DEFAULT_BLOCK_MOVINGTIME);
+				blockMovingTimer = 0;
+			}
+
+			// 1초당 점수 50점 씩 증가
+			if (periodicTimer >= 1000)
+			{
+				rankManage->AddPlayerScore(50);
 				periodicTimer = 0;
+				elapsedTimeWhilePlaying++;
+				textManage->UpdateElapsedTime(elapsedTimeWhilePlaying);
 
 			}
 
-
-			window.clear(sf::Color::White);
-
-			// 2행 삭제 시 Great, 3행 이상 삭제 시 Excellent
-
-			while (blockStacked->CheckRowFulled()) 
+			// 게임 종료 조건 
+			if (blockStacked->IsGameEnd())
 			{
-				RowFullCounter++;
-			}
+				soundManage->PauseBackGroundMusic();
 
-			if (RowFullCounter >= 2)
-			{
-				elapsedTimeForDisplayingGoodjob = clock.getElapsedTime().asMilliseconds();
-
+				while (window.isOpen())
 				{
-					if (RowFullCounter >= 3)
+					sf::Event gameEndEvent;
 
-						if (displayGoodjobTimer >= 3000) 
+					while (window.pollEvent(gameEndEvent))
+					{
+						switch (gameEndEvent.type)
 						{
-						
-						
+						case sf::Event::Closed:
+						{
+
+							window.close();
+							exit(0);
+							break;
+
 						}
+
+						}
+
+					}
+
+					window.clear(sf::Color::White);
+					window.draw(image->GetSprite());
+					blockStacked->DrawBlockStacked(window);
+					textManage->DrawTextAfterGame(window);
+					window.display();
+
 				}
 			}
 
+			window.clear(sf::Color::White);
 			window.draw(image->GetSprite());
 			blockStacked->DrawBlockStacked(window);
-			textManage->DrawText(window);
+			textManage->DrawTextWhileGame(window);
 			movingBlock->DrawMovingBlock(window);
 			window.display();
 
 		} ///////////// end of while (window.isOpen()) /////////////
 
 	}
+
+	//void ImageProcess(sf::RenderWindow* window)
+	//{
+	//	int rowFullNumber = 0;
+	//	Image *image = Image::GetInstance();
+
+	//	window->setActive(true);
+	//	window->draw(image->GetExcellentSprite());
+	//	window->display();
+	//	Sleep(3000);
+
+	//	while (window->isOpen())
+	//	{
+
+	//		if (rowFullNumber == 2)
+	//		{
+	//			window->draw(image->GetGoodjobSprite());
+	//			window->display();
+	//			Sleep(3000);
+	//		}
+	//		else if (rowFullNumber > 3)
+	//		{
+	//			window->draw(image->GetExcellentSprite());
+	//			window->display();
+	//			Sleep(3000);
+
+	//		}
+
+	//	}
+
+	//}

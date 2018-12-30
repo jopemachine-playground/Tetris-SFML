@@ -4,6 +4,15 @@
 #include "Text.h"
 #include "Ranking.h"
 
+#include <string>
+#include <cstring>
+#include <fstream>
+#include <cstdlib>
+#include <Windows.h>
+#include <comdef.h>
+#include <CRTDBG.H>
+#include <atlconv.h>
+
 #include <iostream>
 
 Text* Text::mInstance = nullptr;
@@ -17,19 +26,67 @@ Text::Text()
 
 	mFont.loadFromFile("fonts/HS_Summer.ttf");
 
+	// 게임 중 표시되는 정보
 	mPlayerScoreText.setFont(mFont);
-	mPlayerScoreText.setPosition(900, 600);
-	mPlayerScoreText.setString(L"점수 : " + std::to_wstring(rk->GetPlayerScore()) + L" 점");
+	mPlayerScoreText.setPosition(500, 600);
+	mPlayerScoreText.setString(L"점수 : 0 점");
 	mPlayerScoreText.setFillColor(sf::Color::Black);
 
 	mElapsedTimeText.setFont(mFont);
-	mElapsedTimeText.setPosition(900, 700);
+	mElapsedTimeText.setPosition(500, 700);
 	mElapsedTimeText.setFillColor(sf::Color::Black);
-	mElapsedTimeText.setString(L"분 초");
+	mElapsedTimeText.setString(L"경과 시간 : 0분 0초");
 
 	mBackGroundMusicText.setFont(mFont);
-	mBackGroundMusicText.setPosition(900, 800);
+	mBackGroundMusicText.setPosition(500, 800);
 	mBackGroundMusicText.setFillColor(sf::Color::Black);
-	mBackGroundMusicText.setString(sc->GetSelectedMusicName());
 
+	// string을 wstring으로 변환하기 위한 매크로 사용
+	USES_CONVERSION;
+	std::wstring MusicName = A2W(sc->GetSelectedMusicName().c_str());
+	mBackGroundMusicText.setString(L"배경 음악: " + MusicName);
+
+
+	// 게임이 끝난 후 표시되는 정보
+	mPlayerScoreResultText.setFont(mFont);
+	mPlayerScoreResultText.setPosition(500, 750);
+	mPlayerScoreResultText.setString(L"점수 : 0 점");
+	mPlayerScoreResultText.setFillColor(sf::Color::Black);
+
+	mElapsedTimeResultText.setFont(mFont);
+	mElapsedTimeResultText.setPosition(500, 810);
+	mElapsedTimeResultText.setString(L"경과  시간 : 0분 0초");
+	mElapsedTimeResultText.setFillColor(sf::Color::Black);
+
+	mGameEndText.setFont(mFont);
+	mGameEndText.setCharacterSize(50);
+	mGameEndText.setPosition(500, 400);
+	mGameEndText.setString(L"게임  종료!\n\n Thanks For Playing ♥");
+	mGameEndText.setFillColor(sf::Color::Black);
+
+}
+
+void Text::UpdateScore()
+{
+	Ranking* rk = Ranking::GetInstance();
+
+	mPlayerScoreText.setString(L"점수 : " + std::to_wstring(rk->GetPlayerScore()) + L" 점");
+	mPlayerScoreResultText.setString(L"최종  점수 : " + std::to_wstring(rk->GetPlayerScore()) + L" 점");
+
+}
+
+void Text::UpdateElapsedTime(int elapsedTimeWhilePlaying)
+{
+	Ranking* rk = Ranking::GetInstance();
+
+	int elapsedMinute = elapsedTimeWhilePlaying / 60;
+	int elapsedSecond = elapsedTimeWhilePlaying % 60;
+
+	mElapsedTimeText.setString
+	(L"경과 시간 : " + std::to_wstring(elapsedMinute) + L"분 "
+		+ std::to_wstring(elapsedSecond) + L"초");
+
+	mElapsedTimeResultText.setString
+	(L"경과 시간 : " + std::to_wstring(elapsedMinute) + L"분 "
+		+ std::to_wstring(elapsedSecond) + L"초");
 }

@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include "Text.h"
 #include "GamePool.h"
 #include "Ranking.h"
 
@@ -22,4 +23,11 @@ void Ranking::WriteRanking()
 {
 
 
+}
+
+void Ranking::AddPlayerScore(int score)
+{ 
+	Text* text = Text::GetInstance();
+	mPlayerScore += score;
+	text->UpdateScore();
 }

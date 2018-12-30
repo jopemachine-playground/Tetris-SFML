@@ -8,11 +8,13 @@
 
 #include <iostream>
 
-class UnitBlock {
+class UnitBlock 
+{
 
 private:
 	
-	struct Point {
+	struct Point
+	{
 		unsigned int IndexX;
 		unsigned int IndexY;
 	} mPoint;

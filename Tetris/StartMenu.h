@@ -6,7 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
-class StartMenu{
+class StartMenu
+{
 
 private:
 
@@ -26,7 +27,8 @@ private:
 
 public:
 
-	enum {
+	enum
+	{
 		BUTTON_PLAY = 0,
 		BUTTON_OPTION = 1,
 		BUTTON_QUIT = 2

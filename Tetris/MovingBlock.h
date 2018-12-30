@@ -22,7 +22,8 @@ private:
 	생성될 수 있는 블록들의 모양.
 	각 모양들에 대해선 blockshape 폴더 참고
 	*/
-	enum eBlockShape {
+	enum eBlockShape
+	{
 
 		I = 0,
 		Z = 1,
@@ -71,7 +72,6 @@ public:
 	// 블록을 키 입력으로 이동시킴
 	void BlockMoveLeft();
 	void BlockMoveRight();
-	
 
 	void DrawMovingBlock(sf::RenderWindow& window);
 

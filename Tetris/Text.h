@@ -11,33 +11,48 @@ private:
 
 	static Text* mInstance;
 
-	// 경과된 시간을 표시
+	// 게임 중 표시할 정보
 	sf::Text mElapsedTimeText;
-
-	// 플레이어의 점수를 표시
 	sf::Text mPlayerScoreText;
-
-	// 재생중인 배경음 
 	sf::Text mBackGroundMusicText;
+
+	// 게임이 끝난 후 표시할 정보
+	sf::Text mPlayerScoreResultText;
+	sf::Text mElapsedTimeResultText;
+	sf::Text mGameEndText;
 
 public:
 
-	~Text() {
+	~Text()
+	{
 		mInstance = nullptr;
 	}
 
-	static Text* GetInstance() {
-		if (mInstance == nullptr) {
+	static Text* GetInstance() 
+	{
+		if (mInstance == nullptr)
+		{
 			mInstance = new Text();
 		}
 		return mInstance;
 	}
 
-	void DrawText(sf::RenderWindow& window) {
+	void DrawTextWhileGame (sf::RenderWindow& window)
+	{
 		window.draw(mElapsedTimeText);
 		window.draw(mPlayerScoreText);
 		window.draw(mBackGroundMusicText);
 	}
 
+	void DrawTextAfterGame(sf::RenderWindow& window)
+	{
+		window.draw(mPlayerScoreResultText);
+		window.draw(mElapsedTimeResultText);
+		window.draw(mGameEndText);
+	}
+
+	void UpdateScore();
+
+	void UpdateElapsedTime(int elapsedTimeWhilePlaying);
 
 };

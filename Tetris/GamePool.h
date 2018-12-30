@@ -11,9 +11,11 @@
 #define FILE_BLOCK_ROTATE_SOUND "sounds/BlockRotateSound.ogg"
 #define FILE_BLOCK_DELETE_SOUND "sounds/BlockDeleteSound.ogg"
 #define FILE_BLOCK_MOVE_SOUND "sounds/BlockDownSound.ogg"
+#define FILE_BLOCK_DOWN_SOUND "sounds/BlockDown.ogg"
+#define FILE_BLOCK_DOWNFASTER_SOUND "sounds/BlockDownFaster.ogg"
 
 // ※ Size of Window
-#define WINDOW_SIZE_X (1400)
+#define WINDOW_SIZE_X (1000)
 #define WINDOW_SIZE_Y (950)
 #define GAME_TITLE "Tetris (beta)"
 
@@ -29,7 +31,7 @@
 
 // 전역변수
 constexpr size_t ROW_PIXEL_NUMBER = 12;
-constexpr size_t COLUMN_PIXEL_NUMBER = 22;
+constexpr size_t COLUMN_PIXEL_NUMBER = 23;
 
 constexpr size_t ONE_BLOCK_PIXEL = 39;
 constexpr size_t ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER; // 468
@@ -48,11 +50,12 @@ constexpr int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
 
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
-static_cast<int> (BACKGROUND_POSITIONY) };
+static_cast<int> (BACKGROUND_POSITIONY) + ONE_BLOCK_PIXEL };
 
 
 // 전역 Enum
-enum eBlockColor {
+enum eBlockColor 
+{
 	Red = 0,
 	Skyblue = 1,
 	Yellow = 2,
@@ -63,7 +66,8 @@ enum eBlockColor {
 	Default = 7
 };
 
-class GamePool {
+class GamePool 
+{
 
 private:
 
@@ -75,7 +79,8 @@ private:
 
 public:
 
-	static GamePool* GetInstance() {
+	static GamePool* GetInstance() 
+	{
 		if (mInstance == 0) {
 			mInstance = new GamePool();
 		}
@@ -85,5 +90,8 @@ public:
 	const sf::Sprite GetBlockColorSprite(const eBlockColor color) { return mBlockColorSprite[color]; };
 
 };
+
+
+
 
 #endif

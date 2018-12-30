@@ -33,6 +33,7 @@ BlockStack::BlockStack()
 
 			// 각 테두리 블럭들에 Mark함. 
 			if (row == 0 ||
+				column == 0 ||
 				row == ROW_PIXEL_NUMBER - 1 ||
 				column == COLUMN_PIXEL_NUMBER - 1) {
 
@@ -79,6 +80,8 @@ bool BlockStack::CheckRowFulled()
 
 				sc->PlayBlockDelete();
 				bReturn = true;
+				rk->AddPlayerScore(1000);
+				std::cout << rk->GetPlayerScore() << std::endl;
 
 				// 언마크된 row 위의 블록들을 아래로 내림.
 				for (int deleteColumn = column; deleteColumn > 1; deleteColumn--) 
@@ -94,9 +97,6 @@ bool BlockStack::CheckRowFulled()
 
 					}
 				}
-#ifdef DEBUG_CONSOLE
-	DEBUG_CheckAllBlock();
-#endif
 			}
 
 		}
@@ -105,12 +105,12 @@ bool BlockStack::CheckRowFulled()
 }
 
 /*
-모든 블록들 중 Mark된 블록들 (쌓인 블록) 을 탐색하고, draw함.
+BlockStack의 모든 블록을 draw함.
 */
 void BlockStack::DrawBlockStacked(sf::RenderWindow& window) 
 {
-
-	for (int column = 0; column < COLUMN_PIXEL_NUMBER - 1; column++) {
+	for (int column = 1; column < COLUMN_PIXEL_NUMBER - 1; column++)
+	{
 
 		for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++)
 		{
@@ -120,9 +120,26 @@ void BlockStack::DrawBlockStacked(sf::RenderWindow& window)
 }
 
 /*
-모든 블록의 마크 여부를 콘솔에 출력
+맨 위 row의 블럭 스택이 차면 게임 끝
 */
+bool BlockStack::IsGameEnd() 
+{
 
+	for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++)
+	{
+		if (mBlock[1][row].IsMarked())
+		{
+			return true;
+		}
+	}
+	
+	return false;
+
+}
+
+/*
+디버깅용 : 모든 블록의 마크 여부를 콘솔에 출력
+*/
 void BlockStack::DEBUG_CheckAllBlock() 
 {
 

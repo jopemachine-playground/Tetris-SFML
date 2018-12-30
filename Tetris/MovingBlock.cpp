@@ -12,11 +12,13 @@
 /*
 블록이 바닥에 닿을 때 마다 새로 호출되어 새 움직이는 블록을 만듬.
 */
-MovingBlock::MovingBlock() {
+MovingBlock::MovingBlock() 
+{
 
 	GamePool* gp = GamePool::GetInstance();
 
-	switch (GetRandomColor()) {
+	switch (GetRandomColor()) 
+	{
 
 	case Red: { mMovingBlockColor = Red; break; }
 	case Skyblue: { mMovingBlockColor = Skyblue; break; }
@@ -39,9 +41,11 @@ MovingBlock::MovingBlock() {
 	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
-	switch (GetRandomShape()) {
+	switch (GetRandomShape()) 
+	{
 
-	case eBlockShape::I: {
+	case eBlockShape::I:
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y);
@@ -55,7 +59,9 @@ MovingBlock::MovingBlock() {
 		mBlockShape = I;
 		break;
 	}
-	case eBlockShape::Z: {
+
+	case eBlockShape::Z: 
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
@@ -69,7 +75,9 @@ MovingBlock::MovingBlock() {
 		mBlockShape = Z;
 		break;
 	}
-	case eBlockShape::S: {
+
+	case eBlockShape::S: 
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
@@ -83,7 +91,9 @@ MovingBlock::MovingBlock() {
 		mBlockShape = S;
 		break;
 	}
-	case eBlockShape::T: {
+
+	case eBlockShape::T: 
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y);
@@ -98,7 +108,8 @@ MovingBlock::MovingBlock() {
 		break;
 	}
 
-	case eBlockShape::L: {
+	case eBlockShape::L:
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
@@ -113,7 +124,8 @@ MovingBlock::MovingBlock() {
 		break;
 	}
 
-	case eBlockShape::J: {
+	case eBlockShape::J: 
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y);
@@ -128,7 +140,8 @@ MovingBlock::MovingBlock() {
 		break;
 	}
 
-	case eBlockShape::O: {
+	case eBlockShape::O:
+	{
 
 		mMovingUnitBlock[0].SetPosition
 		(BlockGeneratePoint.x, BlockGeneratePoint.y);
@@ -142,31 +155,34 @@ MovingBlock::MovingBlock() {
 		mBlockShape = O;
 		break;
 	}
+
 	}
 
 }
 
-const int MovingBlock::GetRandomShape() {
+const int MovingBlock::GetRandomShape()
+{
 
-	std::random_device rd;   // non-deterministic generator  
-	std::mt19937 gen(rd());  // to seed mersenne twister.  
+	std::random_device rd;  
+	std::mt19937 gen(rd());   
 	std::uniform_int_distribution<> dist(0, BLOCK_SHAPE_NUMBER - 1);
 
 	return dist(gen);
-
 }
 
-const int MovingBlock::GetRandomColor() {
+const int MovingBlock::GetRandomColor() 
+{
 
-	std::random_device rd;   // non-deterministic generator  
-	std::mt19937 gen(rd());  // to seed mersenne twister.  
+	std::random_device rd;  
+	std::mt19937 gen(rd());   
 	std::uniform_int_distribution<> dist(0, BLOCK_COLOR_NUMBER - 1);
 
 	return dist(gen);
 
 }
 
-void MovingBlock::BlockMoveDownByTime() {
+void MovingBlock::BlockMoveDownByTime() 
+{
 
 	BlockStack *bs = BlockStack::GetInstance();
 
@@ -191,7 +207,8 @@ void MovingBlock::BlockMoveDownByTime() {
 BlockStack에 넘김
 */
 
-bool MovingBlock::BlockReachBottom() {
+bool MovingBlock::BlockReachBottom() 
+{
 
 	BlockStack *bs = BlockStack::GetInstance();
 	int x, y;
@@ -211,9 +228,6 @@ bool MovingBlock::BlockReachBottom() {
 				bs->OneBlockSetSprite(x, y, mMovingUnitBlock[i].GetSprite());
 
 			}
-#ifdef DEBUG_CONSOLE
-			bs->DEBUG_CheckAllBlock();
-#endif
 			return true;
 		}
 	}
@@ -228,7 +242,8 @@ bool MovingBlock::BlockReachBottom() {
 회전된 후 해당 좌표의 BlockStack의 블록이 마크되어 있다면 회전된 블록을 복구시키고 리턴
 */
 
-void MovingBlock::RotateBlock() {
+void MovingBlock::RotateBlock() 
+{
 
 	Sound *sc = Sound::GetInstance();
 	BlockStack* bs = BlockStack::GetInstance();
@@ -247,18 +262,6 @@ void MovingBlock::RotateBlock() {
 
 		after_X[i] = (-1) * prev_Y[i] + rotateCenter_X;
 		after_Y[i] = prev_X[i] + rotateCenter_Y;
-
-		//std::cout << "회전 전 x좌표 : " << prev_X[i] << std::endl;
-		//std::cout << "회전 전 y좌표 : " << prev_Y[i] << std::endl;
-
-		//std::cout << "회전 후 x좌표 : " << after_X[i] << std::endl;
-		//std::cout << "회전 후 y좌표 : " << after_Y[i] << std::endl;
-
-		//std::cout << "center x좌표 : " << rotateCenter_X << std::endl;
-		//std::cout << "center y좌표 : " << rotateCenter_Y << std::endl;
-
-		//std::cout << "mMovingBlock.x : " << mMovingUnitBlock[i].GetIndexX() << std::endl;
-		//std::cout << "mMovingBlock.y : " << mMovingUnitBlock[i].GetIndexY() << std::endl;
 
 		// 회전이 가능한지 검증
 
@@ -280,12 +283,8 @@ void MovingBlock::RotateBlock() {
 
 }
 
-	
-
-
-
-
-void MovingBlock::BlockMoveLeft() {
+void MovingBlock::BlockMoveLeft() 
+{
 
 	Sound *sc = Sound::GetInstance();
 
@@ -307,7 +306,8 @@ void MovingBlock::BlockMoveLeft() {
 
 }
 
-void MovingBlock::BlockMoveRight() {
+void MovingBlock::BlockMoveRight()
+{
 
 	Sound *sc = Sound::GetInstance();
 
@@ -328,7 +328,8 @@ void MovingBlock::BlockMoveRight() {
 
 }
 
-void MovingBlock::DrawMovingBlock(sf::RenderWindow& window) {
+void MovingBlock::DrawMovingBlock(sf::RenderWindow& window)
+{
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		window.draw(mMovingUnitBlock[i].GetSprite());

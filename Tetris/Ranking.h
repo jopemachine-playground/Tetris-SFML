@@ -2,7 +2,8 @@
 
 // Ranking을 입출력으로 관리
 
-class Ranking {
+class Ranking
+{
 
 private:
 
@@ -16,7 +17,8 @@ private:
 
 public:
 
-	static Ranking* GetInstance() {
+	static Ranking* GetInstance()
+	{
 		if (mInstance == 0) {
 			mInstance = new Ranking();
 		}
@@ -29,8 +31,7 @@ public:
 	// 게임 종료 후, 자동으로 호출해 점수를 기록, 기록 후 LoadRangingData 호출해 화면에 점수 띄움
 	void WriteRanking();
 
-	// 블록을 한 줄 지울 때 점수 100점 증가
-	void AddPlayerScore() { mPlayerScore += 100; }
+	void AddPlayerScore(int score);
 
 	int GetPlayerScore() const { return mPlayerScore; }
 

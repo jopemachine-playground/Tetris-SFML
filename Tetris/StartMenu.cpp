@@ -19,19 +19,22 @@ StartMenu::StartMenu(float width, float height) {
 	mStartMenuText[0].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
 	mStartMenuText[0].setString(L"게임 시작");
 	mStartMenuText[0].setCharacterSize(MENU_ITEM_SIZE);
-	mStartMenuText[0].setPosition(sf::Vector2f(100, 420));
+	mStartMenuText[0].setPosition(sf::Vector2f(100, 250));
+	mStartMenuText[0].setCharacterSize(100);
 
 	mStartMenuText[1].setFont(mMenufont);
 	mStartMenuText[1].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
 	mStartMenuText[1].setString(L"옵션");
 	mStartMenuText[1].setCharacterSize(MENU_ITEM_SIZE);
-	mStartMenuText[1].setPosition(sf::Vector2f(100, 490));
+	mStartMenuText[1].setPosition(sf::Vector2f(100, 350));
+	mStartMenuText[1].setCharacterSize(100);
 
 	mStartMenuText[2].setFont(mMenufont);
 	mStartMenuText[2].setFillColor(DEFAULT_STARTMENU_ITEM_COLOR);
 	mStartMenuText[2].setString(L"종료");
 	mStartMenuText[2].setCharacterSize(MENU_ITEM_SIZE);
-	mStartMenuText[2].setPosition(sf::Vector2f(100, 560));
+	mStartMenuText[2].setPosition(sf::Vector2f(100, 450));
+	mStartMenuText[2].setCharacterSize(100);
 
 	mStartMenuText[mSelectedItemIndex].setFillColor(SELECTED_STARTMENU_ITEM_COLOR);
 }

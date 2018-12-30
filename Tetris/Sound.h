@@ -7,7 +7,8 @@
 
 #include "GamePool.h"
 
-class Sound {
+class Sound
+{
 
 private:
 
@@ -29,20 +30,20 @@ private:
 	sf::SoundBuffer mBlockMoveDeleteSoundBuffer;
 	sf::Sound mBlockMoveDeleteSound;
 
+	// 블록 빠르게 내리기, 한 번에 내리기
+	sf::SoundBuffer mBlockDownFasterSoundBuffer;
+	sf::Sound mBlockDownFasterSound;
+	sf::SoundBuffer mBlockDownSoundBuffer;
+	sf::Sound mBlockDownSound;
+
 	// 배경음
 	sf::Music backGroundMusic;
 
 	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
-	const float VOLUME_ROTATEKEY = 40.f;
-
-
-#ifdef DEBUG_CONSOLE
-	const float VOLUME_BACKGROUNDMUSIC = 40;
-#endif
-
-#ifndef DEBUG_CONSOLE
+	const float VOLUME_BLOCK_MOVE = 40.f;
+	const float VOLUME_BLOCK_DELETE = 50.f;
+	const float VOLUME_ROTATEKEY = 100.f;
 	const float VOLUME_BACKGROUNDMUSIC = 40.f;
-#endif
 
 	enum eBackGroundMusicFile {
 		DJ_Okawari_Flower_Dance = 0,
@@ -62,8 +63,10 @@ public:
 		mInstance = nullptr;
 	}
 
-	static Sound* GetInstance() {
-		if (mInstance == nullptr) {
+	static Sound* GetInstance()
+	{
+		if (mInstance == nullptr)
+		{
 			mInstance = new Sound();
 		}
 		return mInstance;
@@ -78,8 +81,11 @@ public:
 	void PlayBackGroundMusic() { backGroundMusic.play(); }
 	void PauseBackGroundMusic() { backGroundMusic.pause(); }
 
+	void PlayBlockDown() { mBlockDownSound.play(); }
+	void PlayBlockDownFaster() { mBlockDownFasterSound.play(); }
+
 	std::string MusicFileGetString(eBackGroundMusicFile bgm);
-	const std::string GetSelectedMusicName() const { return mSelectedMusicName; }
+	std::string GetSelectedMusicName() const { return mSelectedMusicName; }
 
 };
 

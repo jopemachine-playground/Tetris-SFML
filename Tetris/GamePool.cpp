@@ -61,3 +61,4 @@ GamePool::GamePool()
 	mBlockColorSprite[Default].setTexture(mBlockColorTexture[Default]);
 
 }
+
