@@ -141,7 +141,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		while (window.isOpen())
 		{
-			float elapsedTime = clock.getElapsedTime().asMilliseconds();
+			float elapsedTime = clock.getElapsedTime().asSeconds();
 			clock.restart();
 			periodicTimer += elapsedTime;
 			blockMovingTimer += elapsedTime;
@@ -151,21 +151,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				switch (event.type)
 				{
-
-
 				case sf::Event::Closed:
 				{
-
 					window.close();
 					break;
 				}
-
-
 				case sf::Event::KeyPressed: {
 
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 					{
-
 						// 메뉴 호출
 						soundManage->PauseBackGroundMusic();
 
@@ -182,7 +176,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 								{
-
 									switch (menu.GetSelectedItemIndex())
 									{
 
@@ -197,6 +190,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										delete soundManage;
 										delete movingBlock;
 										delete blockStacked;
+										rankManage->ResetPlayerScore();
 
 										goto GameStartingPoint;
 										break;
@@ -205,16 +199,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										window.close();
 										break;
 									}
-
 								}
-
 							}
-
 							window.clear();
 							menu.Draw(window);
 							textManage->DrawTextWhileGame(window);
 							window.display();
-
 						}
 					}
 					else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -250,17 +240,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						}
 
 						delete movingBlock;
-						movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
+						movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
 						delete nextBlock;
 						nextBlock = new NextBlock();
 
 					}
-
 					break;
 				}
 				}
-
-
 			} ///////////// end of while (window.pollEvent(event)) /////////////
 
 			// 한 줄이 찼다면 지움.
@@ -269,18 +256,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				break;
 			}
 
-
-			if (blockReachDownTimer > 300)
+			if (blockReachDownTimer > 0.3)
 			{
 				// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
 				if (movingBlock->BlockReachBottom())
 				{
 					delete movingBlock;
-					movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
+					movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
 					delete nextBlock;
 					nextBlock = new NextBlock();
 				}
-
 				blockReachDownTimer = 0;
 			}
 
@@ -293,13 +278,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 
 			// 1초당 점수 50점 씩 증가
-			if (periodicTimer >= 1000)
+			if (periodicTimer >= 1)
 			{
 				rankManage->AddPlayerScore(50);
-				periodicTimer = 0;
 				elapsedTimeWhilePlaying++;
 				textManage->UpdateElapsedTime(elapsedTimeWhilePlaying);
-
+				periodicTimer = 0;
+				std::cout << elapsedTimeWhilePlaying << std::endl;
 			}
 
 			// 게임 종료 조건 
@@ -317,23 +302,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						{
 						case sf::Event::Closed:
 						{
-
 							window.close();
 							exit(0);
 							break;
-
 						}
-
 						}
-
 					}
-
 					window.clear(sf::Color::White);
 					image->DrawBackGround(window);
 					blockStacked->DrawBlockStacked(window);
 					textManage->DrawTextAfterGame(window);
 					window.display();
-
 				}
 			}
 
@@ -349,6 +328,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		} ///////////// end of while (window.isOpen()) /////////////
 
 	}
+
+	// 버그로 사용하지 않음
 
 	//void ImageProcess(sf::RenderWindow* window)
 	//{

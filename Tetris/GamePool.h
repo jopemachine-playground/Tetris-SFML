@@ -45,8 +45,8 @@ constexpr unsigned int BACKGROUND_POSITIONY = 30;
 constexpr size_t BLOCK_COLOR_NUMBER = 8;
 constexpr size_t BLOCK_SHAPE_NUMBER = 7;
 
-constexpr int DEFAULT_BLOCK_MOVINGTIME = 0.5 * 1000;
-constexpr int FAST_BLOCK_MOVINGTIME = 0.005 * 1000;
+constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.5;
+constexpr float FAST_BLOCK_MOVINGTIME = 0.05;
 
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
@@ -68,6 +68,7 @@ enum eBlockColor
 	Green = 5,
 	Blue = 6,
 	Default = 7
+
 };
 
 enum eBlockShape
@@ -105,6 +106,7 @@ public:
 	}
 
 	const sf::Sprite GetBlockColorSprite(const eBlockColor color) { return mBlockColorSprite[color]; };
+
 
 };
 

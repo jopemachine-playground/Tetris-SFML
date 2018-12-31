@@ -30,10 +30,11 @@ MovingBlock::MovingBlock()
 	//MovingBlock(static_cast<eBlockShape*>(dist_shape(gen_shape)), static_cast<eBlockColor*>(dist_color(gen_color)));
 
 
-	/*eBlockShape& shape = static_cast<eBlockShape>(dist_shape(gen_shape));
-	eBlockColor& color = static_cast<eBlockColor>(dist_color(gen_color));
-			
-	MovingBlock(shape, color);*/
+	//eBlockShape shape = static_cast<eBlockShape>(dist_shape(gen_shape));
+	//eBlockColor color = static_cast<eBlockColor>(dist_color(gen_color));
+	//		
+	//MovingBlock(&shape, &color);
+
 
 	GamePool* gp = GamePool::GetInstance();
 
@@ -166,12 +167,12 @@ MovingBlock::MovingBlock()
 /*
 블록이 바닥에 닿을 때 마다 호출되어 새 움직이는 블록을 만듬.
 */
-MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
+MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
 {
 
 	GamePool* gp = GamePool::GetInstance();
 
-	mMovingBlockColor = color;
+	mMovingBlockColor = *color;
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		mMovingUnitBlock[i].SetSprite(gp->GetBlockColorSprite(mMovingBlockColor));
@@ -183,7 +184,7 @@ MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
 	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
-	switch (shape)
+	switch (*shape)
 	{
 
 	case eBlockShape::I:

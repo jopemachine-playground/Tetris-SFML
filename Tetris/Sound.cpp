@@ -76,4 +76,4 @@ std::string Sound::MusicFileGetString(eBackGroundMusicFile bgm)
 	case Sereno: { return "Sereno"; break; }
 	}
 
-}
+} 

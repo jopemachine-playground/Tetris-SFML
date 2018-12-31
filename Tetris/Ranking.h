@@ -33,6 +33,8 @@ public:
 
 	void AddPlayerScore(int score);
 
+	void ResetPlayerScore() { mPlayerScore = 0; }
+
 	int GetPlayerScore() const { return mPlayerScore; }
 
 

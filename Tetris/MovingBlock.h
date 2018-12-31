@@ -9,7 +9,7 @@ class MovingBlock
 
 private:
 
-	int mMovingTime = DEFAULT_BLOCK_MOVINGTIME;
+	float mMovingTime = DEFAULT_BLOCK_MOVINGTIME;
 
 	UnitBlock mMovingUnitBlock[MAX_UNITBLOCK_NUMBER];
 
@@ -25,12 +25,12 @@ public:
 
 	MovingBlock();
 
-	MovingBlock(eBlockShape& shape, eBlockColor& color);
+	MovingBlock(eBlockShape* shape, eBlockColor* color);
 
 	// 아래 키 입력시 MovingTime 변경, 다음 반복문에서 되돌림
 	void SetMovingTime(const float time) { mMovingTime = time; }
 
-	const int GetMovingTime() const { return mMovingTime; }
+	const float GetMovingTime() const { return mMovingTime; }
 
 	/*
 	CheckBlockBelow() 이 True 반환하면 블록을 아래로 한 열 이동
