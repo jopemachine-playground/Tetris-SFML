@@ -43,7 +43,7 @@ private:
 	const float VOLUME_BLOCK_MOVE = 40.f;
 	const float VOLUME_BLOCK_DELETE = 50.f;
 	const float VOLUME_ROTATEKEY = 100.f;
-	const float VOLUME_BACKGROUNDMUSIC = 0;
+	const float VOLUME_BACKGROUNDMUSIC = 40;
 
 	enum eBackGroundMusicFile {
 		DJ_Okawari_Flower_Dance = 0,

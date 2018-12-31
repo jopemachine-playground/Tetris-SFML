@@ -28,6 +28,11 @@ private:
 
 public:
 
+	~Image()
+	{
+		mInstance = nullptr;
+	}
+
 	static Image* GetInstance()
 	{
 		if (mInstance == 0)

@@ -194,6 +194,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										delete movingBlock;
 										delete blockStacked;
 										delete movingBlockShade;
+										delete image;
 
 										rankManage->ResetPlayerScore();
 
