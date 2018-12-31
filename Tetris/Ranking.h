@@ -11,9 +11,22 @@ private:
 
 	int mPlayerScore = 0;
 
-	int mRecordedScore[10];
+	struct Record
+	{
+		int RecordedScore;
+		std::string RecordedDate;
+	};
+
+	Record mRecord[10];
 
 	static Ranking* mInstance;
+
+	const std::string getCurrentDateTime();
+
+	const unsigned int SAVED_RECORD_NUMBER = 10;
+
+	// 게임 종료 후, 자동으로 호출해 점수를 기록, 기록 후 LoadRangingData 호출해 화면에 점수 띄움
+	void WriteRanking();
 
 public:
 
@@ -27,9 +40,6 @@ public:
 
 	// 게임 종료 후, 자동으로 호출해 기록된 점수를 읽어옴.
 	void LoadRankingData();
-
-	// 게임 종료 후, 자동으로 호출해 점수를 기록, 기록 후 LoadRangingData 호출해 화면에 점수 띄움
-	void WriteRanking();
 
 	void AddPlayerScore(int score);
 

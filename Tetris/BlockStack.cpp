@@ -54,7 +54,7 @@ BlockStack::BlockStack()
 
 이 규칙 자체는 나중에 변경할 수 있도록 할 것
 */
-bool BlockStack::CheckRowFulled() 
+const bool BlockStack::CheckRowFulled()
 {
 	bool bReturn = false;
 	unsigned int count = 0;
@@ -81,7 +81,6 @@ bool BlockStack::CheckRowFulled()
 				sc->PlayBlockDelete();
 				bReturn = true;
 				rk->AddPlayerScore(1000);
-				std::cout << rk->GetPlayerScore() << std::endl;
 
 				// 언마크된 row 위의 블록들을 아래로 내림.
 				for (int deleteColumn = column; deleteColumn > 1; deleteColumn--) 
@@ -122,13 +121,15 @@ void BlockStack::DrawBlockStacked(sf::RenderWindow& window)
 /*
 맨 위 row의 블럭 스택이 차면 게임 끝
 */
-bool BlockStack::IsGameEnd() 
+const bool BlockStack::IsGameEnd()
 {
+	Ranking* rk = Ranking::GetInstance();
 
 	for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++)
 	{
 		if (mBlock[1][row].IsMarked())
 		{
+			rk->LoadRankingData();
 			return true;
 		}
 	}

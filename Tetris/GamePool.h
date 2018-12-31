@@ -45,7 +45,7 @@ constexpr unsigned int BACKGROUND_POSITIONY = 30;
 constexpr size_t BLOCK_COLOR_NUMBER = 8;
 constexpr size_t BLOCK_SHAPE_NUMBER = 7;
 
-constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.7;
+constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.797;
 constexpr float FAST_BLOCK_MOVINGTIME = 0.05;
 
 const sf::Vector2f BlockGeneratePoint =
@@ -54,7 +54,8 @@ static_cast<int> (BACKGROUND_POSITIONY) + ONE_BLOCK_PIXEL };
 
 const sf::Vector2f NextBlockPoint = { 650, 130 };
 
-const size_t MAX_UNITBLOCK_NUMBER = 4;
+constexpr size_t MAX_UNITBLOCK_NUMBER = 4;
+
 
 
 // Àü¿ª Enum
@@ -109,9 +110,9 @@ public:
 		return mInstance;
 	}
 
-	const sf::Sprite GetBlockColorSprite(const eBlockColor color) { return mBlockColorSprite[color]; };
+	const sf::Sprite GetBlockColorSprite(const eBlockColor& color) const { return mBlockColorSprite[color]; };
 
-	const sf::Sprite GetBlockTransparentSprite() { return mBlockTransparentSprite; }
+	const sf::Sprite GetBlockTransparentSprite() const { return mBlockTransparentSprite; }
 
 
 };

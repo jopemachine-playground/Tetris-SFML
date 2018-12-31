@@ -291,7 +291,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				elapsedTimeWhilePlaying++;
 				textManage->UpdateElapsedTime(elapsedTimeWhilePlaying);
 				periodicTimer = 0;
-				std::cout << elapsedTimeWhilePlaying << std::endl;
 			}
 
 			// 게임 종료 조건 

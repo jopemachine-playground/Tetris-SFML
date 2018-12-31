@@ -38,7 +38,7 @@ public:
 	두 행이 가득차면 'Nice',
 	세 행 이상 가득차면 'Excellent' 출력할 것.
 	*/
-	bool CheckRowFulled();
+	const bool CheckRowFulled();
 
 
 	/*
@@ -46,15 +46,15 @@ public:
 	*/
 	void DrawBlockStacked(sf::RenderWindow& window);
 
-	UnitBlock GetOneBlock(int row, int column) { return mBlock[column][row]; }
+	UnitBlock GetOneBlock(const int row, const int column) { return mBlock[column][row]; }
 
-	void OneBlockMark(int row, int column) { mBlock[column][row].BlockMark();  }
+	const void OneBlockMark(const int row, const int column) { mBlock[column][row].BlockMark();  }
 
-	void OneBlockSetSprite(int row, int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
+	const void OneBlockSetSprite(const int row, const int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
 
-	bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
+	const bool BlockIsMarked(const int row, const int column) { return mBlock[column][row].IsMarked(); }
 
-	bool IsGameEnd();
+	const bool IsGameEnd();
 
 	void DEBUG_CheckAllBlock();
 
