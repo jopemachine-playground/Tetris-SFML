@@ -45,7 +45,7 @@ constexpr unsigned int BACKGROUND_POSITIONY = 30;
 constexpr size_t BLOCK_COLOR_NUMBER = 8;
 constexpr size_t BLOCK_SHAPE_NUMBER = 7;
 
-constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.5;
+constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.7;
 constexpr float FAST_BLOCK_MOVINGTIME = 0.05;
 
 const sf::Vector2f BlockGeneratePoint =
@@ -95,6 +95,10 @@ private:
 	sf::Sprite mBlockColorSprite[BLOCK_COLOR_NUMBER];
 	sf::Texture mBlockColorTexture[BLOCK_COLOR_NUMBER];
 
+	sf::Texture mBlockTransparentTexture;
+	sf::Sprite mBlockTransparentSprite;
+
+
 public:
 
 	static GamePool* GetInstance() 
@@ -106,6 +110,8 @@ public:
 	}
 
 	const sf::Sprite GetBlockColorSprite(const eBlockColor color) { return mBlockColorSprite[color]; };
+
+	const sf::Sprite GetBlockTransparentSprite() { return mBlockTransparentSprite; }
 
 
 };

@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "NextBlock.h"
 #include "UnitBlock.h"
 
 class MovingBlock 
@@ -33,17 +34,18 @@ public:
 	const float GetMovingTime() const { return mMovingTime; }
 
 	/*
-	CheckBlockBelow() 이 True 반환하면 블록을 아래로 한 열 이동
+	BlockReachBottom() 이 True 반환하면 블록을 아래로 한 열 이동
 	*/
 	void BlockMoveDownByTime();
 
 	/*
-	블록의 각 방향에 블록이 있는지 체크
-	True이면 블록을 멈추고 다음 블록을 생성.
-	False면 블록을 아래로 한 열 내림.
+	아래에 블록이 닿았는지 체크. 
+	bMark가 true면 MovingBlock이 있었던 자리의 인덱스에 해당하는 BlockStack을 체크.
+	리턴값이 True이면 블록을 멈추고 다음 블록을 생성.
+	리턴값이 False면 블록을 아래로 한 열 내림.
 	*/
 	
-	bool BlockReachBottom();
+	bool BlockReachBottom(const bool bMark);
 
 
 	/*
@@ -56,5 +58,18 @@ public:
 	void BlockMoveRight();
 
 	void DrawMovingBlock(sf::RenderWindow& window);
+
+	void SetSprite(sf::Sprite sprite) 
+	{
+		for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) 
+		{
+			int x = mMovingUnitBlock[i].GetPosition().x;
+			int y = mMovingUnitBlock[i].GetPosition().y;
+
+			mMovingUnitBlock[i].SetSprite(sprite);
+			mMovingUnitBlock[i].SetPosition(x,y);
+	
+		}
+	}
 
 };

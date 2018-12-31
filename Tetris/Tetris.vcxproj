@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="GamePool.h" />
     <ClInclude Include="MovingBlock.h" />
+    <ClInclude Include="MovingBlockShade.h" />
     <ClInclude Include="NextBlock.h" />
     <ClInclude Include="UnitBlock.h" />
     <ClInclude Include="BlockStack.h" />
@@ -180,6 +181,7 @@
   <ItemGroup>
     <ClCompile Include="GamePool.cpp" />
     <ClCompile Include="MovingBlock.cpp" />
+    <ClCompile Include="MovingBlockShade.cpp" />
     <ClCompile Include="NextBlock.cpp" />
     <ClCompile Include="UnitBlock.cpp" />
     <ClCompile Include="BlockStack.cpp" />

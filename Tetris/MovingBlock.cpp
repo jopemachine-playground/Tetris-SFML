@@ -330,7 +330,7 @@ void MovingBlock::BlockMoveDownByTime()
 BlockStack¿¡ ³Ñ±è
 */
 
-bool MovingBlock::BlockReachBottom() 
+bool MovingBlock::BlockReachBottom(const bool bMark) 
 {
 
 	BlockStack *bs = BlockStack::GetInstance();
@@ -347,8 +347,16 @@ bool MovingBlock::BlockReachBottom()
 				x = mMovingUnitBlock[i].GetIndexX();
 				y = mMovingUnitBlock[i].GetIndexY();
 
-				bs->OneBlockMark(x, y);
-				bs->OneBlockSetSprite(x, y, mMovingUnitBlock[i].GetSprite());
+				if (bMark == true)
+				{
+					bs->OneBlockMark(x, y);
+					bs->OneBlockSetSprite(x, y, mMovingUnitBlock[i].GetSprite());
+				}
+
+				else
+				{
+					
+				}
 
 			}
 			return true;

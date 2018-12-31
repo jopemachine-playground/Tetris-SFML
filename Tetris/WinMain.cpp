@@ -15,6 +15,7 @@
 #include "GamePool.h"
 #include "Menu.h"
 #include "MovingBlock.h"
+#include "MovingBlockShade.h"
 #include "NextBlock.h"
 #include "Image.h"
 #include "Sound.h"
@@ -119,6 +120,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		NextBlock* nextBlock = new NextBlock();
 		MovingBlock* movingBlock = new MovingBlock();
 
+		MovingBlockShade* movingBlockShade = new MovingBlockShade();
+
 		Menu menu(image->GetSelectedNumber());
 
 		srand(time(0));
@@ -190,6 +193,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										delete soundManage;
 										delete movingBlock;
 										delete blockStacked;
+										delete movingBlockShade;
+
 										rankManage->ResetPlayerScore();
 
 										goto GameStartingPoint;
@@ -234,7 +239,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						// 블록 바로 내리기
 						soundManage->PlayBlockDown();
 
-						while (!movingBlock->BlockReachBottom())
+						while (!movingBlock->BlockReachBottom(true))
 						{
 							movingBlock->BlockMoveDownByTime();
 						}
@@ -243,7 +248,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
 						delete nextBlock;
 						nextBlock = new NextBlock();
-
 					}
 					break;
 				}
@@ -256,15 +260,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				break;
 			}
 
+			movingBlockShade->UpdateBlockShade(*movingBlock);
+
 			if (blockReachDownTimer > 0.3)
 			{
 				// movingBlock이 아래에 도달했다면, 새 movingBlock을 만든다.
-				if (movingBlock->BlockReachBottom())
+				if (movingBlock->BlockReachBottom(true) == true)
 				{
 					delete movingBlock;
 					movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
 					delete nextBlock;
-					nextBlock = new NextBlock();
+					nextBlock = new NextBlock();			
 				}
 				blockReachDownTimer = 0;
 			}
@@ -321,8 +327,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			image->DrawNextBlockPanel(window);
 			blockStacked->DrawBlockStacked(window);
 			textManage->DrawTextWhileGame(window);
-			movingBlock->DrawMovingBlock(window);
 			nextBlock->DrawNextBlock(window);
+			movingBlockShade->DrawMovingBlockShade(window);
+			movingBlock->DrawMovingBlock(window);
 			window.display();
 
 		} ///////////// end of while (window.isOpen()) /////////////
