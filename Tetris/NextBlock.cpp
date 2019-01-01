@@ -24,7 +24,7 @@ const int NextBlock::getRandomColor()
 
 }
 
-NextBlock::NextBlock() 
+NextBlock::NextBlock()
 {
 	GamePool* gp = GamePool::GetInstance();
 
@@ -162,8 +162,15 @@ NextBlock::NextBlock()
 
 		break;
 	}
-
 	}
+}
 
+void NextBlock::DrawNextBlock(sf::RenderWindow& window)
+{
+
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++)
+	{
+		window.draw(mMovingUnitBlock[i].GetSprite());
+	}
 
 }

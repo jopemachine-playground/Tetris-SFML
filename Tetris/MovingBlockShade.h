@@ -6,7 +6,6 @@ class MovingBlockShade {
 
 private:
 
-
 	MovingBlock mMovingBlock;
 
 	sf::Texture mBlockTransparentTexture;
@@ -17,12 +16,9 @@ public:
 
 	MovingBlockShade();
 
-	void DrawMovingBlockShade(sf::RenderWindow& window) 
-	{
-		mMovingBlock.DrawMovingBlock(window);
-	}
+	void DrawMovingBlockShade(sf::RenderWindow& window);
 
-	void UpdateBlockShade(MovingBlock movingBlock);
+	void UpdateBlockShade(MovingBlock& movingBlock);
 
 
 

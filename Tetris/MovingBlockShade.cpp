@@ -18,7 +18,7 @@ MovingBlockShade::MovingBlockShade()
 
 }
 
-void MovingBlockShade::UpdateBlockShade(MovingBlock movingBlock)
+void MovingBlockShade::UpdateBlockShade(MovingBlock& movingBlock)
 {
 
 	mMovingBlock = movingBlock;
@@ -32,3 +32,7 @@ void MovingBlockShade::UpdateBlockShade(MovingBlock movingBlock)
 
 }
 
+void MovingBlockShade::DrawMovingBlockShade(sf::RenderWindow& window)
+{
+	mMovingBlock.DrawMovingBlock(window);
+}

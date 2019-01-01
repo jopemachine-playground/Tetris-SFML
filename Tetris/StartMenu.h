@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef STARTMENU_HPP
-#define STARTMENU_HPP
-
 #include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
@@ -41,10 +38,3 @@ public:
 	const void Draw(sf::RenderWindow& window);
 
 };
-
-
-
-
-
-
-#endif

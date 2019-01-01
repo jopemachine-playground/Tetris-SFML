@@ -10,21 +10,20 @@ BlockStack* BlockStack::mInstance = nullptr;
 
 BlockStack::BlockStack() 
 {
-
 	GamePool* gp = GamePool::GetInstance();
 
 	for (int column = 0; column < COLUMN_PIXEL_NUMBER; column++) 
 	{
-
-		for (int row = 0; row < ROW_PIXEL_NUMBER; row++) 
+		for (int row = 0; row < ROW_PIXEL_NUMBER; row++)
 		{
 
 			// 각 블럭 Sprite Color를 Default로 함
 			if (row != 0 &&
 				row != ROW_PIXEL_NUMBER - 1 &&
 				column != COLUMN_PIXEL_NUMBER - 1)
-
+			{
 				mBlock[column][row].SetSprite(gp->GetBlockColorSprite(eBlockColor::Default));
+			}
 
 			// 각 블럭 Sprite들에 좌표 부여
 			mBlock[column][row].SetPosition
@@ -35,16 +34,12 @@ BlockStack::BlockStack()
 			if (row == 0 ||
 				column == 0 ||
 				row == ROW_PIXEL_NUMBER - 1 ||
-				column == COLUMN_PIXEL_NUMBER - 1) {
-
+				column == COLUMN_PIXEL_NUMBER - 1)
+			{
 				mBlock[column][row].BlockMark();
-
 			}
-
 		}
-
 	}
-
 }
 
 /*
@@ -63,41 +58,33 @@ const bool BlockStack::CheckRowFulled()
 
 	for (int column = COLUMN_PIXEL_NUMBER - 2; column > 0; column--) 
 	{
-
 		count = 0;
 
 		for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++)
 		{
-
-			if (mBlock[column][row].IsMarked()) {
-			
+			if (mBlock[column][row].IsMarked())
+			{
 				count++;
 			}
 
 			// 한 Row가 다 차면 삭제
 			if (count == ROW_PIXEL_NUMBER - 2) 
 			{
-
 				sc->PlayBlockDelete();
 				bReturn = true;
 				rk->AddPlayerScore(1000);
 
 				// 언마크된 row 위의 블록들을 아래로 내림.
 				for (int deleteColumn = column; deleteColumn > 1; deleteColumn--) 
-				
 				{
-
 					for (int row2 = 1; row2 < ROW_PIXEL_NUMBER - 1; row2++) 
 					{
-
 						mBlock[deleteColumn][row2].SetSprite(mBlock[deleteColumn - 1][row2].GetSprite());
 						mBlock[deleteColumn][row2].BlockMove(0, ONE_BLOCK_PIXEL);
 						mBlock[deleteColumn][row2].SetMark(mBlock[deleteColumn - 1][row2].IsMarked());
-
 					}
 				}
 			}
-
 		}
 	}
 	return bReturn;
@@ -110,7 +97,6 @@ void BlockStack::DrawBlockStacked(sf::RenderWindow& window)
 {
 	for (int column = 1; column < COLUMN_PIXEL_NUMBER - 1; column++)
 	{
-
 		for (int row = 1; row < ROW_PIXEL_NUMBER - 1; row++)
 		{
 			window.draw(mBlock[column][row].GetSprite());
@@ -158,7 +144,6 @@ void BlockStack::DEBUG_CheckAllBlock()
 		std::cout << std::endl;
 	}
 
-	std::cout << "############################ " << std::endl;
+	std::cout << "############################ " << std::endl << std::endl;
 
-	std::cout << std::endl;
 }

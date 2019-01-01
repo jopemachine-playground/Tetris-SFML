@@ -51,13 +51,13 @@ MovingBlock::MovingBlock()
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
 
 		mBlockShape = I;
 		break;
@@ -83,13 +83,13 @@ MovingBlock::MovingBlock()
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
 		mBlockShape = S;
 		break;
@@ -147,32 +147,29 @@ MovingBlock::MovingBlock()
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 
 		mBlockShape = O;
 		break;
 	}
-
-	}
-
-	
+	}	
 }
 
 /*
 블록이 바닥에 닿을 때 마다 호출되어 새 움직이는 블록을 만듬.
 */
-MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
+MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
+	: mBlockShape(shape)
+	, mMovingBlockColor(color)
 {
 
 	GamePool* gp = GamePool::GetInstance();
-
-	mMovingBlockColor = *color;
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		mMovingUnitBlock[i].SetSprite(gp->GetBlockColorSprite(mMovingBlockColor));
@@ -184,26 +181,26 @@ MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
 	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
-	switch (*shape)
+	switch (shape)
 	{
 
 	case eBlockShape::I:
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
 
 		mBlockShape = I;
 		break;
 	}
 
-	case eBlockShape::Z: 
+	case eBlockShape::Z:
 	{
 
 		mMovingUnitBlock[0].SetPosition
@@ -219,23 +216,23 @@ MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
 		break;
 	}
 
-	case eBlockShape::S: 
+	case eBlockShape::S:
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
 
 		mBlockShape = S;
 		break;
 	}
 
-	case eBlockShape::T: 
+	case eBlockShape::T:
 	{
 
 		mMovingUnitBlock[0].SetPosition
@@ -267,7 +264,7 @@ MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
 		break;
 	}
 
-	case eBlockShape::J: 
+	case eBlockShape::J:
 	{
 
 		mMovingUnitBlock[0].SetPosition
@@ -287,18 +284,17 @@ MovingBlock::MovingBlock(eBlockShape* shape, eBlockColor* color)
 	{
 
 		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
 		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y);
 		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x + ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
+		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
 
 		mBlockShape = O;
 		break;
 	}
-
 	}
 
 }
@@ -464,5 +460,18 @@ void MovingBlock::DrawMovingBlock(sf::RenderWindow& window)
 
 	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) {
 		window.draw(mMovingUnitBlock[i].GetSprite());
+	}
+}
+
+void MovingBlock::SetSprite(sf::Sprite sprite)
+{
+	for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++)
+	{
+		int x = mMovingUnitBlock[i].GetPosition().x;
+		int y = mMovingUnitBlock[i].GetPosition().y;
+
+		mMovingUnitBlock[i].SetSprite(sprite);
+		mMovingUnitBlock[i].SetPosition(x, y);
+
 	}
 }

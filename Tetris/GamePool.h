@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef GAMEPOOL_H
-#define GAMEPOOL_H
-
 #include <SFML/Graphics.hpp>
 
 // ¡Ø Sound File
@@ -48,14 +45,13 @@ constexpr size_t BLOCK_SHAPE_NUMBER = 7;
 constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.797;
 constexpr float FAST_BLOCK_MOVINGTIME = 0.05;
 
+constexpr size_t MAX_UNITBLOCK_NUMBER = 4;
+
 const sf::Vector2f BlockGeneratePoint =
 { BACKGROUND_POSITIONX + (ONE_BLOCK_PIXEL * (ROW_PIXEL_NUMBER / 2)),
 static_cast<int> (BACKGROUND_POSITIONY) + ONE_BLOCK_PIXEL };
 
 const sf::Vector2f NextBlockPoint = { 650, 130 };
-
-constexpr size_t MAX_UNITBLOCK_NUMBER = 4;
-
 
 
 // Àü¿ª Enum
@@ -69,12 +65,10 @@ enum eBlockColor
 	Green = 5,
 	Blue = 6,
 	Default = 7
-
 };
 
 enum eBlockShape
 {
-
 	I = 0,
 	Z = 1,
 	S = 2,
@@ -82,7 +76,6 @@ enum eBlockShape
 	L = 4,
 	J = 5,
 	O = 6
-
 };
 
 class GamePool 
@@ -116,8 +109,3 @@ public:
 
 
 };
-
-
-
-
-#endif

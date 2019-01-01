@@ -46,7 +46,6 @@ Text::Text()
 	std::wstring MusicName = A2W(sc->GetSelectedMusicName().c_str());
 	mBackGroundMusicText.setString(L"배경 음악: " + MusicName);
 
-
 	// 게임이 끝난 후 표시되는 정보
 	mPlayerScoreResultText.setFont(mFont);
 	mPlayerScoreResultText.setPosition(500, 750);
@@ -76,15 +75,14 @@ void Text::UpdateScore()
 
 	mPlayerScoreText.setString(L"점수 : " + std::to_wstring(rk->GetPlayerScore()) + L" 점");
 	mPlayerScoreResultText.setString(L"최종  점수 : " + std::to_wstring(rk->GetPlayerScore()) + L" 점");
-
 }
 
 void Text::UpdateElapsedTime(int elapsedTimeWhilePlaying)
 {
 	Ranking* rk = Ranking::GetInstance();
 
-	int elapsedMinute = elapsedTimeWhilePlaying / 60;
-	int elapsedSecond = elapsedTimeWhilePlaying % 60;
+	unsigned int elapsedMinute = elapsedTimeWhilePlaying / 60;
+	unsigned int elapsedSecond = elapsedTimeWhilePlaying % 60;
 
 	mElapsedTimeText.setString
 	(L"경과 시간 : " + std::to_wstring(elapsedMinute) + L"분 "

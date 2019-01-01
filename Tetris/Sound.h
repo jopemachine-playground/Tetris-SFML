@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef SOUND_H
-#define SOUND_H
-
 #include <SFML/Audio.hpp>
 
 #include "GamePool.h"
@@ -88,5 +85,3 @@ public:
 	std::string GetSelectedMusicName() const { return mSelectedMusicName; }
 
 };
-
-#endif

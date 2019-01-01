@@ -32,14 +32,6 @@ public:
 
 	eBlockColor& GetBlockColor() { return mMovingBlockColor; }
 
-	void DrawNextBlock(sf::RenderWindow& window)
-	{
-
-		for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++)
-		{
-			window.draw(mMovingUnitBlock[i].GetSprite());
-		}
-
-	}
+	void DrawNextBlock(sf::RenderWindow& window);
 
 };

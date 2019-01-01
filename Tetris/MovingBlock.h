@@ -26,7 +26,7 @@ public:
 
 	MovingBlock();
 
-	MovingBlock(eBlockShape* shape, eBlockColor* color);
+	MovingBlock(eBlockShape& shape, eBlockColor& color);
 
 	// 아래 키 입력시 MovingTime 변경, 다음 반복문에서 되돌림
 	void SetMovingTime(const float time) { mMovingTime = time; }
@@ -59,17 +59,6 @@ public:
 
 	void DrawMovingBlock(sf::RenderWindow& window);
 
-	void SetSprite(sf::Sprite sprite) 
-	{
-		for (int i = 0; i < MAX_UNITBLOCK_NUMBER; i++) 
-		{
-			int x = mMovingUnitBlock[i].GetPosition().x;
-			int y = mMovingUnitBlock[i].GetPosition().y;
-
-			mMovingUnitBlock[i].SetSprite(sprite);
-			mMovingUnitBlock[i].SetPosition(x,y);
-	
-		}
-	}
+	void SetSprite(sf::Sprite sprite);
 
 };

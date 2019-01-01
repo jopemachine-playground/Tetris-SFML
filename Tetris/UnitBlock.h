@@ -1,15 +1,22 @@
 #pragma once
 
-#ifndef UNITBLOCK_H
-#define UNITBLOCK_H
-
 #include <SFML/Graphics.hpp>
 #include "GamePool.h"
 
 #include <iostream>
 
+class MovingBlock;
+class NextBlock;
+class BlockStack;
+
 class UnitBlock 
 {
+	/*
+	UnitBlock의 위치, Sprite까지 변경할 수 있는 클래스들
+	*/
+	friend MovingBlock;
+	friend NextBlock;
+	friend BlockStack;
 
 private:
 	
@@ -25,38 +32,38 @@ private:
 
 	bool mbMarked = false;
 
-public:
+	void SetPosition(const int blockPixel_x, const int blockPixel_y);
 
-	UnitBlock() {};
-
-	sf::Sprite GetSprite() { return mSprite; };
-
-	sf::Vector2f GetPosition() { return mSprite.getPosition(); }
-	
-	const unsigned int GetIndexX() const { return mPoint.IndexX; }
-
-	const unsigned int GetIndexY() const { return mPoint.IndexY; }
-
-	void AddIndexX(int indexX) { mPoint.IndexX += indexX; }
-
-	void AddIndexY(int indexY) { mPoint.IndexY += indexY; }
+	void SetPositionByIndex(const int index_x, const int index_y);
 
 	void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
 
-	void SetPosition(int blockPixel_x, int blockPixel_y);
+	void SetMark(const bool marked) { mbMarked = marked; }
 
-	void SetPositionByIndex(int index_x, int index_y);
+	void AddIndexX(const int indexX) { mPoint.IndexX += indexX; }
 
-	bool IsMarked() { return mbMarked; }
+	void AddIndexY(const int indexY) { mPoint.IndexY += indexY; }
 
-	void SetMark(bool marked) { mbMarked = marked; }
-
-	void BlockMove(int blockPixel_x, int blockPixel_y) { mSprite.move(blockPixel_x, blockPixel_y); }
+	void BlockMove(const int blockPixel_x, const int blockPixel_y) { mSprite.move(blockPixel_x, blockPixel_y); }
 
 	void BlockMark() { mbMarked = true; }
 
 	void BlockErase() { mbMarked = false; }
 
+public:
+
+	UnitBlock() {};
+
+	sf::Sprite GetSprite() const { return mSprite; };
+
+	sf::Vector2f GetPosition() const { return mSprite.getPosition(); }
+
+	const unsigned int GetIndexX() const { return mPoint.IndexX; }
+
+	const unsigned int GetIndexY() const { return mPoint.IndexY; }
+
+	bool IsMarked() { return mbMarked; }
+
+
 };
 
-#endif

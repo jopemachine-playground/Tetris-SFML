@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <time.h>
-#include <functional>
 #include <Windows.h>
 #undef min
 #undef max
@@ -246,7 +245,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						}
 
 						delete movingBlock;
-						movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
+						movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
 						delete nextBlock;
 						nextBlock = new NextBlock();
 					}
@@ -269,7 +268,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				if (movingBlock->BlockReachBottom(true) == true)
 				{
 					delete movingBlock;
-					movingBlock = new MovingBlock(&nextBlock->GetBlockShape(), &nextBlock->GetBlockColor());
+					movingBlock = new MovingBlock(nextBlock->GetBlockShape(), nextBlock->GetBlockColor());
 					delete nextBlock;
 					nextBlock = new NextBlock();			
 				}

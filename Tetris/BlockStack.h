@@ -1,13 +1,11 @@
 #pragma once
 
-#ifndef BLOCKSTACK_H
-#define BLOCKSTACK_H
-
 #include "UnitBlock.h"
 #include "GamePool.h"
 
 class BlockStack
 {
+	friend MovingBlock;
 
 private:
 
@@ -17,6 +15,14 @@ private:
 	BlockStack();
 
 	static BlockStack* mInstance;
+
+	// MovingBlock이 접근 가능한 메서드
+	const void OneBlockSetSprite(int row, int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
+
+	const bool BlockIsMarked(int row, int column) { return mBlock[column][row].IsMarked(); }
+
+	const void OneBlockMark(int row, int column) { mBlock[column][row].BlockMark(); }
+
 
 public:
 
@@ -40,24 +46,13 @@ public:
 	*/
 	const bool CheckRowFulled();
 
-
 	/*
 	현재까지 쌓인 블록들을 모두 draw함.
 	*/
 	void DrawBlockStacked(sf::RenderWindow& window);
-
-	UnitBlock GetOneBlock(const int row, const int column) { return mBlock[column][row]; }
-
-	const void OneBlockMark(const int row, const int column) { mBlock[column][row].BlockMark();  }
-
-	const void OneBlockSetSprite(const int row, const int column, sf::Sprite sprite) { mBlock[column][row].SetSprite(sprite); }
-
-	const bool BlockIsMarked(const int row, const int column) { return mBlock[column][row].IsMarked(); }
 
 	const bool IsGameEnd();
 
 	void DEBUG_CheckAllBlock();
 
 };
-
-#endif
