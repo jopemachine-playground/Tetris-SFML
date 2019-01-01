@@ -47,5 +47,8 @@ public:
 
 	int GetPlayerScore() const { return mPlayerScore; }
 
+	// 주의 : LoadRankingData 후에 호출되어야 함
+	// const int GetRecordScore(const int index) const { return mRecord[index].RecordedScore; }
+ 
 
 };

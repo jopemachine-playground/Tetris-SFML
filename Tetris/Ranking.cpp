@@ -18,6 +18,7 @@ Ranking* Ranking::mInstance = nullptr;
 // 기록한 점수가 csv 파일에 기록된 점수의 최저보다 높을 경우 WriteRanking() 호출.
 void Ranking::LoadRankingData()
 {
+	Text* txt = Text::GetInstance();
 	Sound* sc = Sound::GetInstance();
 
 	std::ifstream fin;
@@ -57,9 +58,8 @@ void Ranking::LoadRankingData()
 	{
 		if (mPlayerScore > mRecord[0].RecordedScore)
 		{
-			std::cout << "최고기록 경신!" << std::endl;
+			txt->SetCongratulationText();
 		}
-
 		WriteRanking();
 	}
 
@@ -93,11 +93,11 @@ void Ranking::WriteRanking()
 
 	while (fout.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
-		std::cout << "writing index : " << recordIndex << std::endl;
+		// std::cout << "writing index : " << recordIndex << std::endl;
 
 		if (fout.fail())
 		{
-			std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
+			// std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
 			break;
 		}
 		fout << mRecord[recordIndex].RecordedScore << ',';
@@ -107,7 +107,6 @@ void Ranking::WriteRanking()
 
 	fout.close();
 }
-
 
 // 현재시간을 string type으로 return
 const std::string Ranking::getCurrentDateTime() {

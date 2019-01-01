@@ -64,6 +64,10 @@ Text::Text()
 	mGameEndText.setString(L"게임  종료!\n\n Thanks For Playing ♥");
 	mGameEndText.setFillColor(sf::Color::Black);
 
+	mCongratulationText.setFont(mFont);
+	mCongratulationText.setPosition(500, 200);
+	mCongratulationText.setString("");
+	mCongratulationText.setFillColor(sf::Color::Black);
 }
 
 void Text::UpdateScore()
@@ -90,3 +94,27 @@ void Text::UpdateElapsedTime(int elapsedTimeWhilePlaying)
 	(L"경과 시간 : " + std::to_wstring(elapsedMinute) + L"분 "
 		+ std::to_wstring(elapsedSecond) + L"초");
 }
+
+void Text::DrawTextWhileGame(sf::RenderWindow& window)
+{
+	window.draw(mElapsedTimeText);
+	window.draw(mPlayerScoreText);
+	window.draw(mBackGroundMusicText);
+}
+
+void Text::DrawTextAfterGame(sf::RenderWindow& window)
+{
+	window.draw(mPlayerScoreResultText);
+	window.draw(mElapsedTimeResultText);
+	window.draw(mGameEndText);
+	window.draw(mCongratulationText);
+}
+
+void Text::SetCongratulationText()
+{
+	mCongratulationText.setString(L"축하합니다! 최고 기록을 경신했습니다!");
+	mPlayerScoreResultText.setFillColor(sf::Color::Red);
+}
+
+
+

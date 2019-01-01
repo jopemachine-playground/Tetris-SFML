@@ -20,6 +20,7 @@ private:
 	sf::Text mPlayerScoreResultText;
 	sf::Text mElapsedTimeResultText;
 	sf::Text mGameEndText;
+	sf::Text mCongratulationText;
 
 public:
 
@@ -37,22 +38,13 @@ public:
 		return mInstance;
 	}
 
-	void DrawTextWhileGame (sf::RenderWindow& window)
-	{
-		window.draw(mElapsedTimeText);
-		window.draw(mPlayerScoreText);
-		window.draw(mBackGroundMusicText);
-	}
+	void DrawTextWhileGame(sf::RenderWindow& window);
 
-	void DrawTextAfterGame(sf::RenderWindow& window)
-	{
-		window.draw(mPlayerScoreResultText);
-		window.draw(mElapsedTimeResultText);
-		window.draw(mGameEndText);
-	}
+	void DrawTextAfterGame(sf::RenderWindow& window);
 
 	void UpdateScore();
 
 	void UpdateElapsedTime(int elapsedTimeWhilePlaying);
 
+	void SetCongratulationText();
 };
