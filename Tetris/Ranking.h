@@ -13,8 +13,8 @@ private:
 
 	struct Record
 	{
-		int RecordedScore;
-		std::string RecordedDate;
+		int RecordedScore = 0;
+		std::string RecordedDate = "empty";
 	};
 
 	Record mRecord[10];

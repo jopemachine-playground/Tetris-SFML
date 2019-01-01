@@ -30,13 +30,8 @@ void Ranking::LoadRankingData()
 	
 	while (fin.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
-		std::cout << recordIndex << std::endl;
 
-		if (fin.fail())
-		{
-			std::cerr << "Error - 'Ranking.csv' reading" << std::endl;
-			break;
-		}
+		std::cout << "reading index : " << recordIndex << std::endl;
 
 		// 점수를 읽음
 		fin >> mRecord[recordIndex].RecordedScore;
@@ -45,6 +40,11 @@ void Ranking::LoadRankingData()
 		// 점수를 취득한 날짜
 		fin >> mRecord[recordIndex].RecordedDate;
 		fin.ignore(LLONG_MAX, '\n');
+
+		if (fin.fail())
+		{
+			std::cerr << "Error - 'Ranking.csv' reading" << std::endl;
+		}
 
 		std::cout << mRecord[recordIndex].RecordedScore << std::endl;
 		std::cout << mRecord[recordIndex].RecordedDate << std::endl;
@@ -93,6 +93,8 @@ void Ranking::WriteRanking()
 
 	while (fout.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
+		std::cout << "writing index : " << recordIndex << std::endl;
+
 		if (fout.fail())
 		{
 			std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
@@ -116,20 +118,20 @@ const std::string Ranking::getCurrentDateTime() {
 
 	time(&now_time); //현재 초 단위 시간을 측정
 
-	localtime_s(&localt, &now_time);//지역 시각을 구함
-	asctime_s(buf, sizeof(buf), &localt);//지역 시각을 버퍼에 출력
+	localtime_s(&localt, &now_time);
+	asctime_s(buf, sizeof(buf), &localt);
 
 	std::string ret = std::string(buf);
-	//ret[std::size(ret) - 1] = '\0';
+	ret[std::size(ret) - 1] = '\0';
 
-	/*for (unsigned int i = 0; i < size(ret); i++)
+	// 공백을 _로 바꿈 (문자열에 공백이 포함되면 읽을 때 까다로워짐)
+	for (unsigned int i = 0; i < size(ret); i++)
 	{
 		if (ret[i] == ' ')
 		{
 			ret[i] = '_';
 		}
-	}*/
-
+	}
 	return ret;
 }
 

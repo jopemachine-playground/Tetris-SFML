@@ -2,10 +2,10 @@
 d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\gamepool.h(49): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\ranking.cpp(31): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-d:\바탕화면\tetris\tetris\ranking.cpp(113): warning C4101: 'gmt' :참조되지 않은 지역 변수입니다.
+d:\바탕화면\tetris\tetris\ranking.cpp(116): warning C4101: 'gmt' :참조되지 않은 지역 변수입니다.
   코드를 생성하고 있습니다.
-  3 of 490 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+  2 of 492 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    24 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   Tetris.vcxproj -> D:\바탕화면\Tetris\Release\Tetris.exe
