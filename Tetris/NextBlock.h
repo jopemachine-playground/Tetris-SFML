@@ -9,7 +9,6 @@ class NextBlock
 
 private:
 		
-	const static size_t MAX_UNITBLOCK_NUMBER = 4;
 
 	UnitBlock mMovingUnitBlock[MAX_UNITBLOCK_NUMBER];
 

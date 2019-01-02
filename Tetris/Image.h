@@ -42,11 +42,11 @@ public:
 		return mInstance;
 	}
 
-	const unsigned int GetSelectedNumber() { return mSelectedNumber; }
+	inline const unsigned int GetSelectedNumber() { return mSelectedNumber; }
 
-	const sf::Sprite GetExcellentSprite() { return mExcellentSprite; }
+	inline const sf::Sprite GetExcellentSprite() { return mExcellentSprite; }
 
-	const sf::Sprite GetGoodjobSprite() { return mGoodjobSprite; }
+	inline const sf::Sprite GetGoodjobSprite() { return mGoodjobSprite; }
 
 	void DrawBackGround(sf::RenderWindow& window) 
 	{ 

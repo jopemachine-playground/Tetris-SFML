@@ -7,7 +7,7 @@
 #include "Sound.h"
 #include "StartMenu.h"
 
-StartMenu::StartMenu(float width, float height) {
+StartMenu::StartMenu() {
 
 	mStartMenuTexture.loadFromFile("images/StartMenu.png");
 	mStartMenuSprite.setTexture(mStartMenuTexture);

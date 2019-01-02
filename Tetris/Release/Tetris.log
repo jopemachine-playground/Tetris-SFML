@@ -1,14 +1,17 @@
 ﻿  BlockStack.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GamePool.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
   Menu.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   MovingBlock.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\바탕화면\tetris\tetris\movingblock.cpp(54): warning C4244: '인수': 'const T'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
@@ -441,12 +444,12 @@ d:\바탕화면\tetris\tetris\movingblock.cpp(471): warning C4244: '초기화 �
               T=float
           ]
   MovingBlockShade.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   NextBlock.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\바탕화면\tetris\tetris\nextblock.cpp(65): warning C4244: '인수': 'T'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
@@ -643,22 +646,36 @@ d:\바탕화면\tetris\tetris\nextblock.cpp(161): warning C4244: '인수': 'T'�
           [
               T=float
           ]
+  Ranking.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\ranking.cpp(32): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\바탕화면\tetris\tetris\ranking.cpp(114): warning C4101: 'gmt' :참조되지 않은 지역 변수입니다.
+  Sound.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+  StartMenu.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+  Text.cpp
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
   UnitBlock.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\바탕화면\tetris\tetris\unitblock.cpp(9): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\바탕화면\tetris\tetris\unitblock.cpp(23): warning C4244: '인수': 'unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\바탕화면\tetris\tetris\unitblock.cpp(22): warning C4244: '인수': 'unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\바탕화면\tetris\tetris\unitblock.cpp(23): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\바탕화면\tetris\tetris\unitblock.cpp(22): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   WinMain.cpp
-d:\바탕화면\tetris\tetris\gamepool.h(45): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
-d:\바탕화면\tetris\tetris\gamepool.h(46): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(47): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
+d:\바탕화면\tetris\tetris\gamepool.h(48): warning C4305: '초기화 중': 'double'에서 'const float'(으)로 잘립니다.
 d:\바탕화면\tetris\tetris\unitblock.h(47): warning C4244: '인수': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\바탕화면\tetris\tetris\winmain.cpp(126): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 d:\바탕화면\tetris\tetris\winmain.cpp(37): warning C4102: 'StartMenuPoint': 참조되지 않은 레이블입니다.
   코드를 생성하고 있습니다.
-  15 of 493 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    5 functions had inline decision re-evaluated but remain unchanged
+  0 of 494 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   Tetris.vcxproj -> D:\바탕화면\Tetris\Release\Tetris.exe

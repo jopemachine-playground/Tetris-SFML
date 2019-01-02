@@ -27,20 +27,22 @@
 // #define DEBUG_CONSOLE
 
 // 전역변수
-constexpr size_t ROW_PIXEL_NUMBER = 12;
-constexpr size_t COLUMN_PIXEL_NUMBER = 23;
 
-constexpr size_t ONE_BLOCK_PIXEL = 39;
-constexpr size_t ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER; // 468
-constexpr size_t COLUMN_PIXEL = ONE_BLOCK_PIXEL * COLUMN_PIXEL_NUMBER; // 858
+enum eBlockInfo
+{
+	ROW_PIXEL_NUMBER = 12,
+	COLUMN_PIXEL_NUMBER = 23,
+	BLOCK_NUMBER = (ROW_PIXEL_NUMBER * COLUMN_PIXEL_NUMBER)
+};
 
-constexpr static int BLOCK_NUMBER = (ROW_PIXEL_NUMBER * COLUMN_PIXEL_NUMBER);
-
-constexpr unsigned int BACKGROUND_POSITIONX = 50;
-constexpr unsigned int BACKGROUND_POSITIONY = 30;
-
-constexpr size_t BLOCK_COLOR_NUMBER = 8;
-constexpr size_t BLOCK_SHAPE_NUMBER = 7;
+enum ePixelNumberInfo
+{
+	ONE_BLOCK_PIXEL = 39,
+	ROW_PIXEL = ONE_BLOCK_PIXEL * ROW_PIXEL_NUMBER,
+	COLUMN_PIXEL = ONE_BLOCK_PIXEL * COLUMN_PIXEL_NUMBER,
+	BACKGROUND_POSITIONX = 50,
+	BACKGROUND_POSITIONY = 30
+};
 
 constexpr float DEFAULT_BLOCK_MOVINGTIME = 0.797;
 constexpr float FAST_BLOCK_MOVINGTIME = 0.05;
@@ -64,7 +66,8 @@ enum eBlockColor
 	Orange = 4,
 	Green = 5,
 	Blue = 6,
-	Default = 7
+	Default = 7,
+	BLOCK_COLOR_NUMBER
 };
 
 enum eBlockShape
@@ -75,7 +78,8 @@ enum eBlockShape
 	T = 3,
 	L = 4,
 	J = 5,
-	O = 6
+	O = 6,
+	BLOCK_SHAPE_NUMBER
 };
 
 class GamePool 
@@ -97,7 +101,7 @@ public:
 
 	static GamePool* GetInstance() 
 	{
-		if (mInstance == 0) {
+		if (mInstance == nullptr) {
 			mInstance = new GamePool();
 		}
 		return mInstance;

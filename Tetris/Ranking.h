@@ -43,8 +43,8 @@ public:
 
 	void AddPlayerScore(int score);
 
-	void ResetPlayerScore() { mPlayerScore = 0; }
+	inline void ResetPlayerScore() { mPlayerScore = 0; }
 
-	int GetPlayerScore() const { return mPlayerScore; }
+	inline int GetPlayerScore() const { return mPlayerScore; }
 
 };

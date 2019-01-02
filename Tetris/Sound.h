@@ -69,17 +69,17 @@ public:
 		return mInstance;
 	}
 
-	void PlayRotateKeyClicked() { mRotateKeySound.play(); }
-	void PlayMenuItemUpDown() { mMenuItemUpDownSound.play(); }
+	inline void PlayRotateKeyClicked() { mRotateKeySound.play(); }
+	inline void PlayMenuItemUpDown() { mMenuItemUpDownSound.play(); }
 
-	void PlayBlockMove() { mBlockMoveSound.play(); }
-	void PlayBlockDelete() { mBlockMoveDeleteSound.play(); }
+	inline void PlayBlockMove() { mBlockMoveSound.play(); }
+	inline void PlayBlockDelete() { mBlockMoveDeleteSound.play(); }
 
-	void PlayBackGroundMusic() { backGroundMusic.play(); }
-	void PauseBackGroundMusic() { backGroundMusic.pause(); }
+	inline void PlayBackGroundMusic() { backGroundMusic.play(); }
+	inline void PauseBackGroundMusic() { backGroundMusic.pause(); }
 
-	void PlayBlockDown() { mBlockDownSound.play(); }
-	void PlayBlockDownFaster() { mBlockDownFasterSound.play(); }
+	inline void PlayBlockDown() { mBlockDownSound.play(); }
+	inline void PlayBlockDownFaster() { mBlockDownFasterSound.play(); }
 
 	std::string MusicFileGetString(eBackGroundMusicFile bgm);
 	std::string GetSelectedMusicName() const { return mSelectedMusicName; }

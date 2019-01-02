@@ -81,6 +81,9 @@
     <ClInclude Include="BlockStack.h">
       <Filter>헤더 파일\Block</Filter>
     </ClInclude>
+    <ClInclude Include="IMenu.h">
+      <Filter>헤더 파일\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

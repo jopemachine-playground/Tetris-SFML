@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IMenu.h" />
     <ClInclude Include="GamePool.h" />
     <ClInclude Include="MovingBlock.h" />
     <ClInclude Include="MovingBlockShade.h" />

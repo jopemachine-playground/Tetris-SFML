@@ -1,15 +1,17 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "IMenu.h"
 #include "GamePool.h"
 
-class Menu 
+class Menu: public IMenu
 {
 
 private:
 
 	const static int MAX_NUMBER_OF_MENU_ITEMS = 3;
 	const static size_t MENU_ITEM_SIZE = 100;
+
 	const sf::Color DEFAULT_MENU_ITEM_COLOR = sf::Color::Black;
 	const sf::Color SELECTED_MENU_ITEM_COLOR = sf::Color::Cyan;
 
@@ -22,6 +24,7 @@ private:
 
 	int mSelectedItemIndex = 0;
 
+
 public:
 
 	enum 
@@ -32,10 +35,10 @@ public:
 	};
 
 	Menu(const unsigned int pictureSelectedNumber);
-	const void Draw(sf::RenderWindow& window);
 
-	void MoveUp();
-	void MoveDown();
-	const int GetSelectedItemIndex() { return mSelectedItemIndex; }
+	const void Draw(sf::RenderWindow& window) override;
+	void MoveUp() override;
+	void MoveDown() override;
+	inline const int GetSelectedItemIndex() override { return mSelectedItemIndex; }
 
 };

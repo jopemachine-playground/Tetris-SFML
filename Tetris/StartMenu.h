@@ -1,9 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
+#include "IMenu.h"
 #include "GamePool.h"
 
-class StartMenu
+class StartMenu : public IMenu
 {
 
 private:
@@ -31,7 +33,7 @@ public:
 		BUTTON_QUIT = 2
 	};
 
-	StartMenu(float width, float height);
+	StartMenu();
 	void MoveUp();
 	void MoveDown();
 	const int GetSelectedItemIndex() { return mSelectedItemIndex; }

@@ -36,33 +36,33 @@ private:
 
 	void SetPositionByIndex(const int index_x, const int index_y);
 
-	void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
+	inline void SetSprite(sf::Sprite sprite) { mSprite = sprite; }
 
-	void SetMark(const bool marked) { mbMarked = marked; }
+	inline void SetMark(const bool marked) { mbMarked = marked; }
 
-	void AddIndexX(const int indexX) { mPoint.IndexX += indexX; }
+	inline void AddIndexX(const int indexX) { mPoint.IndexX += indexX; }
 
-	void AddIndexY(const int indexY) { mPoint.IndexY += indexY; }
+	inline void AddIndexY(const int indexY) { mPoint.IndexY += indexY; }
 
 	void BlockMove(const int blockPixel_x, const int blockPixel_y) { mSprite.move(blockPixel_x, blockPixel_y); }
 
-	void BlockMark() { mbMarked = true; }
+	inline void BlockMark() { mbMarked = true; }
 
-	void BlockErase() { mbMarked = false; }
+	inline void BlockErase() { mbMarked = false; }
 
 public:
 
 	UnitBlock() {};
 
-	sf::Sprite GetSprite() const { return mSprite; };
+	inline sf::Sprite GetSprite() const { return mSprite; };
 
-	sf::Vector2f GetPosition() const { return mSprite.getPosition(); }
+	inline sf::Vector2f GetPosition() const { return mSprite.getPosition(); }
 
-	const unsigned int GetIndexX() const { return mPoint.IndexX; }
+	inline const unsigned int GetIndexX() const { return mPoint.IndexX; }
 
-	const unsigned int GetIndexY() const { return mPoint.IndexY; }
+	inline const unsigned int GetIndexY() const { return mPoint.IndexY; }
 
-	bool IsMarked() { return mbMarked; }
+	inline bool IsMarked() { return mbMarked; }
 
 
 };

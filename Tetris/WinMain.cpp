@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		sf::RenderWindow startWindow(sf::VideoMode(1000, 651), GAME_TITLE);
 		sf::Vector2i MousePosition;
 		sf::Event MenuEvent;
-		StartMenu startMenu(WINDOW_SIZE_X, WINDOW_SIZE_Y);
+		StartMenu startMenu;
 
 		while (startWindow.isOpen())
 		{
