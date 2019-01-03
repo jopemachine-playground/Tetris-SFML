@@ -5,7 +5,7 @@
 #include "IMenu.h"
 #include "GamePool.h"
 
-class StartMenu : public IMenu
+class StartMenu final: public IMenu
 {
 
 private:

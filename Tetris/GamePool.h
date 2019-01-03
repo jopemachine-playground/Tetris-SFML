@@ -24,7 +24,7 @@
 #define FILE_RANKING_DATA "Ranking.csv" 
 
 // 디버깅 모드
-// #define DEBUG_CONSOLE
+#define DEBUG_CONSOLE
 
 // 전역변수
 

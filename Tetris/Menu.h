@@ -4,7 +4,7 @@
 #include "IMenu.h"
 #include "GamePool.h"
 
-class Menu: public IMenu
+class Menu final: public IMenu
 {
 
 private:
@@ -24,8 +24,7 @@ private:
 
 	int mSelectedItemIndex = 0;
 
-
-public:
+	public:
 
 	enum 
 	{

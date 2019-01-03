@@ -13,8 +13,6 @@ private:
 
 	static Sound* mInstance;
 
-	const static int BACKGROUND_MUSIC_NUMBER = 5;
-
 	// 메뉴 이동
 	sf::SoundBuffer mMenuItemUpDownSoundBuffer;
 	sf::Sound mMenuItemUpDownSound;
@@ -36,13 +34,19 @@ private:
 	// 배경음
 	sf::Music backGroundMusic;
 
-	const float VOLUME_MENU_ITEMUPDOWN = 100.f;
-	const float VOLUME_BLOCK_MOVE = 40.f;
-	const float VOLUME_BLOCK_DELETE = 50.f;
-	const float VOLUME_ROTATEKEY = 100.f;
-	const float VOLUME_BACKGROUNDMUSIC = 40.f;
+	enum { BACKGROUND_MUSIC_NUMBER = 5 };
 
-	enum eBackGroundMusicFile {
+	enum eVolumeSize
+	{
+		VOLUME_MENU_ITEMUPDOWN = 100,
+		VOLUME_BLOCK_MOVE = 40,
+		VOLUME_BLOCK_DELETE = 50,
+		VOLUME_ROTATEKEY = 100,
+		VOLUME_BACKGROUNDMUSIC = 40
+	};
+
+	enum eBackGroundMusicFile 
+	{
 		DJ_Okawari_Flower_Dance = 0,
 		DJ_OKAWARI_Luv_Letter = 1,
 		DJ_Okawari_Perfect_Blue = 2,

@@ -1,7 +1,9 @@
 #pragma once
 
-// Ranking을 입출력으로 관리
-
+/* 
+Ranking을 입출력으로 관리
+가장 높은 점수 10개를 레코드로 관리함.
+*/
 class Ranking
 {
 
@@ -11,19 +13,19 @@ private:
 
 	int mPlayerScore = 0;
 
+	enum { SAVED_RECORD_NUMBER = 10 };
+
 	struct Record
 	{
 		int RecordedScore = 0;
-		std::string RecordedDate = "empty";
+		char RecordedDate[30] = "empty";
 	};
 
-	Record mRecord[10];
+	Record mRecord[SAVED_RECORD_NUMBER];
 
 	static Ranking* mInstance;
 
-	const std::string getCurrentDateTime();
-
-	const unsigned int SAVED_RECORD_NUMBER = 10;
+	const char* getCurrentDateTime();
 
 	// 게임 종료 후, 자동으로 호출해 점수를 기록, 기록 후 LoadRangingData 호출해 화면에 점수 띄움
 	void WriteRanking();

@@ -118,7 +118,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		
 		NextBlock* nextBlock = new NextBlock();
 		MovingBlock* movingBlock = new MovingBlock();
-
 		MovingBlockShade* movingBlockShade = new MovingBlockShade();
 
 		Menu menu(image->GetSelectedNumber());
@@ -194,6 +193,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										delete blockStacked;
 										delete movingBlockShade;
 										delete image;
+										delete nextBlock;
 
 										rankManage->ResetPlayerScore();
 
@@ -201,7 +201,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										break;
 
 									case Menu::BUTTON_QUIT:
-										window.close();
+
+										delete textManage;
+										delete soundManage;
+										delete movingBlock;
+										delete blockStacked;
+										delete movingBlockShade;
+										delete image;
+										delete nextBlock;
+										delete rankManage;
+										exit(0);
+									
 										break;
 									}
 								}
@@ -308,7 +318,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						case sf::Event::Closed:
 						{
 							window.close();
-							exit(0);
+
+							/*delete textManage;
+							delete soundManage;
+							delete movingBlock;
+							delete blockStacked;
+							delete movingBlockShade;
+							delete image;
+							delete nextBlock;
+							delete rankManage;*/
+							
 							break;
 						}
 						}

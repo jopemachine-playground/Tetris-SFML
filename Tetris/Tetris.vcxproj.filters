@@ -110,9 +110,6 @@
     <ClCompile Include="GamePool.cpp">
       <Filter>소스 파일\GamePool</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>소스 파일\GamePool</Filter>
-    </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>소스 파일\GamePool</Filter>
     </ClCompile>
@@ -130,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="BlockStack.cpp">
       <Filter>소스 파일\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

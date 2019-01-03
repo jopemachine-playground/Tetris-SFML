@@ -31,8 +31,7 @@ void Ranking::LoadRankingData()
 	
 	while (fin.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
-
-		std::cout << "reading index : " << recordIndex << std::endl;
+		// std::cout << "reading index : " << recordIndex << std::endl;
 
 		// 점수를 읽음
 		fin >> mRecord[recordIndex].RecordedScore;
@@ -47,8 +46,8 @@ void Ranking::LoadRankingData()
 			std::cerr << "Error - 'Ranking.csv' reading" << std::endl;
 		}
 
-		std::cout << mRecord[recordIndex].RecordedScore << std::endl;
-		std::cout << mRecord[recordIndex].RecordedDate << std::endl;
+		// std::cout << mRecord[recordIndex].RecordedScore << std::endl;
+		// std::cout << mRecord[recordIndex].RecordedDate << std::endl;
 
 		recordIndex++;
 
@@ -70,15 +69,29 @@ void Ranking::LoadRankingData()
 // 게임 종료 후, 자동으로 호출해 점수를 기록, 기록 후 LoadRangingData 호출해 화면에 점수 띄움
 void Ranking::WriteRanking()
 {
-	std::string currentDateTime = getCurrentDateTime();
+	const char* currentDateTime = getCurrentDateTime();
 
 	// Score는 내림차순으로 정렬되어 있어야 함
 	for (unsigned int index = 0; index < SAVED_RECORD_NUMBER; index++)
 	{
 		if (mPlayerScore > mRecord[index].RecordedScore)
 		{
-			mRecord[index].RecordedScore = mPlayerScore;
-			mRecord[index].RecordedDate = currentDateTime;
+			Record temp[SAVED_RECORD_NUMBER];
+			memcpy(temp, mRecord, sizeof(Record) * SAVED_RECORD_NUMBER);
+
+			for (unsigned int belowIndex = index; belowIndex < SAVED_RECORD_NUMBER - 1; belowIndex++)
+			{		
+				temp[belowIndex + 1] = mRecord[belowIndex];
+
+				//std::cout << temp[belowIndex].RecordedScore << std::endl;
+				//std::cout << temp[belowIndex +1].RecordedScore << std::endl;
+			}
+
+			temp[index].RecordedScore = mPlayerScore;
+			*temp[index].RecordedDate = *currentDateTime;
+
+			memcpy(mRecord, temp, sizeof(Record) * SAVED_RECORD_NUMBER);
+
 			break;
 		}
 	}
@@ -108,30 +121,29 @@ void Ranking::WriteRanking()
 	fout.close();
 }
 
-// 현재시간을 string type으로 return
-const std::string Ranking::getCurrentDateTime() {
+// 현재시간을 localtime_s로 구해 return
+const char* Ranking::getCurrentDateTime() {
 
 	struct tm gmt, localt;
 	time_t now_time;
-	char buf[256];
+	char time_char[256];
 
 	time(&now_time); //현재 초 단위 시간을 측정
 
 	localtime_s(&localt, &now_time);
-	asctime_s(buf, sizeof(buf), &localt);
+	asctime_s(time_char, sizeof(time_char), &localt);
 
-	std::string ret = std::string(buf);
-	ret[std::size(ret) - 1] = '\0';
+	time_char[std::size(time_char) - 1] = '\0';
 
 	// 공백을 _로 바꿈 (문자열에 공백이 포함되면 읽을 때 까다로워짐)
-	for (unsigned int i = 0; i < size(ret); i++)
+	for (unsigned int i = 0; i < std::size(time_char); i++)
 	{
-		if (ret[i] == ' ')
+		if (time_char[i] == ' ')
 		{
-			ret[i] = '_';
+			time_char[i] = '_';
 		}
 	}
-	return ret;
+	return time_char;
 }
 
 
