@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
+#include <cassert>
 #include <iostream>
-#include <time.h>
+#include <ctime>
 #include <Windows.h>
 #undef min
 #undef max
@@ -33,7 +34,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	int main()
 	{
 #endif
-
 	StartMenuPoint:
 
 		sf::RenderWindow startWindow(sf::VideoMode(1000, 651), GAME_TITLE);

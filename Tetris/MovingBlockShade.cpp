@@ -1,5 +1,7 @@
 #include "pch.h"
 
+#include <cassert>
+
 #include "BlockStack.h"
 #include "GamePool.h"
 #include "MovingBlockShade.h"
@@ -10,6 +12,7 @@ MovingBlockShade::MovingBlockShade()
 	if (!mBlockTransparentTexture.loadFromFile("images/transparent.png"))
 	{
 		std::cerr << "ERROR - File Not found : " << "images/default.png" << std::endl;
+		assert(false, "ERROR - File Not found : images /default.png");
 	}
 
 	mBlockTransparentSprite.setTexture(mBlockTransparentTexture);

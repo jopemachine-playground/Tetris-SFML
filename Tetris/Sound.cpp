@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include <cassert>
 #include <random>
 #include <iostream>
 #include "Sound.h"
@@ -12,6 +13,7 @@ Sound::Sound()
 	if (!mMenuItemUpDownSoundBuffer.loadFromFile(FILE_MENUITEM_UPDOWN))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_MENUITEM_UPDOWN << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_MENUITEM_UPDOWN);
 	}
 	mMenuItemUpDownSound.setBuffer(mMenuItemUpDownSoundBuffer);
 	mMenuItemUpDownSound.setVolume(VOLUME_MENU_ITEMUPDOWN);
@@ -19,6 +21,7 @@ Sound::Sound()
 	if (!mRotateKeySoundBuffer.loadFromFile(FILE_BLOCK_ROTATE_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_ROTATE_SOUND << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_BLOCK_ROTATE_SOUND);
 	}
 	mRotateKeySound.setBuffer(mRotateKeySoundBuffer);
 	mRotateKeySound.setVolume(VOLUME_ROTATEKEY);
@@ -26,6 +29,7 @@ Sound::Sound()
 	if (!mBlockMoveSoundBuffer.loadFromFile(FILE_BLOCK_MOVE_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_MOVE_SOUND << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_BLOCK_MOVE_SOUND);
 	}
 	mBlockMoveSound.setBuffer(mBlockMoveSoundBuffer);
 	mBlockMoveSound.setVolume(VOLUME_BLOCK_MOVE);
@@ -33,6 +37,7 @@ Sound::Sound()
 	if (!mBlockMoveDeleteSoundBuffer.loadFromFile(FILE_BLOCK_DELETE_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DELETE_SOUND << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_BLOCK_DELETE_SOUND);
 	}
 	mBlockMoveDeleteSound.setBuffer(mBlockMoveDeleteSoundBuffer);
 	mBlockMoveDeleteSound.setVolume(VOLUME_BLOCK_DELETE);
@@ -40,12 +45,14 @@ Sound::Sound()
 	if (!mBlockDownFasterSoundBuffer.loadFromFile(FILE_BLOCK_DOWNFASTER_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DOWNFASTER_SOUND << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_BLOCK_DOWNFASTER_SOUND);
 	}
 	mBlockDownFasterSound.setBuffer(mBlockDownFasterSoundBuffer);
 
 	if (!mBlockDownSoundBuffer.loadFromFile(FILE_BLOCK_DOWN_SOUND))
 	{
 		std::cerr << "ERROR - File Not found : " << FILE_BLOCK_DOWN_SOUND << std::endl;
+		assert(false, "ERROR - File Not found : " << FILE_BLOCK_DOWN_SOUND);
 	}
 	mBlockDownSound.setBuffer(mBlockDownSoundBuffer);
 

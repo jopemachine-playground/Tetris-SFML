@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include <cassert>
 #include <time.h>
 #include <random>
 
@@ -158,6 +159,8 @@ MovingBlock::MovingBlock()
 		mBlockShape = O;
 		break;
 	}
+	default:
+		assert(false, "Error - Random Number generate fail");
 	}	
 }
 
@@ -295,6 +298,8 @@ MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
 		mBlockShape = O;
 		break;
 	}
+	default:
+		assert(false, "Error - Random Number generate fail");
 	}
 
 }

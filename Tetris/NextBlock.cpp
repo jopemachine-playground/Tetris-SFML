@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include <cassert>
 #include <random>
 #include "NextBlock.h"
 
@@ -162,6 +163,9 @@ NextBlock::NextBlock()
 
 		break;
 	}
+	
+	default:
+		assert(false, "Error - Random Number generate fail");
 	}
 }
 

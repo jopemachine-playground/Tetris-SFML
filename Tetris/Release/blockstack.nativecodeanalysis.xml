@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\바탕화면\tetris\tetris</FILEPATH>
+      <FILENAME>unitblock.h</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'UnitBlock::mColor' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>UnitBlock::{ctor}</FUNCTION>
+    <DECORATED>??0UnitBlock@@QAE@XZ</DECORATED>
+    <FUNCLINE>55</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\바탕화면\tetris\tetris</FILEPATH>
+      <FILENAME>unitblock.h</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'UnitBlock::mPoint' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>UnitBlock::{ctor}</FUNCTION>
+    <DECORATED>??0UnitBlock@@QAE@XZ</DECORATED>
+    <FUNCLINE>55</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

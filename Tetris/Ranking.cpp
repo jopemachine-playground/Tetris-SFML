@@ -110,7 +110,7 @@ void Ranking::WriteRanking()
 
 		if (fout.fail())
 		{
-			// std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
+			std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
 			break;
 		}
 		fout << mRecord[recordIndex].RecordedScore << ',';
