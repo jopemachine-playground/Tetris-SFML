@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include <cassert>
 #include <string>
 #include <cstring>
 #include <fstream>
@@ -31,8 +32,6 @@ void Ranking::LoadRankingData()
 	
 	while (fin.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
-		// std::cout << "reading index : " << recordIndex << std::endl;
-
 		// 점수를 읽음
 		fin >> mRecord[recordIndex].RecordedScore;
 		fin.ignore(LLONG_MAX, ',');
@@ -43,14 +42,10 @@ void Ranking::LoadRankingData()
 
 		if (fin.fail())
 		{
-			std::cerr << "Error - 'Ranking.csv' reading" << std::endl;
+			std::cerr << "Error - fails reading'Ranking.csv'" << std::endl;
+			assert(false, "Error - fails reading 'Ranking.csv'");
 		}
-
-		// std::cout << mRecord[recordIndex].RecordedScore << std::endl;
-		// std::cout << mRecord[recordIndex].RecordedDate << std::endl;
-
 		recordIndex++;
-
 	}
 
 	if (mPlayerScore > mRecord[SAVED_RECORD_NUMBER - 1].RecordedScore)
@@ -82,9 +77,6 @@ void Ranking::WriteRanking()
 			for (unsigned int belowIndex = index; belowIndex < SAVED_RECORD_NUMBER - 1; belowIndex++)
 			{		
 				temp[belowIndex + 1] = mRecord[belowIndex];
-
-				//std::cout << temp[belowIndex].RecordedScore << std::endl;
-				//std::cout << temp[belowIndex +1].RecordedScore << std::endl;
 			}
 
 			temp[index].RecordedScore = mPlayerScore;
@@ -106,12 +98,10 @@ void Ranking::WriteRanking()
 
 	while (fout.is_open() && recordIndex < SAVED_RECORD_NUMBER)
 	{
-		// std::cout << "writing index : " << recordIndex << std::endl;
-
 		if (fout.fail())
 		{
-			std::cerr << "Error - 'Ranking.csv' writing " << std::endl;
-			break;
+			std::cerr << "Error - fails writing 'Ranking.csv'" << std::endl;
+			assert(false, "Error - fails writing 'Ranking.csv'");
 		}
 		fout << mRecord[recordIndex].RecordedScore << ',';
 		fout << mRecord[recordIndex].RecordedDate << '\n';
@@ -124,7 +114,7 @@ void Ranking::WriteRanking()
 // 현재시간을 localtime_s로 구해 return
 const char* Ranking::getCurrentDateTime() {
 
-	struct tm gmt, localt;
+	struct tm localt;
 	time_t now_time;
 	char time_char[256];
 
