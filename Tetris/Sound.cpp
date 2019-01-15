@@ -76,11 +76,11 @@ std::string Sound::MusicFileGetString(eBackGroundMusicFile bgm)
 
 	switch (bgm) 
 	{
-	case DJ_Okawari_Flower_Dance: { return "DJ_Okawari_Flower_Dance"; break; }
-	case DJ_OKAWARI_Luv_Letter: { return "DJ_OKAWARI_Luv_Letter"; break; }
-	case DJ_Okawari_Perfect_Blue: { return "DJ_Okawari_Perfect_Blue"; break; }
-	case Dj_Okawari_Voice_of_Nature: { return "Dj_Okawari_Voice_of_Nature"; break; }
-	case Sereno: { return "Sereno"; break; }
+	case acousticbreeze: { return "acousticbreeze"; break; }
+	case anewbeginning: { return "anewbeginning"; break; }
+	case cute: { return "cute"; break; }
+	case hey: { return "hey"; break; }
+	case littleidea: { return "littleidea"; break; }
 	}
 
 } 

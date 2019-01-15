@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 // ※ Sound File
-#define FILE_BACKGROUND_MUSIC "sounds/DJ_OKAWARI_Luv_Letter.ogg"
 #define FILE_MENUITEM_UPDOWN "sounds/MENU_Up,Down.ogg"
 #define FILE_BLOCK_ROTATE_SOUND "sounds/BlockRotateSound.ogg"
 #define FILE_BLOCK_DELETE_SOUND "sounds/BlockDeleteSound.ogg"
@@ -22,9 +21,6 @@
 
 // ※ Score Record File
 #define FILE_RANKING_DATA "Ranking.csv" 
-
-// 디버깅 모드
-#define DEBUG_CONSOLE
 
 // 전역변수
 

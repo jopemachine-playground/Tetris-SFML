@@ -42,16 +42,16 @@ private:
 		VOLUME_BLOCK_MOVE = 40,
 		VOLUME_BLOCK_DELETE = 50,
 		VOLUME_ROTATEKEY = 100,
-		VOLUME_BACKGROUNDMUSIC = 0
+		VOLUME_BACKGROUNDMUSIC = 40
 	};
 
 	enum eBackGroundMusicFile 
 	{
-		DJ_Okawari_Flower_Dance = 0,
-		DJ_OKAWARI_Luv_Letter = 1,
-		DJ_Okawari_Perfect_Blue = 2,
-		Dj_Okawari_Voice_of_Nature = 3,
-		Sereno = 4
+		acousticbreeze = 0,
+		anewbeginning = 1,
+		cute = 2,
+		hey = 3,
+		littleidea = 4
 	};
 
 	eBackGroundMusicFile mSelectedMusicNumber;
