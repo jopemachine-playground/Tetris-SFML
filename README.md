@@ -13,7 +13,12 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 
 
 
-# 게임 스크린샷
+
+
+
+
+
+# Screen shot
 
 
 ![Alt Text](https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif)
