@@ -11,6 +11,9 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 
 배경음악 파일은 https://www.bensound.com/ 에서 다운로드 받아 사용했다.
 
-# 
+
+
+# 게임 스크린샷
+
 
 ![Alt Text](https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif)
