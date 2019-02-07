@@ -1,4 +1,6 @@
 # Tetris
+
+# Asset Sources
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
 게임 중 랜덤으로 나오는 배경화면 파일들은 인터넷에서 다운로드 받은 것을 넣었다.
@@ -10,12 +12,6 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 효과음 파일은 http://sound.0-w-0.com/apps/effect/effect_kr.asp?pCategory=1 에서,
 
 배경음악 파일은 https://www.bensound.com/ 에서 다운로드 받아 사용했다.
-
-
-
-
-
-
 
 
 # Screen shot
