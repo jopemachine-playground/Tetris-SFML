@@ -10,3 +10,6 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 효과음 파일은 http://sound.0-w-0.com/apps/effect/effect_kr.asp?pCategory=1 에서,
 
 배경음악 파일은 https://www.bensound.com/ 에서 다운로드 받아 사용했다.
+
+
+![Alt Text](https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif)
