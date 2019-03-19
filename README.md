@@ -1,6 +1,11 @@
 # Tetris
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
+# Manual
+방향키 : 블럭 조정
+
+스페이스바 : 블럭 바로 내리기
+
 # Asset Sources
 
 게임 중 랜덤으로 나오는 배경화면 파일들은 인터넷에서 다운로드 받은 것을 넣었다.
