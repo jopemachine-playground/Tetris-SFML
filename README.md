@@ -1,4 +1,4 @@
-# Tetris
+# Development Environment
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
 # Game Manual
