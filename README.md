@@ -1,7 +1,7 @@
 # Tetris
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
-# Manual
+# Game Manual
 방향키 : 블럭 조정
 
 스페이스바 : 블럭 바로 내리기
