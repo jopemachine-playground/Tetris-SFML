@@ -22,21 +22,6 @@ MovingBlock::MovingBlock()
 	std::mt19937 gen_color(rd_color());
 	std::uniform_int_distribution<> dist_color(0, BLOCK_COLOR_NUMBER - 2);
 
-
-	// 보다 기본 생성자를 간단히 할 수 있는 방법이 없을까..?
-	// 아래 코드들은 다 실패한 방법들.
-
-	//MovingBlock(static_cast<eBlockShape>(dist_shape(gen_shape)), static_cast<eBlockColor>(dist_color(gen_color)));
-
-	//MovingBlock(static_cast<eBlockShape*>(dist_shape(gen_shape)), static_cast<eBlockColor*>(dist_color(gen_color)));
-
-
-	//eBlockShape shape = static_cast<eBlockShape>(dist_shape(gen_shape));
-	//eBlockColor color = static_cast<eBlockColor>(dist_color(gen_color));
-	//		
-	//MovingBlock(&shape, &color);
-
-
 	GamePool* gp = GamePool::GetInstance();
 
 	mMovingBlockColor = static_cast<eBlockColor>(dist_color(gen_color));
@@ -45,123 +30,12 @@ MovingBlock::MovingBlock()
 		mMovingUnitBlock[i].SetSprite(gp->GetBlockColorSprite(mMovingBlockColor));
 	}
 
-	switch (static_cast<eBlockShape>(dist_shape(gen_shape)))
-	{
+	eBlockShape shape = static_cast<eBlockShape>(dist_shape(gen_shape));
 
-	case eBlockShape::I:
-	{
+	eBlockShape& alias = shape;
 
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 3 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = I;
-		break;
-	}
-
-	case eBlockShape::Z:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = Z;
-		break;
-	}
-
-	case eBlockShape::S:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = S;
-		break;
-	}
-
-	case eBlockShape::T:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = T;
-		break;
-	}
-
-	case eBlockShape::L:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = L;
-		break;
-	}
-
-	case eBlockShape::J:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + 2 * ONE_BLOCK_PIXEL);
-
-		mBlockShape = J;
-		break;
-	}
-
-	case eBlockShape::O:
-	{
-
-		mMovingUnitBlock[0].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y);
-		mMovingUnitBlock[1].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y);
-		mMovingUnitBlock[2].SetPosition
-		(BlockGeneratePoint.x - ONE_BLOCK_PIXEL, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-		mMovingUnitBlock[3].SetPosition
-		(BlockGeneratePoint.x, BlockGeneratePoint.y + ONE_BLOCK_PIXEL);
-
-		mBlockShape = O;
-		break;
-	}
-	default:
-		assert(false, "Error - Random Number generate fail");
-	}	
+	decideBlockShape(alias);
+		
 }
 
 /*
@@ -184,6 +58,12 @@ MovingBlock::MovingBlock(eBlockShape& shape, eBlockColor& color)
 	1번 블록 (회전의 중심) 이 BlockGenerate 에서 생성됨.
 	*/
 
+	decideBlockShape(shape);
+
+}
+
+void MovingBlock::decideBlockShape(eBlockShape& shape)
+{
 	switch (shape)
 	{
 

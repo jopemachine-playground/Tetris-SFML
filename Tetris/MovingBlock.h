@@ -22,6 +22,8 @@ private:
 	*/
 	eBlockShape mBlockShape;
 
+	void decideBlockShape(eBlockShape& shape);
+
 public:
 
 	MovingBlock();
