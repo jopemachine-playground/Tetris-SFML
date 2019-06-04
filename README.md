@@ -1,10 +1,11 @@
 # Development Environment
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
-# Game Manual
-방향키 : 블럭 조정
+참여인원:
+201302435 유영근, 201300995 이상건, 201502094 이재호, 201502085 이규봉
 
-스페이스바 : 블럭 바로 내리기
+# Game Manual
+매턴 한 개의 주사위 버튼을 눌러 턴제로 진행됨
 
 # Asset Sources
 
