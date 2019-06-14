@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Tetris",
-    "\\x64"
+    "\\Tetris"
   ],
   "SelectedNode": "\\Tetris\\MovingBlock.cpp",
   "PreviewInSolutionExplorer": false

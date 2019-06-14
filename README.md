@@ -1,10 +1,16 @@
 # Development Environment
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
-# Game Manual
-방향키 : 블럭 조정
 
+
+# Game Manual
+
+```
+방향키 : 블럭 조정
 스페이스바 : 블럭 바로 내리기
+```
+
+
 
 # Asset Sources
 
@@ -17,6 +23,8 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 효과음 파일은 http://sound.0-w-0.com/apps/effect/effect_kr.asp?pCategory=1 에서,
 
 배경음악 파일은 https://www.bensound.com/ 에서 다운로드 받아 사용했다.
+
+
 
 
 # Screen shot
