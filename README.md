@@ -1,8 +1,8 @@
-# Development Environment
+<h2>Development Environment</h2>
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
 
-# Game Manual
+<h2>Game Manual</h2>
 
 ```
 방향키 : 블럭 조정
@@ -11,7 +11,7 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 
 
 
-# Asset Sources
+<h2>Asset Sources</h2>
 
 게임 중 랜덤으로 나오는 배경화면 파일들은 인터넷에서 다운로드 받은 것을 넣었다.
 
@@ -26,7 +26,7 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 
 
 
-# Screen shot
+<h2>Screen shot</h2>
 
 
 ![Alt Text](https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif)
