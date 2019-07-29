@@ -1,3 +1,9 @@
+<h2>Outline</h2>
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d3e4ed50e41d4b8eb20dcc930a5794f8)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jopemachine/Tetris-SFML&amp;utm_campaign=Badge_Grade)
+
+SFML 학습용으로 진행했던 개인 프로젝트
+
 <h2>Development Environment</h2>
 C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
 
