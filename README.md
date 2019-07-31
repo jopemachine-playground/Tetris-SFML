@@ -34,5 +34,7 @@ C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서
 
 <h2>Screen shot</h2>
 
+<img alt="Game Screenshot gif" src="https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif" width="693px" height="660px">
 
-![Alt Text](https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif)
+<img alt="Game Screenshot" src="https://github.com/jopemachine/Tetris/blob/master/ScreenShot.png" width="693px" height="660px">
+
