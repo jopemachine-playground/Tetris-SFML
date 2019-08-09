@@ -5,7 +5,12 @@
 SFML 학습용으로 진행했던 개인 프로젝트
 
 <h2>Development Environment</h2>
-C++, SFML 2.5.1을 사용해 구현했고, Windows10의 Visual Studio 2017에서 작업했다.
+
+> Windows 10 
+>
+> SFML 2.5.1
+>
+> Visual Studio 2017
 
 
 <h2>Game Manual</h2>
