@@ -39,7 +39,7 @@ SFML 학습용으로 진행했던 개인 프로젝트
 
 <h2>Screen shot</h2>
 
-<img alt="Game Screenshot gif" src="https://github.com/jopemachine/Tetris/blob/master/ScreenGif.gif" width="693px" height="660px">
+<img alt="Game Screenshot gif" src="ScreenGif.gif" width="693px" height="660px">
 
-<img alt="Game Screenshot" src="https://github.com/jopemachine/Tetris/blob/master/ScreenShot.png" width="693px" height="660px">
+<img alt="Game Screenshot" src="ScreenShot.png" width="693px" height="660px">
 
